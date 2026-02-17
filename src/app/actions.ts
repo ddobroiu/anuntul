@@ -10,6 +10,10 @@ export async function sendContactEmail(formData: FormData) {
     const subject = (formData.get('subject') as string) || 'Fără subiect';
     const message = (formData.get('message') as string) || '';
 
+    if (!process.env.RESEND_API_KEY) {
+        return { success: false, error: 'Configurație lipsă: RESEND_API_KEY nu este setat.' };
+    }
+
     try {
         const { data, error } = await resend.emails.send({
             from: 'Anuntul.net Contact <onboarding@resend.dev>',
@@ -29,15 +33,14 @@ export async function sendContactEmail(formData: FormData) {
         });
 
         if (error) {
-            // Logic for handling error
             console.error('Resend error:', error);
-            return { success: false, error: error.message };
+            return { success: false, error: `Eroare Resend: ${error.name} - ${error.message}` };
         }
 
         return { success: true, data };
-    } catch (error) {
+    } catch (error: any) {
         console.error('Server error:', error);
-        return { success: false, error: 'Eroare internă la trimiterea emailului.' };
+        return { success: false, error: `Eroare server: ${error.message || 'Eroare necunoscută'}` };
     }
 }
 
@@ -48,6 +51,10 @@ export async function sendPressReleaseEmail(formData: FormData) {
     const category = (formData.get('category') as string) || 'General';
     const region = (formData.get('region') as string) || 'National';
     const content = (formData.get('content') as string) || '';
+
+    if (!process.env.RESEND_API_KEY) {
+        return { success: false, error: 'Configurație lipsă: RESEND_API_KEY nu este setat.' };
+    }
 
     try {
         const { data, error } = await resend.emails.send({
@@ -72,12 +79,12 @@ export async function sendPressReleaseEmail(formData: FormData) {
 
         if (error) {
             console.error('Resend error:', error);
-            return { success: false, error: error.message };
+            return { success: false, error: `Eroare Resend: ${error.name} - ${error.message}` };
         }
 
         return { success: true, data };
-    } catch (error) {
+    } catch (error: any) {
         console.error('Server error:', error);
-        return { success: false, error: 'Eroare internă la trimiterea comunicatului.' };
+        return { success: false, error: `Eroare server: ${error.message || 'Eroare necunoscută'}` };
     }
 }
