@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     description: 'Toate stirile si noutatile din Romania la un loc.',
 };
 
+export const revalidate = 3600;
+
 export default async function ArticlesPage() {
     const allArticles = await getAllArticles();
 

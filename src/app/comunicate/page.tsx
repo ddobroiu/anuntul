@@ -10,6 +10,8 @@ export const metadata: Metadata = {
     description: 'Comunicate de presa oficiale de la institutii publice, companii si organizatii.',
 };
 
+export const revalidate = 3600;
+
 export default async function PressReleasesPage() {
     const pressReleases = await getArticlesByCategory('Comunicat');
 

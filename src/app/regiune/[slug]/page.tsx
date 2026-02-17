@@ -30,6 +30,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
 }
 
+export const revalidate = 3600;
+
 export default async function RegionPage({ params }: PageProps) {
     const { slug } = await params;
     // Handle the specific slug case for oltenia if needed, or ensure data is consistent

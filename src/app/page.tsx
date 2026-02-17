@@ -10,9 +10,11 @@ import { regions } from '@/lib/data';
 import styles from './home.module.css';
 
 export const metadata: Metadata = {
-  title: 'Anuntul.net - Stiri si Comunicate de Presa',
-  description: 'Platforma ta de stiri si comunicate de presa din toate regiunile Romaniei.',
+  title: 'Comunicate Presa Fonduri Europene & Materiale Publicitare - Anuntul.net',
+  description: 'Publicam comunicate de presa pentru proiecte europene (PNRR, POR, POCU) si oferim materiale de vizibilitate obligatorii (autocolante, afise, panouri).',
 };
+
+export const revalidate = 3600; // Update every hour
 
 export default async function Home() {
   const allArticles = await getAllArticles();
@@ -28,38 +30,43 @@ export default async function Home() {
 
         {/* SEO Header (Hidden visually but semantic) */}
         <h1 className="visually-hidden" style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', border: 0 }}>
-          Anuntul.net - Comunicate de Presa si Stiri Nationale
+          Comunicate de Presa Proiecte Europene si Materiale de Vizibilitate - Anuntul.net
         </h1>
 
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroOverlay}></div>
           <Image
-            src={featuredArticle.imageUrl}
-            alt={featuredArticle.title}
+            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop"
+            alt="Proiecte Europene"
             fill
             priority
             style={{ objectFit: 'cover', width: '100%', height: '100%', zIndex: 0 }}
             sizes="(max-width: 768px) 100vw, 1200px"
           />
           <div className={styles.heroContent}>
-            <div className={styles.heroTag} style={{ marginBottom: '0.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Bell size={16} /> Ultima Oră
+            <div className={styles.heroTag} style={{ marginBottom: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#FFD700', color: '#003399' }}>
+              🇪🇺 Fonduri Europene
             </div>
 
             <h2 className={styles.heroTitle}>
-              <Link href={`/stiri/${featuredArticle.id}`} style={{ color: 'white' }}>
-                {featuredArticle.title}
-              </Link>
+              <span style={{ color: 'white' }}>
+                Publicare Comunicate & Kituri de Vizibilitate
+              </span>
             </h2>
 
             <p className={styles.heroExcerpt}>
-              {featuredArticle.excerpt}
+              Asiguram publicarea obligatorie a comunicatelor de presa (incepere/finalizare proiect) si furnizam materialele de vizibilitate necesare (autocolante, afise, panouri) pentru proiectele PNRR, POR, POCU.
             </p>
 
-            <Link href={`/stiri/${featuredArticle.id}`} className="btn btn-primary" style={{ marginTop: '1rem' }}>
-              Citeste tot articolul
-            </Link>
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <Link href="/trimite-comunicat" className="btn btn-primary" style={{ marginTop: '1rem' }}>
+                Publica Comunicat Acum
+              </Link>
+              <Link href="/seap" className="btn btn-outline" style={{ marginTop: '1rem', color: 'white', borderColor: 'white' }}>
+                Vezi Oferta Completa
+              </Link>
+            </div>
           </div>
         </section>
 

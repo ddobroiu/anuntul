@@ -27,6 +27,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     };
 }
 
+export const revalidate = 3600;
+
 export default async function CategoryPage({ params }: PageProps) {
     const { slug } = await params;
     const category = categories.find((c) => c.toLowerCase() === slug.toLowerCase());
