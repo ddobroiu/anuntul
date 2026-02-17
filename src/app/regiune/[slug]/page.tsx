@@ -8,7 +8,7 @@ import { getArticlesByRegion } from '@/lib/articles';
 import { regions } from '@/lib/data';
 import { regionContent, commonSeoContent } from '@/lib/region-content';
 import Link from 'next/link';
-import { FileText, Printer, MessageSquare, Phone, Mail } from 'lucide-react';
+import { } from 'lucide-react';
 
 interface PageProps {
     params: Promise<{ slug: string }>;

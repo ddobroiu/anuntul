@@ -1,8 +1,7 @@
-
 'use client';
 
 import { useState, useTransition } from 'react';
-import { Mail, MapPin, Phone, MessageSquare, Send, CheckCircle } from 'lucide-react';
+import { Mail, MapPin, MessageSquare, Send, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { sendContactEmail } from '@/app/actions';

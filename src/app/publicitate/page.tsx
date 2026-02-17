@@ -1,7 +1,7 @@
 
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Mail, CheckCircle, TrendingUp, Users, Target, FileText, Printer, ShieldCheck } from 'lucide-react';
+import { Mail, CheckCircle, FileText, Printer, ShieldCheck } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 

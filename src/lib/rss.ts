@@ -15,7 +15,7 @@ export async function getHotNewsArticles(): Promise<Article[]> {
         const feed = await parser.parseURL('https://www.hotnews.ro/rss');
 
         // Map RSS items to our Article structure
-        const articles: Article[] = feed.items.map((item) => {
+        const articles: (Article | null)[] = feed.items.map((item) => {
 
             // 1. Determine Region (Basic keyword matching)
             let region = 'National';
@@ -37,12 +37,25 @@ export async function getHotNewsArticles(): Promise<Article[]> {
                 // Find the first relevant category
                 const cat = item.categories.find(c => typeof c === 'string') || '';
 
-                if (cat.includes('Politic')) category = 'Politic';
-                else if (cat.includes('Economie') || cat.includes('Finante')) category = 'Economic';
+                if (cat.includes('Economie') || cat.includes('Finante') || cat.includes('Companii')) category = 'Economic';
+                else if (cat.includes('Fonduri') || cat.includes('Bani europeni') || cat.includes('EuROfonduri')) category = 'Fonduri Europene';
+                else if (cat.includes('Politic')) category = 'Politic'; // Keep identifying but we filter after
                 else if (cat.includes('Sport')) category = 'Sport';
                 else if (cat.includes('Life') || cat.includes('Monden')) category = 'Monden';
                 else if (cat.includes('Cultura')) category = 'Cultura';
                 else if (cat.includes('Social')) category = 'Social';
+            }
+
+            // Keyword override for 'Fonduri Europene' if not in official category
+            if (category === 'Actualitate' || category === 'Economic') {
+                if (lowerTitle.includes('fonduri') || lowerTitle.includes('pnrr') || lowerTitle.includes('proiect european')) {
+                    category = 'Fonduri Europene';
+                }
+            }
+
+            // FILTER: If it's Politics or Sport, exclude it for this professional site
+            if (category === 'Politic' || category === 'Sport' || category === 'Monden') {
+                return null;
             }
 
             // 3. Extract Image
@@ -61,7 +74,6 @@ export async function getHotNewsArticles(): Promise<Article[]> {
             }
 
             // 4. Generate a clean ID
-            // Try to extract numeric ID from HotNews URL (e.g. ...-123456.htm)
             let id = '';
             const link = item.link || item.guid || '';
             const idMatch = link.match(/-(\d+)\.htm/);
@@ -69,20 +81,17 @@ export async function getHotNewsArticles(): Promise<Article[]> {
             if (idMatch && idMatch[1]) {
                 id = idMatch[1];
             } else {
-                // Fallback: Deterministic slug from title (NO RANDOMNESS)
-                // We use the title + a short hash of the link to ensure uniqueness without randomness
                 const simpleSlug = (item.title || 'untitled').toLowerCase()
                     .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i').replace(/ș/g, 's').replace(/ț/g, 't')
                     .replace(/[^a-z0-9]/g, '-')
                     .replace(/-+/g, '-')
                     .replace(/^-|-$/g, '');
 
-                // Simple hash of string to keep it short but unique
                 let hash = 0;
                 const str = link || item.title || '';
                 for (let i = 0; i < str.length; i++) {
                     hash = ((hash << 5) - hash) + str.charCodeAt(i);
-                    hash |= 0; // Convert to 32bit integer
+                    hash |= 0;
                 }
                 const suffix = Math.abs(hash).toString(36);
 
@@ -102,8 +111,8 @@ export async function getHotNewsArticles(): Promise<Article[]> {
             };
         });
 
-        // Add a small delay/limit to not spam if this function is called specifically
-        return articles.slice(0, 12);
+        // Filter out nulls and slice
+        return articles.filter((a): a is Article => a !== null).slice(0, 15);
     } catch (error) {
         console.error('Error fetching RSS feed:', error);
         return [];

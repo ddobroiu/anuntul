@@ -26,5 +26,5 @@ export const regions = [
 ];
 
 export const categories = [
-    'Actualitate', 'Economic', 'Politic', 'Social', 'Cultura', 'Sport', 'Monden', 'Comunicat'
+    'Actualitate', 'Economic', 'Fonduri Europene', 'Social', 'Cultura', 'Comunicat'
 ];

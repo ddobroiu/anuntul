@@ -14,7 +14,7 @@ export default function Header() {
                     <ul>
                         <li><Link href="/categorie/actualitate">Actualitate</Link></li>
                         <li><Link href="/categorie/economic">Economic</Link></li>
-                        <li><Link href="/categorie/politic">Politic</Link></li>
+                        <li><Link href="/categorie/fonduri-europene" style={{ fontWeight: '700', color: 'var(--color-primary)' }}>Fonduri Europene</Link></li>
                         <li><Link href="/regiuni">Regiuni</Link></li>
                         <li><Link href="/comunicate">Comunicate</Link></li>
                         <li><Link href="/seap" style={{ color: '#d32f2f', fontWeight: '600' }}>SEAP</Link></li>

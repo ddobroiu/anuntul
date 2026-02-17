@@ -38,9 +38,10 @@ export async function sendContactEmail(formData: FormData) {
         }
 
         return { success: true, data };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Server error:', error);
-        return { success: false, error: `Eroare server: ${error.message || 'Eroare necunoscută'}` };
+        const errorMessage = error instanceof Error ? error.message : 'Eroare necunoscută';
+        return { success: false, error: `Eroare server: ${errorMessage}` };
     }
 }
 
@@ -83,8 +84,9 @@ export async function sendPressReleaseEmail(formData: FormData) {
         }
 
         return { success: true, data };
-    } catch (error: any) {
+    } catch (error: unknown) {
         console.error('Server error:', error);
-        return { success: false, error: `Eroare server: ${error.message || 'Eroare necunoscută'}` };
+        const errorMessage = error instanceof Error ? error.message : 'Eroare necunoscută';
+        return { success: false, error: `Eroare server: ${errorMessage}` };
     }
 }

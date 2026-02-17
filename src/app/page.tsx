@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Newspaper, Bell, MapPin, Calendar, BarChart, Eye, Clock } from 'lucide-react';
+import { Newspaper, MapPin, Calendar, BarChart, Eye, Clock } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsCard from '@/components/NewsCard';
@@ -35,7 +35,6 @@ export default async function Home() {
     )
   }
 
-  const featuredArticle = allArticles[0];
   const recentArticles = allArticles.slice(1, 10);
 
   return (
