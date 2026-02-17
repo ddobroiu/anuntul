@@ -19,6 +19,22 @@ export const revalidate = 3600; // Update every hour
 export default async function Home() {
   const allArticles = await getAllArticles();
 
+  // Handle case where no articles are returned (e.g. RSS fetch failed and no local data)
+  const hasArticles = allArticles && allArticles.length > 0;
+
+  if (!hasArticles) {
+    return (
+      <>
+        <Header />
+        <main className="container" style={{ paddingTop: '5rem', textAlign: 'center' }}>
+          <h1>Nu exista stiri momentan.</h1>
+          <p>Reveniti mai tarziu pentru noutati.</p>
+        </main>
+        <Footer />
+      </>
+    )
+  }
+
   const featuredArticle = allArticles[0];
   const recentArticles = allArticles.slice(1, 10);
 
