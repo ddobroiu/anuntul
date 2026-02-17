@@ -24,6 +24,45 @@ export default async function Home() {
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "Anuntul.net",
+            "url": "https://anuntul.net",
+            "logo": "https://anuntul.net/logo.png",
+            "description": "Platforma de publicare comunicate de presa pentru proiecte europene si furnizor de materiale de vizibilitate (PNRR, POR).",
+            "address": {
+              "@type": "PostalAddress",
+              "addressCountry": "RO"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+40726194451",
+              "contactType": "sales",
+              "email": "contact@anuntul.net"
+            },
+            "offers": [
+              {
+                "@type": "Offer",
+                "name": "Publicare Comunicat Presa PNRR",
+                "price": "150",
+                "priceCurrency": "RON",
+                "description": "Publicare anunt incepere/finalizare proiect cu link si mentinere pe durata proiectului."
+              },
+              {
+                "@type": "Offer",
+                "name": "Kit Vizibilitate Start-Up",
+                "price": "350",
+                "priceCurrency": "RON",
+                "description": "Pachet comunicat + 100 autocolante + 2 afise A3 conform MIV."
+              }
+            ]
+          })
+        }}
+      />
       <Header />
 
       <main className="container" style={{ paddingTop: '2rem' }}>
