@@ -1,24 +1,29 @@
 
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useTransition } from 'react';
 import { Mail, MapPin, Phone, MessageSquare, Send, CheckCircle } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import { sendContactEmail } from '@/app/actions';
 
 export default function ContactPage() {
     const [submitted, setSubmitted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [isPending, startTransition] = useTransition();
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsLoading(true);
-
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        setIsLoading(false);
-        setSubmitted(true);
+    const handleSubmit = async (formData: FormData) => {
+        setError(null);
+        startTransition(async () => {
+            const result = await sendContactEmail(formData);
+            if (result.success) {
+                setSubmitted(true);
+            } else if (result.error) {
+                setError(typeof result.error === 'string' ? result.error : 'An unexpected error occurred');
+            } else {
+                setError('An unexpected error occurred');
+            }
+        });
     };
 
     return (
@@ -168,14 +173,28 @@ export default function ContactPage() {
                                     </button>
                                 </div>
                             ) : (
-                                <form onSubmit={handleSubmit}>
+                                <form action={handleSubmit}>
                                     <h2 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '2rem' }}>Trimite-ne un mesaj</h2>
+
+                                    {error && (
+                                        <div style={{
+                                            backgroundColor: '#fee2e2',
+                                            color: '#ef4444',
+                                            padding: '1rem',
+                                            borderRadius: 'var(--radius-md)',
+                                            marginBottom: '1.5rem',
+                                            border: '1px solid #fecaca'
+                                        }}>
+                                            {error}
+                                        </div>
+                                    )}
 
                                     <div style={{ marginBottom: '1.5rem' }}>
                                         <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--color-text)' }}>Nume Complet</label>
                                         <input
                                             type="text"
                                             id="name"
+                                            name="name"
                                             required
                                             placeholder="Numele tău"
                                             style={{
@@ -195,6 +214,7 @@ export default function ContactPage() {
                                         <input
                                             type="email"
                                             id="email"
+                                            name="email"
                                             required
                                             placeholder="exemplu@email.com"
                                             style={{
@@ -213,6 +233,7 @@ export default function ContactPage() {
                                         <label htmlFor="subject" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--color-text)' }}>Subiect</label>
                                         <select
                                             id="subject"
+                                            name="subject"
                                             style={{
                                                 width: '100%',
                                                 padding: '0.75rem 1rem',
@@ -234,6 +255,7 @@ export default function ContactPage() {
                                         <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem', fontWeight: '500', color: 'var(--color-text)' }}>Mesaj</label>
                                         <textarea
                                             id="message"
+                                            name="message"
                                             required
                                             rows={5}
                                             placeholder="Scrie mesajul tău aici..."
@@ -253,7 +275,7 @@ export default function ContactPage() {
 
                                     <button
                                         type="submit"
-                                        disabled={isLoading}
+                                        disabled={isPending}
                                         className="btn btn-primary"
                                         style={{
                                             width: '100%',
@@ -263,7 +285,7 @@ export default function ContactPage() {
                                             fontWeight: '600'
                                         }}
                                     >
-                                        {isLoading ? 'Se trimite...' : (
+                                        {isPending ? 'Se trimite...' : (
                                             <>
                                                 Trimite Mesajul <Send size={20} style={{ marginLeft: '0.5rem' }} />
                                             </>

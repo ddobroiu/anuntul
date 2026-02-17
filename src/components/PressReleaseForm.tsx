@@ -1,22 +1,30 @@
 'use client';
 
-import { useState, FormEvent } from 'react';
+import { useState, useRef, useTransition } from 'react';
 import { Upload, Send, CheckCircle } from 'lucide-react';
 import { categories, regions } from '@/lib/data';
+import { sendPressReleaseEmail } from '@/app/actions';
 
 export default function PressReleaseForm() {
     const [submitted, setSubmitted] = useState(false);
-    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState<string | null>(null);
+    const [isPending, startTransition] = useTransition();
+    const fileInputRef = useRef<HTMLInputElement>(null);
 
-    const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        setIsLoading(true);
+    const handleSubmit = (formData: FormData) => {
+        setError(null);
+        startTransition(async () => {
+            const result = await sendPressReleaseEmail(formData);
+            if (result.success) {
+                setSubmitted(true);
+            } else {
+                setError(typeof result.error === 'string' ? result.error : 'An unexpected error occurred');
+            }
+        });
+    };
 
-        // Simulate API call
-        await new Promise((resolve) => setTimeout(resolve, 1500));
-
-        setIsLoading(false);
-        setSubmitted(true);
+    const handleImageClick = () => {
+        fileInputRef.current?.click();
     };
 
     const inputStyle = {
@@ -71,7 +79,21 @@ export default function PressReleaseForm() {
     }
 
     return (
-        <form onSubmit={handleSubmit} style={{ maxWidth: '700px', margin: '0 auto' }}>
+        <form action={handleSubmit} style={{ maxWidth: '700px', margin: '0 auto' }}>
+
+            {error && (
+                <div style={{
+                    backgroundColor: '#fee2e2',
+                    color: '#ef4444',
+                    padding: '1rem',
+                    borderRadius: 'var(--radius-md)',
+                    marginBottom: '1.5rem',
+                    textAlign: 'center',
+                    border: '1px solid #fecaca'
+                }}>
+                    {error}
+                </div>
+            )}
 
             <div className="md:grid-cols-2" style={{ ...groupStyle, gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))' }}>
                 <div>
@@ -79,6 +101,7 @@ export default function PressReleaseForm() {
                     <input
                         type="text"
                         id="name"
+                        name="name"
                         required
                         style={inputStyle}
                         placeholder="Ex: Popescu Ion / Primaria X"
@@ -90,6 +113,7 @@ export default function PressReleaseForm() {
                     <input
                         type="email"
                         id="email"
+                        name="email"
                         required
                         style={inputStyle}
                         placeholder="contact@email.com"
@@ -102,6 +126,7 @@ export default function PressReleaseForm() {
                 <input
                     type="text"
                     id="title"
+                    name="title"
                     required
                     style={{ ...inputStyle, fontWeight: 'bold' }}
                     placeholder="Titlul comunicatului de presa..."
@@ -113,6 +138,7 @@ export default function PressReleaseForm() {
                     <label htmlFor="category" style={labelStyle}>Categorie</label>
                     <select
                         id="category"
+                        name="category"
                         style={{ ...inputStyle, backgroundColor: 'white' }}
                     >
                         {categories.map(c => <option key={c} value={c}>{c}</option>)}
@@ -123,6 +149,7 @@ export default function PressReleaseForm() {
                     <label htmlFor="region" style={labelStyle}>Regiune</label>
                     <select
                         id="region"
+                        name="region"
                         style={{ ...inputStyle, backgroundColor: 'white' }}
                     >
                         {regions.map(r => <option key={r} value={r}>{r}</option>)}
@@ -134,6 +161,7 @@ export default function PressReleaseForm() {
                 <label htmlFor="content" style={labelStyle}>Continut Comunicat</label>
                 <textarea
                     id="content"
+                    name="content"
                     rows={10}
                     required
                     style={{ ...inputStyle, fontFamily: 'inherit' }}
@@ -143,29 +171,36 @@ export default function PressReleaseForm() {
 
             <div style={{ marginBottom: '2rem' }}>
                 <label style={labelStyle}>Imagine (Optional)</label>
-                <div style={{
-                    border: '2px dashed var(--color-border)',
-                    borderRadius: 'var(--radius-lg)',
-                    padding: '2rem',
-                    textAlign: 'center',
-                    cursor: 'pointer',
-                    transition: 'background-color 0.2s',
-                    backgroundColor: 'var(--color-bg-alt)'
-                }}>
+                <div
+                    onClick={handleImageClick}
+                    style={{
+                        border: '2px dashed var(--color-border)',
+                        borderRadius: 'var(--radius-lg)',
+                        padding: '2rem',
+                        textAlign: 'center',
+                        cursor: 'pointer',
+                        transition: 'background-color 0.2s',
+                        backgroundColor: 'var(--color-bg-alt)'
+                    }}>
                     <Upload size={32} style={{ margin: '0 auto 0.5rem auto', color: 'var(--color-text-muted)' }} />
                     <p style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)' }}>Drag & drop sau click pentru a incarca imagine</p>
-                    <input type="file" style={{ display: 'none' }} accept="image/*" />
+                    <input
+                        ref={fileInputRef}
+                        type="file"
+                        style={{ display: 'none' }}
+                        accept="image/*"
+                    />
                 </div>
             </div>
 
             <div style={{ borderTop: '1px solid var(--color-border)', paddingTop: '1.5rem' }}>
                 <button
                     type="submit"
-                    disabled={isLoading}
+                    disabled={isPending}
                     className="btn btn-primary"
                     style={{ width: '100%', padding: '1rem', fontSize: '1.1rem', justifyContent: 'center', gap: '0.5rem' }}
                 >
-                    {isLoading ? (
+                    {isPending ? (
                         'Se trimite...'
                     ) : (
                         <>
