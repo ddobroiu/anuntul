@@ -52,8 +52,12 @@ export async function sendContactEmail(formData: FormData) {
     }).catch(e => console.error("Could not send customer confirmation:", e));
 
     if (error) {
-      console.error('Resend error:', error);
-      return { success: false, error: `Eroare Resend: ${error.name} - ${error.message}` };
+      console.error('Detailed Resend Error:', JSON.stringify(error, null, 2));
+      let friendlyError = `Eroare Resend: ${error.message}`;
+      if (error.message.toLowerCase().includes('trial') || error.message.toLowerCase().includes('onboarding')) {
+        friendlyError = "Eroare: Resend e în modul 'Onboarding'. Poți trimite doar la adresa cu care te-ai înscris în Resend. Verifică email-ul sau validează domeniul anuntul.net.";
+      }
+      return { success: false, error: friendlyError };
     }
 
     return { success: true, data };
@@ -159,8 +163,12 @@ export async function sendPressReleaseEmail(formData: FormData) {
     }).catch(e => console.error("Could not send press release confirmation to customer:", e));
 
     if (error) {
-      console.error('Resend error:', error);
-      return { success: false, error: `Eroare Resend: ${error.name} - ${error.message}` };
+      console.error('Detailed Resend Error:', JSON.stringify(error, null, 2));
+      let friendlyError = `Eroare Resend: ${error.message}`;
+      if (error.message.toLowerCase().includes('trial') || error.message.toLowerCase().includes('onboarding')) {
+        friendlyError = "Eroare: Resend e în modul 'Onboarding'. Poți trimite doar la adresa cu care te-ai înscris în Resend. Verifică email-ul sau validează domeniul anuntul.net.";
+      }
+      return { success: false, error: friendlyError };
     }
 
     return { success: true, data };
