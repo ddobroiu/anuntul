@@ -33,6 +33,7 @@ export default function Header() {
                         <li><Link href="/regiuni">Regiuni</Link></li>
                         <li><Link href="/comunicate">Comunicate</Link></li>
                         <li><Link href="/seap" style={{ color: '#d32f2f', fontWeight: '600' }}>SEAP</Link></li>
+                        <li><Link href="/contact">Contact</Link></li>
                     </ul>
                 </nav>
 
@@ -106,6 +107,7 @@ export default function Header() {
                         <li><Link href="/regiuni" onClick={() => setIsMenuOpen(false)} style={{ display: 'block', padding: '0.5rem 0', fontWeight: '500' }}>Regiuni</Link></li>
                         <li><Link href="/comunicate" onClick={() => setIsMenuOpen(false)} style={{ display: 'block', padding: '0.5rem 0', fontWeight: '500' }}>Comunicate</Link></li>
                         <li><Link href="/seap" onClick={() => setIsMenuOpen(false)} style={{ display: 'block', padding: '0.5rem 0', fontWeight: '600', color: '#d32f2f' }}>SEAP</Link></li>
+                        <li><Link href="/contact" onClick={() => setIsMenuOpen(false)} style={{ display: 'block', padding: '0.5rem 0', fontWeight: '500' }}>Contact</Link></li>
                     </ul>
                 </div>
             )}
