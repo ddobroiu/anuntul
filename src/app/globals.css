@@ -126,7 +126,7 @@ a:hover {
 }
 
 .mobile-only {
-  display: block;
+  display: inline-block;
 }
 
 .desktop-only {
@@ -143,9 +143,25 @@ a:hover {
   }
 }
 
+.text-sm {
+  font-size: 0.875rem !important;
+}
+
+.text-base {
+  font-size: 1rem !important;
+}
+
+.text-xl {
+  font-size: 1.25rem !important;
+}
+
 @media (min-width: 768px) {
   .md\:flex {
-    display: flex;
+    display: flex !important;
+  }
+
+  .md\:inline {
+    display: inline !important;
   }
 
   .md\:grid-cols-2 {
@@ -164,12 +180,24 @@ a:hover {
     display: none !important;
   }
 
+  .md\:text-2xl {
+    font-size: 1.5rem !important;
+  }
+
+  .md\:w-8 {
+    width: 2rem !important;
+  }
+
+  .md\:h-8 {
+    height: 2rem !important;
+  }
+
   .mobile-only {
-    display: none;
+    display: none !important;
   }
 
   .desktop-only {
-    display: block;
+    display: inline-block !important;
   }
 }
 
