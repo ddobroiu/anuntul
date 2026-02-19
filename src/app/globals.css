@@ -421,3 +421,43 @@ a:hover {
 .icon-animate-swing {
   animation: swing 3s infinite ease-in-out;
 }
+
+/* Blog Content Styles */
+.blog-content h3 {
+  font-size: 1.5rem;
+  margin: 2.5rem 0 1.5rem 0;
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.blog-content p {
+  margin-bottom: 1.5rem;
+}
+
+.blog-content ul {
+  margin-bottom: 2rem;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.blog-content li::before {
+  content: "•";
+  color: var(--color-primary);
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+}
+
+.blog-content strong {
+  color: var(--color-text);
+  font-weight: 700;
+}
+
+.icon-animate-bounce-slow {
+  animation: bounce-small 3s infinite ease-in-out;
+}

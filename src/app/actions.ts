@@ -16,21 +16,40 @@ export async function sendContactEmail(formData: FormData) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Anuntul.net Contact <onboarding@resend.dev>',
+      from: 'Anuntul.net <onboarding@resend.dev>',
       to: ['contact@anuntul.net'],
       replyTo: email,
-      subject: `Mesaj nou: ${subject}`,
+      subject: `Mesaj nou de la ${name}: ${subject}`,
       html: `
-        <div>
-          <h1>Mesaj nou de pe site</h1>
+        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+          <h2 style="color: #d32f2f;">Mesaj nou de pe site</h2>
+          <hr />
           <p><strong>Nume:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Subiect:</strong> ${subject}</p>
           <p><strong>Mesaj:</strong></p>
-          <p>${message.replace(/\n/g, '<br>')}</p>
+          <div style="background: #f9f9f9; padding: 15px; border-radius: 5px;">
+            ${message.replace(/\n/g, '<br>')}
+          </div>
         </div>
       `,
     });
+
+    // Send confirmation to customer
+    await resend.emails.send({
+      from: 'Anuntul.net <onboarding@resend.dev>',
+      to: [email],
+      subject: 'Am primit mesajul tău - Anuntul.net',
+      html: `
+        <div style="font-family: sans-serif; padding: 20px;">
+          <h2>Bună, ${name}</h2>
+          <p>Îți confirmăm că am primit mesajul tău cu subiectul: <strong>${subject}</strong>.</p>
+          <p>Echipa noastră te va contacta în cel mai scurt timp posibil.</p>
+          <br />
+          <p>O zi excelentă,<br />Echipa Anuntul.net</p>
+        </div>
+      `
+    }).catch(e => console.error("Could not send customer confirmation:", e));
 
     if (error) {
       console.error('Resend error:', error);
@@ -116,6 +135,28 @@ export async function sendPressReleaseEmail(formData: FormData) {
     }
 
     const { data, error } = await resend.emails.send(emailPayload);
+
+    // Send confirmation to customer
+    await resend.emails.send({
+      from: 'Anuntul.net Press <onboarding@resend.dev>',
+      to: [email],
+      subject: 'Confirmare Comandă Comunicat - Anuntul.net',
+      html: `
+        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #2563eb;">Am primit comanda ta pentru: ${title}</h2>
+          <p>Bună, ${name},</p>
+          <p>Îți confirmăm primirea solicitării pentru publicarea comunicatului de presă.</p>
+          
+          <div style="background-color: #f8fafc; padding: 15px; border-radius: 8px; margin: 20px 0;">
+            <p style="margin: 0;"><strong>Total de plată: ${totalPrice} LEI</strong></p>
+          </div>
+          
+          <p>Un specialist Anuntul.net va verifica conținutul și te va contacta în scurt timp pentru validare și pașii următori privind plata.</p>
+          <br />
+          <p>Vă mulțumim pentru colaborare,<br />Echipa Anuntul.net</p>
+        </div>
+      `
+    }).catch(e => console.error("Could not send press release confirmation to customer:", e));
 
     if (error) {
       console.error('Resend error:', error);
