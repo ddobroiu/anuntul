@@ -105,5 +105,75 @@ export const blogPosts: BlogPost[] = [
         author: 'Specialist PR',
         image: 'https://images.unsplash.com/photo-1491336477066-31156b5e4f35?q=80&w=2070&auto=format&fit=crop',
         category: 'Ghiduri'
+    },
+    {
+        id: '4',
+        slug: 'dovada-trafic-raportare-comunicare-mire',
+        title: 'Cum obții corect Dovada de Trafic pentru raportarea vizibilității MIPE / PNRR',
+        excerpt: 'Mulți beneficiari întâmpină probleme la decontare din cauza dovezilor de trafic neconforme. Află care sunt formatele acceptate.',
+        content: `
+            <p>În noile ghiduri de comunicare pentru PNRR și programele gestionate de MIPE, nu mai este suficientă doar captura de ecran cu articolul publicat. Se solicită frecvent o confirmare a impactului și a numărului de cititori.</p>
+            
+            <h3>Ce conține o dovadă de trafic validă?</h3>
+            <p>O dovadă profesională de trafic trebuie să includă:</p>
+            <ul>
+                <li>Numărul de vizualizări unice ale paginii comunicatului.</li>
+                <li>Perioada de monitorizare a traficului.</li>
+                <li>Sursa datelor (ex: Google Analytics, Cloudflare sau statistici interne ale platformei media).</li>
+                <li>URL-ul direct unde a fost publicat materialul.</li>
+            </ul>
+
+            <p>Platforma <strong>Anuntul.net</strong> generează automat aceste rapoarte pentru fiecare client, oferind un document oficial ce poate fi anexat direct în MySMIS sau platforma de raportare PNRR. Având un trafic constant de peste 3000 de utilizatori unici lunar, comunicatele noastre îndeplinesc criteriile de audiență relevantă solicitate de evaluatori.</p>
+        `,
+        publishDate: '2026-02-19',
+        author: 'Consultant SEO',
+        image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2026&auto=format&fit=crop',
+        category: 'Noutati'
+    },
+    {
+        id: '5',
+        slug: 'achizitii-publicitate-prin-seap-ghid',
+        title: 'Achiziția serviciilor de publicitate proiecte prin SEAP/SICAP',
+        excerpt: 'Ghid practic pentru beneficiarii publici: cum să achiziționezi pachetele de vizibilitate fără erori în procesul de achiziție.',
+        content: `
+            <p>Pentru primării, școli și alte instituții publice, achiziția serviciilor de publicitate trebuie să treacă prin catalogul electronic SEAP/SICAP. Acest proces poate părea birocratic, dar este esențial pentru legalitatea cheltuielii.</p>
+            
+            <h3>Cum găsești produsele Anuntul.net în SEAP?</h3>
+            <p>Produsele noastre sunt listate sub coduri CPV specifice publicității și tipăriturilor:</p>
+            <ul>
+                <li><strong>79341000-6:</strong> Servicii de publicitate (pentru comunicate).</li>
+                <li><strong>44423450-0:</strong> Plăcuțe de înmatriculare sau indicatoare (pentru panouri și plăci).</li>
+            </ul>
+
+            <p>Beneficiarii trebuie să inițieze o "Cumpărare directă" din catalog sau să solicite o ofertă personalizată pe care o vom încărca în platformă în maximum 24 de ore. Acest flux asigură transparența totală și conformitatea cu legea achizițiilor publice.</p>
+        `,
+        publishDate: '2026-02-20',
+        author: 'Expert Achiziții',
+        image: 'https://images.unsplash.com/photo-1454165833261-ccc63499b441?q=80&w=2070&auto=format&fit=crop',
+        category: 'Vizibilitate'
+    },
+    {
+        id: '6',
+        slug: 'greseli-comune-afise-obligatorii-pnrr',
+        title: 'Top 5 greșeli la tipărirea afișelor A3 și panourilor PNRR',
+        excerpt: 'O singură greșeală de design poate duce la respingerea materialului de vizibilitate. Verifică lista noastră înainte de a tipări.',
+        content: `
+            <p>Manualul de Identitate Vizuală (MIV) este biblia oricărui grafician care lucrează pentru proiecte europene. Totuși, erorile apar frecvent în practică.</p>
+            
+            <h3>1. Versiunea greșită a logoului UE</h3>
+            <p>Din 2021, logoul UE s-a schimbat pentru PNRR. Nu se mai folosește logoul programelor 2014-2020. Asigură-te că folosești varianta cu textul "Finanțat de Uniunea Europeană".</p>
+
+            <h3>2. Dimensiunea fontului (Regula celor 25%)</h3>
+            <p>Numele proiectului nu trebuie să fie mai mic de 25% din mărimea titlului principal. Este o regulă de proporționalitate pe care mulți o ignoră.</p>
+
+            <h3>3. Zona de protecție a logourilor</h3>
+            <p>Logourile nu trebuie să fie înghesuite spre margini sau suprapuse peste alte elemente grafice. Fiecare are nevoie de un "spațiu de respirație" clar definit în manual.</p>
+
+            <p>Comandând un kit de vizibilitate de la Anuntul.net, ai garanția că designul este verificat de specialiști care cunosc manualele MIPE și PNRR pe dinafară.</p>
+        `,
+        publishDate: '2026-02-21',
+        author: 'Designer MIV',
+        image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?q=80&w=2071&auto=format&fit=crop',
+        category: 'Vizibilitate'
     }
 ];
