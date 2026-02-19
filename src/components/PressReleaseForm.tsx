@@ -187,14 +187,21 @@ export default function PressReleaseForm() {
     return (
         <form action={handleSubmit} className="press-release-form">
 
-            <div style={{ marginBottom: '2.5rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '1.5rem', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', alignItems: 'center' }}>
+            <div style={{ marginBottom: '2.5rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '1.5rem', display: 'flex', flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1.5rem' }} className="form-header-responsive">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    @media (max-width: 640px) {
+                        .form-header-responsive { flex-direction: column !important; align-items: flex-start !important; }
+                        .form-header-responsive > div { width: 100% !important; justify-content: flex-start !important; flex-direction: column !important; align-items: stretch !important; }
+                    }
+                `}} />
                 <h2 style={{ fontSize: '1.5rem', fontWeight: '800', display: 'flex', alignItems: 'center', gap: '0.75rem', margin: 0 }}>
                     <PlusCircle className="text-primary" /> Detalii Comunicat
                 </h2>
 
                 <div style={{ display: 'flex', gap: '1rem', alignItems: 'center', justifyContent: 'flex-end' }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.4rem 0.75rem', backgroundColor: '#eff6ff', borderRadius: 'var(--radius-md)', border: '1px solid #3b82f6' }}>
-                        <span style={{ fontSize: '0.85rem', fontWeight: '700', color: '#1e40af' }}>Cantitate:</span>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.4rem 0.75rem', backgroundColor: '#eff6ff', borderRadius: 'var(--radius-md)', border: '1px solid #3b82f6', flexShrink: 0 }}>
+                        <span style={{ fontSize: '0.85rem', fontWeight: '700', color: '#1e40af' }}>Buc:</span>
                         <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                             <button type="button" onClick={() => setPressReleaseQty(Math.max(1, pressReleaseQty - 1))} style={{ width: '24px', height: '24px', borderRadius: '4px', border: '1px solid #3b82f6', backgroundColor: 'white', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#3b82f6' }}>-</button>
                             <span style={{ fontWeight: '800', minWidth: '20px', textAlign: 'center', color: '#1e40af' }}>{pressReleaseQty}</span>
@@ -204,10 +211,10 @@ export default function PressReleaseForm() {
 
                     <div
                         onClick={handleImageClick}
-                        style={{ padding: '0.4rem 0.75rem', backgroundColor: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: 'var(--radius-md)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', flexShrink: 0 }}
+                        style={{ padding: '0.4rem 0.75rem', backgroundColor: '#f8fafc', border: '1px dashed #cbd5e1', borderRadius: 'var(--radius-md)', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', flexGrow: 1, minWidth: '150px' }}
                     >
                         <Upload size={16} color="#64748b" />
-                        <span style={{ fontSize: '0.85rem', fontWeight: '500', color: '#64748b' }}>
+                        <span style={{ fontSize: '0.85rem', fontWeight: '500', color: '#64748b', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', maxWidth: '120px' }}>
                             {selectedFile ? selectedFile.name : 'Încarcă fișier'}
                         </span>
                         <input ref={fileInputRef} type="file" name="attachment" style={{ display: 'none' }} accept=".pdf,.doc,.docx,image/*" onChange={handleFileChange} />
@@ -417,7 +424,7 @@ export default function PressReleaseForm() {
             </div>
 
 
-            {/* Price Sticky-like footer */}
+            {/* Price Sticky-like footer - Responsive */}
             <div style={{
                 backgroundColor: '#f8fafc',
                 padding: '1.5rem',
@@ -425,9 +432,20 @@ export default function PressReleaseForm() {
                 border: '2px solid #e2e8f0',
                 marginBottom: '2rem',
                 display: 'flex',
+                flexDirection: 'row',
                 alignItems: 'center',
-                justifyContent: 'space-between'
-            }}>
+                justifyContent: 'space-between',
+                flexWrap: 'wrap',
+                gap: '1rem'
+            }} className="responsive-price-footer">
+                <style dangerouslySetInnerHTML={{
+                    __html: `
+                    @media (max-width: 640px) {
+                        .responsive-price-footer { flex-direction: column !important; align-items: stretch !important; }
+                        .responsive-price-footer > div { text-align: center !important; }
+                        .responsive-price-footer > div:last-child { border-left: none !important; border-top: 2px solid #e2e8f0 !important; padding-left: 0 !important; padding-top: 1rem !important; text-align: center !important; }
+                    }
+                `}} />
                 <div>
                     <p style={{ fontSize: '0.9rem', color: '#64748b', fontWeight: '600', textTransform: 'uppercase', marginBottom: '0.25rem' }}>Total de plată estimat</p>
                     <div style={{ fontSize: '2.25rem', fontWeight: '900', color: '#0f172a' }}>

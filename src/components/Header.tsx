@@ -22,9 +22,9 @@ export default function Header() {
     return (
         <header className="site-header">
             <div className="container">
-                <Link href="/" className="logo">
-                    <Newspaper size={32} />
-                    <span>ANUNTUL.NET</span>
+                <Link href="/" className="logo" style={{ fontSize: '1.25rem' }}>
+                    <Newspaper size={28} className="md:w-8 md:h-8" />
+                    <span className="md:text-2xl">ANUNTUL.NET</span>
                 </Link>
 
                 <nav className="main-nav">
@@ -73,15 +73,17 @@ export default function Header() {
                         </button>
                     )}
 
-                    <Link href="/trimite-comunicat" className="btn btn-primary" style={{ fontWeight: '600' }}>
-                        Trimite Comunicat
+                    <Link href="/trimite-comunicat" className="btn btn-primary" style={{ fontWeight: '700', padding: '0.5rem 0.75rem' }}>
+                        <span className="md:inline hidden">Trimite Comunicat</span>
+                        <span className="md:hidden">Trimite</span>
                     </Link>
                     <button
                         className="btn btn-outline md:hidden"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        style={{ padding: '0.5rem' }}
+                        style={{ padding: '0.4rem', border: 'none' }}
+                        aria-label="Meniu"
                     >
-                        {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                        {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
                     </button>
                 </div>
             </div>

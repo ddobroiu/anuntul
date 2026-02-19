@@ -7,34 +7,34 @@ export default function Footer() {
     return (
         <footer className="site-footer">
             <div className="container">
-                <div className="footer-grid">
+                <div className="footer-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '3rem' }}>
                     <div className="footer-col">
-                        <Link href="/" className="logo" style={{ marginBottom: '1rem' }}>
-                            <Newspaper size={24} />
+                        <Link href="/" className="logo" style={{ marginBottom: '1.5rem', display: 'flex' }}>
+                            <Newspaper size={28} />
                             <span>ANUNTUL.NET</span>
                         </Link>
-                        <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.6' }}>
-                            Sursa ta de incredere pentru stiri locale si nationale.
-                            Publicam comunicate de presa verificate si actualitate din toate regiunile Romaniei.
+                        <p style={{ color: 'var(--color-text-muted)', lineHeight: '1.7', fontSize: '0.95rem' }}>
+                            Sursa ta de încredere pentru știri și comunicate oficiale.
+                            Specialiști în vizibilitatea proiectelor europene și publicitate legală.
                         </p>
-                        <div className="flex" style={{ gap: '1rem', marginTop: '1.5rem' }}>
-                            <Link href="#" aria-label="Facebook"><Facebook size={20} /></Link>
-                            <Link href="#" aria-label="Twitter"><Twitter size={20} /></Link>
-                            <Link href="#" aria-label="Instagram"><Instagram size={20} /></Link>
-                            <Link href="#" aria-label="LinkedIn"><Linkedin size={20} /></Link>
+                        <div className="flex" style={{ gap: '1.25rem', marginTop: '2rem' }}>
+                            <Link href="#" aria-label="Facebook" className="hover:text-primary"><Facebook size={22} /></Link>
+                            <Link href="#" aria-label="Twitter" className="hover:text-primary"><Twitter size={22} /></Link>
+                            <Link href="#" aria-label="Instagram" className="hover:text-primary"><Instagram size={22} /></Link>
+                            <Link href="#" aria-label="LinkedIn" className="hover:text-primary"><Linkedin size={22} /></Link>
                         </div>
                     </div>
 
 
                     <div className="footer-col">
-                        <h3>Regiuni</h3>
-                        <ul>
-                            <li><Link href="/regiune/bucuresti-ilfov">Bucuresti-Ilfov</Link></li>
+                        <h3 style={{ fontSize: '1.2rem', fontWeight: '700', marginBottom: '1.5rem' }}>Regiuni</h3>
+                        <ul style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0.75rem' }} className="md:block">
+                            <li><Link href="/regiune/bucuresti-ilfov">București</Link></li>
                             <li><Link href="/regiune/nord-est">Nord-Est</Link></li>
                             <li><Link href="/regiune/centru">Centru</Link></li>
                             <li><Link href="/regiune/nord-vest">Nord-Vest</Link></li>
                             <li><Link href="/regiune/vest">Vest</Link></li>
-                            <li><Link href="/regiuni" style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>Toate Regiunile &rarr;</Link></li>
+                            <li className="col-span-2"><Link href="/regiuni" style={{ color: 'var(--color-primary)', fontWeight: 'bold' }}>Vezi Toate &rarr;</Link></li>
                         </ul>
                     </div>
 

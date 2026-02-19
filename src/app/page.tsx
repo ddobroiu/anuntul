@@ -99,41 +99,44 @@ export default async function Home() {
               Oferim servicii profesionale de publicare a comunicatelor de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Asigurăm conformitatea cu Manualul de Identitate Vizuală (MIV).
             </p>
 
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link href="/trimite-comunicat" className="btn btn-primary" style={{ marginTop: '1rem' }}>
-                Publica Comunicat Acum
+            <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginTop: '1.5rem' }}>
+              <Link href="/trimite-comunicat" className="btn btn-primary" style={{ padding: '0.75rem 1.5rem', fontWeight: '700' }}>
+                Trimite Comunicat
               </Link>
-              <Link href="/comunicate" className="btn btn-outline" style={{ marginTop: '1rem', color: 'white', borderColor: 'white' }}>
-                Vezi Comunicate
+              <Link href="/comunicate" className="btn btn-outline" style={{ padding: '0.75rem 1.5rem', color: 'white', borderColor: 'rgba(255,255,255,0.5)', fontWeight: '600' }}>
+                Vezi Anunțuri
               </Link>
             </div>
           </div>
 
-          {/* Floating Trust Badge on the Right - Visible on all screens, responsive positioning */}
+          {/* Floating Trust Badge - Optimized for Mobile Overlay */}
           <div style={{
             position: 'absolute',
-            top: '1.5rem',
-            right: '1.5rem',
+            top: '1rem',
+            right: '1rem',
             zIndex: 10,
             backgroundColor: '#16a34a',
             color: 'white',
-            padding: '1rem 1.25rem',
+            padding: '0.75rem 1rem',
             borderRadius: 'var(--radius-lg)',
-            boxShadow: '0 15px 35px rgba(0,0,0,0.5)',
+            boxShadow: '0 10px 25px rgba(0,0,0,0.4)',
             display: 'flex',
             alignItems: 'center',
-            gap: '0.75rem',
+            gap: '0.5rem',
             fontWeight: '800',
-            border: '2px solid rgba(255,255,255,0.3)',
+            border: '1px solid rgba(255,255,255,0.3)',
             backdropFilter: 'blur(10px)',
             transition: 'all 0.3s ease',
-            maxWidth: 'calc(100% - 3rem)'
+            maxWidth: '200px'
           }} className="icon-animate-bounce-slow">
-            <Users size={24} className="md:w-8 md:h-8" />
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.1', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.25rem' }} className="md:text-2xl">3.000+</span>
-              <span style={{ fontSize: '0.65rem', opacity: 0.95, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }} className="md:text-xs">Utilizatori Unici / Lună</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.6rem', backgroundColor: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '20px', marginTop: '4px', border: '1px solid rgba(255,255,255,0.2)' }} className="md:text-xs">
+            <Users size={20} className="md:w-8 md:h-8" />
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '1.1rem' }} className="md:text-2xl">3.000+</span>
+              <span style={{ fontSize: '0.6rem', opacity: 0.9, fontWeight: '700', textTransform: 'uppercase' }} className="md:text-xs">Unici / Lună</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '3px', fontSize: '0.55rem', backgroundColor: 'rgba(0,0,0,0.2)', padding: '1px 5px', borderRadius: '10px', marginTop: '3px' }} className="md:hidden">
+                Dovadă Disponibilă
+              </div>
+              <div style={{ alignItems: 'center', gap: '4px', fontSize: '0.65rem', backgroundColor: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '20px', marginTop: '4px', border: '1px solid rgba(255,255,255,0.2)' }} className="md:flex hidden">
                 <div style={{ width: '5px', height: '5px', backgroundColor: '#4ade80', borderRadius: '50%' }}></div>
                 Dovadă Trafic Disponibilă
               </div>
