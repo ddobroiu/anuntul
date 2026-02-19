@@ -61,17 +61,11 @@ export default async function RegionPage({ params }: PageProps) {
                     Stiri si Evenimente: {region}
                 </h1>
 
-                {regionArticles.length > 0 ? (
+                {regionArticles.length > 0 && (
                     <div className="grid md:grid-cols-3 sm:grid-cols-1" style={{ gap: '2rem', marginBottom: '4rem' }}>
                         {regionArticles.map((article) => (
                             <NewsCard key={article.id} article={article} />
                         ))}
-                    </div>
-                ) : (
-                    <div style={{ marginBottom: '4rem' }}>
-                        <p style={{ color: 'var(--color-text-muted)', fontSize: '1.2rem', marginTop: '2rem' }}>
-                            Nu exista articole din aceasta regiune momentan.
-                        </p>
                     </div>
                 )}
 

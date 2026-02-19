@@ -8,6 +8,8 @@
     overflow: hidden;
     display: flex;
     align-items: flex-end;
+    background-color: #003399;
+    /* European Blue fallback */
 }
 
 .heroOverlay {
@@ -100,7 +102,7 @@
     }
 
     .heroTitle {
-        font-size: 2rem;
+        font-size: 1.75rem;
     }
 
     .heroContent {

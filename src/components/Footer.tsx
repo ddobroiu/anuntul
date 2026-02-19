@@ -25,16 +25,6 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    <div className="footer-col">
-                        <h3>Categorii</h3>
-                        <ul>
-                            <li><Link href="/categorie/actualitate">Actualitate</Link></li>
-                            <li><Link href="/categorie/economic">Economic</Link></li>
-                            <li><Link href="/categorie/politic">Politic</Link></li>
-                            <li><Link href="/categorie/social">Social</Link></li>
-                            <li><Link href="/categorie/sport">Sport</Link></li>
-                        </ul>
-                    </div>
 
                     <div className="footer-col">
                         <h3>Regiuni</h3>

@@ -10,8 +10,8 @@ import { regions } from '@/lib/data';
 import styles from './home.module.css';
 
 export const metadata: Metadata = {
-  title: 'Comunicate Presa Fonduri Europene & Materiale Publicitare - Anuntul.net',
-  description: 'Publicam comunicate de presa pentru proiecte europene (PNRR, POR, POCU) si oferim materiale de vizibilitate obligatorii (autocolante, afise, panouri).',
+  title: 'Comunicate Presă Proiecte Europene (PNRR, POR) - Anuntul.net',
+  description: 'Publicăm comunicate de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Vizibilitate garantată și conformitate MIV.',
 };
 
 export const revalidate = 3600; // Update every hour
@@ -35,7 +35,7 @@ export default async function Home() {
     )
   }
 
-  const recentArticles = allArticles.slice(1, 10);
+  const recentArticles = allArticles.slice(0, 6);
 
   return (
     <>
@@ -48,7 +48,7 @@ export default async function Home() {
             "name": "Anuntul.net",
             "url": "https://anuntul.net",
             "logo": "https://anuntul.net/logo.png",
-            "description": "Platforma de publicare comunicate de presa pentru proiecte europene si furnizor de materiale de vizibilitate (PNRR, POR).",
+            "description": "Platformă specializată în publicarea comunicatelor de presă pentru proiecte europene (PNRR, POR, POC) și materiale de vizibilitate.",
             "address": {
               "@type": "PostalAddress",
               "addressCountry": "RO"
@@ -62,17 +62,10 @@ export default async function Home() {
             "offers": [
               {
                 "@type": "Offer",
-                "name": "Publicare Comunicat Presa PNRR",
-                "price": "150",
+                "name": "Publicare Comunicat Proiect European",
+                "price": "490",
                 "priceCurrency": "RON",
-                "description": "Publicare anunt incepere/finalizare proiect cu link si mentinere pe durata proiectului."
-              },
-              {
-                "@type": "Offer",
-                "name": "Kit Vizibilitate Start-Up",
-                "price": "350",
-                "priceCurrency": "RON",
-                "description": "Pachet comunicat + 100 autocolante + 2 afise A3 conform MIV."
+                "description": "Publicare comunicat începere/finalizare proiect conform ghidului de identitate vizuală."
               }
             ]
           })
@@ -84,33 +77,37 @@ export default async function Home() {
 
         {/* SEO Header (Hidden visually but semantic) */}
         <h1 className="visually-hidden" style={{ position: 'absolute', width: '1px', height: '1px', padding: 0, margin: '-1px', overflow: 'hidden', clip: 'rect(0,0,0,0)', border: 0 }}>
-          Comunicate de Presa Proiecte Europene si Materiale de Vizibilitate - Anuntul.net
+          Comunicate de Presa si Stiri Nationale - Anuntul.net
         </h1>
 
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroOverlay}></div>
-          <Image
-            src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop"
-            alt="Proiecte Europene"
-            fill
-            priority
-            style={{ objectFit: 'cover', width: '100%', height: '100%', zIndex: 0 }}
-            sizes="(max-width: 768px) 100vw, 1200px"
+          <img
+            src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
+            alt="Publicare Comunicate Presă Proiecte Europene"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              width: '100%',
+              height: '100%',
+              objectFit: 'cover'
+            }}
           />
           <div className={styles.heroContent}>
-            <div className={styles.heroTag} style={{ marginBottom: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#FFD700', color: '#003399' }}>
-              🇪🇺 Fonduri Europene
+            <div className={styles.heroTag} style={{ marginBottom: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#003399', color: '#FFD700' }}>
+              🇪🇺 Proiecte Europene (PNRR / POR)
             </div>
 
             <h2 className={styles.heroTitle}>
               <span style={{ color: 'white' }}>
-                Publicare Comunicate & Kituri de Vizibilitate
+                Publicare Comunicate de Presă Proiecte Europene
               </span>
             </h2>
 
             <p className={styles.heroExcerpt}>
-              Asiguram publicarea obligatorie a comunicatelor de presa (incepere/finalizare proiect) si furnizam materialele de vizibilitate necesare (autocolante, afise, panouri) pentru proiectele PNRR, POR, POCU.
+              Oferim servicii profesionale de publicare a comunicatelor de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Asigurăm conformitatea cu Manualul de Identitate Vizuală (MIV).
             </p>
 
             <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>

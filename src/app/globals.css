@@ -26,6 +26,7 @@
 
   --container-width: 1200px;
   --header-height: 70px;
+  --header-height-mobile: 60px;
 }
 
 [data-theme='dark'] {
@@ -101,7 +102,7 @@ a:hover {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 @media (min-width: 768px) {
@@ -119,6 +120,10 @@ a:hover {
 
   .md\:grid-cols-4 {
     grid-template-columns: repeat(4, 1fr);
+  }
+
+  .md\:hidden {
+    display: none !important;
   }
 }
 
@@ -210,6 +215,7 @@ a:hover {
   margin-bottom: 1rem;
   display: -webkit-box;
   -webkit-line-clamp: 3;
+  line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -234,6 +240,12 @@ a:hover {
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--color-border);
   height: var(--header-height);
+}
+
+@media (max-width: 768px) {
+  .site-header {
+    height: var(--header-height-mobile);
+  }
 }
 
 .site-header .container {

@@ -112,7 +112,7 @@ export async function getHotNewsArticles(): Promise<Article[]> {
         });
 
         // Filter out nulls and slice
-        return articles.filter((a): a is Article => a !== null).slice(0, 15);
+        return articles.filter((a): a is Article => a !== null).slice(0, 6);
     } catch (error) {
         console.error('Error fetching RSS feed:', error);
         return [];

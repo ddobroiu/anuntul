@@ -52,3 +52,13 @@ export async function getArticlesByRegion(region: string): Promise<Article[]> {
     const articles = await getAllArticles();
     return articles.filter((a) => a.region.toLowerCase() === region.toLowerCase());
 }
+
+export async function searchArticles(query: string): Promise<Article[]> {
+    const articles = await getAllArticles();
+    const q = query.toLowerCase();
+    return articles.filter((a) =>
+        a.title.toLowerCase().includes(q) ||
+        a.excerpt.toLowerCase().includes(q) ||
+        a.region.toLowerCase().includes(q)
+    );
+}
