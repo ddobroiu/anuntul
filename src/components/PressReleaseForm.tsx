@@ -270,28 +270,26 @@ export default function PressReleaseForm() {
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="title" style={labelStyle}>Titlu Comunicat *</label>
+                    <label htmlFor="title" style={labelStyle}>Titlu Comunicat</label>
                     <input
                         type="text"
                         id="title"
                         name="title"
-                        required
                         style={{ ...inputStyle, fontWeight: '700' }}
-                        placeholder="Introduceți titlul comunicatului..."
+                        placeholder="Titlul comunicatului (opțional dacă atașezi fișier)..."
                     />
                 </div>
             </div>
 
 
             <div style={{ marginBottom: '2rem' }}>
-                <label htmlFor="content" style={labelStyle}>Conținut Comunicat *</label>
+                <label htmlFor="content" style={labelStyle}>Conținut Comunicat</label>
                 <textarea
                     id="content"
                     name="content"
                     rows={12}
-                    required
                     style={{ ...inputStyle, fontFamily: 'inherit', resize: 'vertical' }}
-                    placeholder="Introduceți aici textul complet al comunicatului de presă..."
+                    placeholder="Introduceți textul aici sau lăsați gol dacă ați încărcat un fișier mai sus..."
                 ></textarea>
             </div>
 

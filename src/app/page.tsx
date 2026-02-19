@@ -12,6 +12,9 @@ import styles from './home.module.css';
 export const metadata: Metadata = {
   title: 'Comunicate Presă Proiecte Europene (PNRR, POR) - Anuntul.net',
   description: 'Publicăm comunicate de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Vizibilitate garantată și conformitate MIV.',
+  alternates: {
+    canonical: 'https://anuntul.net',
+  },
 };
 
 export const revalidate = 3600; // Update every hour
@@ -32,44 +35,35 @@ export default async function Home() {
         </main>
         <Footer />
       </>
-    )
+    );
   }
 
   const recentArticles = allArticles.slice(0, 6);
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Anuntul.net",
+    "url": "https://anuntul.net",
+    "logo": "https://anuntul.net/favicon.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+40-750-473-111",
+      "contactType": "customer service",
+      "areaServed": "RO",
+      "availableLanguage": "Romanian"
+    },
+    "description": "Platforma #1 pentru publicarea comunicatelor de presa fonduri europene si materiale de vizibilitate PNRR, POR, POCU.",
+    "sameAs": [
+      "https://www.facebook.com/anuntul.net"
+    ]
+  };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "Anuntul.net",
-            "url": "https://anuntul.net",
-            "logo": "https://anuntul.net/logo.png",
-            "description": "Platformă specializată în publicarea comunicatelor de presă pentru proiecte europene (PNRR, POR, POC) și materiale de vizibilitate.",
-            "address": {
-              "@type": "PostalAddress",
-              "addressCountry": "RO"
-            },
-            "contactPoint": {
-              "@type": "ContactPoint",
-              "telephone": "+40726194451",
-              "contactType": "sales",
-              "email": "contact@anuntul.net"
-            },
-            "offers": [
-              {
-                "@type": "Offer",
-                "name": "Publicare Comunicat Proiect European",
-                "price": "490",
-                "priceCurrency": "RON",
-                "description": "Publicare comunicat începere/finalizare proiect conform ghidului de identitate vizuală."
-              }
-            ]
-          })
-        }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
       <Header />
 
@@ -83,24 +77,17 @@ export default async function Home() {
         {/* Hero Section */}
         <section className={styles.hero}>
           <div className={styles.heroOverlay}></div>
-          <img
+          <Image
             src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
             alt="Publicare Comunicate Presă Proiecte Europene"
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              width: '100%',
-              height: '100%',
-              objectFit: 'cover'
-            }}
+            fill
+            style={{ objectFit: 'cover' }}
+            priority
           />
           <div className={styles.heroContent}>
             <div className={styles.heroTag} style={{ marginBottom: '1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#003399', color: '#FFD700' }}>
               🇪🇺 Proiecte Europene (PNRR / POR)
             </div>
-
-
 
             <h2 className={styles.heroTitle}>
               <span style={{ color: 'white' }}>

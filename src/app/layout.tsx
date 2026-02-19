@@ -20,10 +20,11 @@ export const metadata: Metadata = {
   },
   description: "Platforma #1 pentru publicarea comunicatelor de presa (PNRR, POR, POCU) si achizitia de materiale de vizibilitate obligatorii (autocolante, afise, panouri temporare).",
   keywords: [
-    "comunicate presa", "fonduri europene", "PNRR", "POR", "POCU",
+    "comunicate presa", "fonduri europene", "PNRR", "POR", "POCU", "AFIR",
     "anunt incepere proiect", "anunt finalizare proiect",
-    "materiale vizibilitate", "autocolante PNRR", "afise A3 PNRR",
-    "panouri temporare", "placi permanente", "publicitate proiecte europene"
+    "materiale vizibilitate fonduri europene", "autocolante PNRR", "afise A3 PNRR",
+    "panouri temporare POR", "placi permanente", "publicitate proiecte europene",
+    "comunicate presa obligatorii", "manual identitate vizuala MIV", "vizibilitate MIPE"
   ],
   authors: [{ name: "Anuntul.net" }],
   creator: "Anuntul.net",
@@ -57,8 +58,17 @@ export const metadata: Metadata = {
       'max-snippet': -1,
     },
   },
+  category: 'business',
+  classification: 'Publicity Services',
+  alternates: {
+    canonical: 'https://anuntul.net',
+  },
+  verification: {
+    google: 'verification_token_here', // Optional: User should replace with real token
+  },
   icons: {
     icon: '/favicon.svg',
+    apple: '/favicon.svg',
   },
 };
 

@@ -11,8 +11,39 @@ export const metadata: Metadata = {
 };
 
 export default function AdvertisingPage() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Servicii Vizibilitate Proiecte Europene",
+        "description": "Publicare comunicate de presa si materiale de vizibilitate conform MIV (PNRR, POR, POCU).",
+        "brand": {
+            "@type": "Brand",
+            "name": "Anuntul.net"
+        },
+        "offers": [
+            {
+                "@type": "Offer",
+                "name": "Publicare Comunicat",
+                "price": "150",
+                "priceCurrency": "RON",
+                "availability": "https://schema.org/InStock"
+            },
+            {
+                "@type": "Offer",
+                "name": "Kit Start-Up PNRR",
+                "price": "350",
+                "priceCurrency": "RON",
+                "availability": "https://schema.org/InStock"
+            }
+        ]
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
             <main className="container" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
 

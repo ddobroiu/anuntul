@@ -13,8 +13,31 @@ export const metadata: Metadata = {
 };
 
 export default function BlogIndexPage() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Acasa",
+                "item": "https://anuntul.net"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Blog",
+                "item": "https://anuntul.net/blog"
+            }
+        ]
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
             <main className="container" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
 

@@ -38,8 +38,25 @@ export default async function BlogPostPage({ params }: PageProps) {
         notFound();
     }
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post.title,
+        "image": post.image,
+        "datePublished": post.publishDate,
+        "author": [{
+            "@type": "Person",
+            "name": post.author,
+        }],
+        "description": post.excerpt,
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
             <main className="container" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
 

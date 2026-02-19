@@ -35,11 +35,28 @@ export default async function ArticlePage({ params }: PageProps) {
         notFound();
     }
 
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "NewsArticle",
+        "headline": article.title,
+        "image": [article.imageUrl],
+        "datePublished": new Date(article.date.split('.').reverse().join('-')),
+        "description": article.excerpt,
+        "author": {
+            "@type": "Organization",
+            "name": "Anuntul.net"
+        }
+    };
+
     // Check if it is a PDF article to decide layout
     const isPdfArticle = !!article.pdfUrl;
 
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
             <Header />
             <main className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
                 <article style={{ maxWidth: '900px', margin: '0 auto' }}>

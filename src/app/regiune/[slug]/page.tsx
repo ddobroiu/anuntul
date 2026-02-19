@@ -53,8 +53,37 @@ export default async function RegionPage({ params }: PageProps) {
     const contentKey = slug.toLowerCase().replace('%20', ' ');
     const specificIntro = regionContent[contentKey] || regionContent[region.toLowerCase()] || `Stiri si noutati din regiunea ${region}.`;
 
+    const breadcrumbJsonLd = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Acasa",
+                "item": "https://anuntul.net"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Regiuni",
+                "item": "https://anuntul.net/regiuni"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": region,
+                "item": `https://anuntul.net/regiune/${slug}`
+            }
+        ]
+    };
+
     return (
         <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+            />
             <Header />
             <main className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
                 <h1 style={{ marginBottom: '2rem', borderBottom: '2px solid var(--color-primary)', paddingBottom: '0.5rem', display: 'inline-block' }}>
