@@ -122,31 +122,32 @@ export default async function Home() {
             </div>
           </div>
 
-          {/* Floating Trust Badge on the Right - Outside heroContent for full-width reach */}
+          {/* Floating Trust Badge on the Right - Visible on all screens, responsive positioning */}
           <div style={{
             position: 'absolute',
-            top: '3rem',
-            right: '3rem',
+            top: '1.5rem',
+            right: '1.5rem',
             zIndex: 10,
             backgroundColor: '#16a34a',
             color: 'white',
-            padding: '1.25rem 1.75rem',
+            padding: '1rem 1.25rem',
             borderRadius: 'var(--radius-lg)',
             boxShadow: '0 15px 35px rgba(0,0,0,0.5)',
             display: 'flex',
             alignItems: 'center',
-            gap: '1rem',
+            gap: '0.75rem',
             fontWeight: '800',
             border: '2px solid rgba(255,255,255,0.3)',
             backdropFilter: 'blur(10px)',
-            transition: 'transform 0.3s ease'
-          }} className="md:flex hidden icon-animate-bounce-slow">
-            <Users size={32} />
-            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2', alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '1.5rem' }}>3.000+</span>
-              <span style={{ fontSize: '0.8rem', opacity: 0.95, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Utilizatori Unici / Lună</span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.7rem', backgroundColor: 'rgba(0,0,0,0.3)', padding: '3px 8px', borderRadius: '20px', marginTop: '6px', border: '1px solid rgba(255,255,255,0.2)' }}>
-                <div style={{ width: '6px', height: '6px', backgroundColor: '#4ade80', borderRadius: '50%' }}></div>
+            transition: 'all 0.3s ease',
+            maxWidth: 'calc(100% - 3rem)'
+          }} className="icon-animate-bounce-slow">
+            <Users size={24} className="md:w-8 md:h-8" />
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.1', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '1.25rem' }} className="md:text-2xl">3.000+</span>
+              <span style={{ fontSize: '0.65rem', opacity: 0.95, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }} className="md:text-xs">Utilizatori Unici / Lună</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.6rem', backgroundColor: 'rgba(0,0,0,0.3)', padding: '2px 6px', borderRadius: '20px', marginTop: '4px', border: '1px solid rgba(255,255,255,0.2)' }} className="md:text-xs">
+                <div style={{ width: '5px', height: '5px', backgroundColor: '#4ade80', borderRadius: '50%' }}></div>
                 Dovadă Trafic Disponibilă
               </div>
             </div>
