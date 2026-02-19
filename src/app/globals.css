@@ -160,7 +160,7 @@ a:hover {
     grid-template-columns: repeat(4, 1fr);
   }
 
-  .md:hidden {
+  .md\:hidden {
     display: none !important;
   }
 
