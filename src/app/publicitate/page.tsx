@@ -45,7 +45,7 @@ export default function AdvertisingPage() {
                         </div>
                         <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem' }}>Comunicate de Presă</h3>
                         <p style={{ color: 'var(--color-text-muted)' }}>
-                            Publicare rapidă a anunțurilor de începere și finalizare proiect, cu link către pagina dedicată și vizibilitate maximă.
+                            Publicare rapidă a anunțurilor de începere și finalizare proiect. <b>Oferim dovadă de trafic (peste 3000 utilizatori unici lunar)</b> pentru raportarea corectă a indicatorilor de vizibilitate.
                         </p>
                     </div>
 

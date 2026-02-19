@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Newspaper, MapPin, Calendar, BarChart, Eye, Clock } from 'lucide-react';
+import { Newspaper, MapPin, Calendar, BarChart, Eye, Clock, Users } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsCard from '@/components/NewsCard';
@@ -96,9 +96,11 @@ export default async function Home() {
             }}
           />
           <div className={styles.heroContent}>
-            <div className={styles.heroTag} style={{ marginBottom: '1rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#003399', color: '#FFD700' }}>
+            <div className={styles.heroTag} style={{ marginBottom: '1.5rem', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', backgroundColor: '#003399', color: '#FFD700' }}>
               🇪🇺 Proiecte Europene (PNRR / POR)
             </div>
+
+
 
             <h2 className={styles.heroTitle}>
               <span style={{ color: 'white' }}>
@@ -114,9 +116,39 @@ export default async function Home() {
               <Link href="/trimite-comunicat" className="btn btn-primary" style={{ marginTop: '1rem' }}>
                 Publica Comunicat Acum
               </Link>
-              <Link href="/seap" className="btn btn-outline" style={{ marginTop: '1rem', color: 'white', borderColor: 'white' }}>
-                Vezi Oferta Completa
+              <Link href="/comunicate" className="btn btn-outline" style={{ marginTop: '1rem', color: 'white', borderColor: 'white' }}>
+                Vezi Comunicate
               </Link>
+            </div>
+          </div>
+
+          {/* Floating Trust Badge on the Right - Outside heroContent for full-width reach */}
+          <div style={{
+            position: 'absolute',
+            top: '3rem',
+            right: '3rem',
+            zIndex: 10,
+            backgroundColor: '#16a34a',
+            color: 'white',
+            padding: '1.25rem 1.75rem',
+            borderRadius: 'var(--radius-lg)',
+            boxShadow: '0 15px 35px rgba(0,0,0,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '1rem',
+            fontWeight: '800',
+            border: '2px solid rgba(255,255,255,0.3)',
+            backdropFilter: 'blur(10px)',
+            transition: 'transform 0.3s ease'
+          }} className="md:flex hidden icon-animate-bounce-slow">
+            <Users size={32} />
+            <div style={{ display: 'flex', flexDirection: 'column', lineHeight: '1.2', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '1.5rem' }}>3.000+</span>
+              <span style={{ fontSize: '0.8rem', opacity: 0.95, fontWeight: '700', textTransform: 'uppercase', letterSpacing: '0.5px' }}>Utilizatori Unici / Lună</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px', fontSize: '0.7rem', backgroundColor: 'rgba(0,0,0,0.3)', padding: '3px 8px', borderRadius: '20px', marginTop: '6px', border: '1px solid rgba(255,255,255,0.2)' }}>
+                <div style={{ width: '6px', height: '6px', backgroundColor: '#4ade80', borderRadius: '50%' }}></div>
+                Dovadă Trafic Disponibilă
+              </div>
             </div>
           </div>
         </section>
@@ -176,9 +208,9 @@ export default async function Home() {
                   <BarChart size={48} />
                 </div>
               </div>
-              <div style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>17.250</div>
+              <div style={{ fontSize: '2.5rem', fontWeight: '900', color: 'var(--color-primary)', marginBottom: '0.5rem' }}>3.000+</div>
               <div style={{ fontSize: '0.9rem', color: 'var(--color-text-muted)', fontWeight: '600', textTransform: 'uppercase' }}>Vizitatori unici</div>
-              <div style={{ fontSize: '0.8rem', color: '#999' }}>pe lună</div>
+              <div style={{ fontSize: '0.8rem', color: '#dc2626', fontWeight: 'bold' }}>Dovadă trafic disponibilă</div>
             </div>
 
             <div style={{ padding: '1.5rem', backgroundColor: 'var(--color-bg)', borderRadius: 'var(--radius-md)' }}>

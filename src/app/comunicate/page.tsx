@@ -24,18 +24,24 @@ export default async function PressReleasesPage() {
                     Comunicate de Presa
                 </h1>
 
-                <div style={{ backgroundColor: 'var(--color-bg-alt)', padding: '2.5rem', borderRadius: 'var(--radius-lg)', marginBottom: '3rem', border: '1px solid var(--color-border)', textAlign: 'center' }}>
-                    <h2 style={{ marginBottom: '1rem', color: 'var(--color-text)' }}>Publică propriul tău comunicat</h2>
-                    <p style={{ maxWidth: '700px', margin: '0 auto 2rem auto', color: 'var(--color-text-muted)', fontSize: '1.1rem' }}>
-                        Ai nevoie de vizibilitate pentru proiectul tău european sau vrei să transmiți o noutate importantă?
-                        Publicăm comunicate de presă oficiale cu impact maxim.
-                    </p>
-                    <Link href="/trimite-comunicat" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem' }}>
-                        Trimite Comunicat Acum
-                    </Link>
+                <div style={{ backgroundColor: '#003399', color: 'white', padding: '3rem 2.5rem', borderRadius: 'var(--radius-lg)', marginBottom: '3rem', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+                    <div style={{ position: 'relative', zIndex: 2 }}>
+                        <h2 style={{ marginBottom: '1rem', color: 'white', fontSize: '2rem' }}>Publică Comunicate de Presă</h2>
+                        <p style={{ maxWidth: '700px', margin: '0 auto 2rem auto', color: 'rgba(255,255,255,0.9)', fontSize: '1.1rem' }}>
+                            Ai nevoie de vizibilitate pentru proiectul tău european? Oferim servicii profesionale de publicare conform normelor MIV.
+                        </p>
+                        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                            <Link href="/trimite-comunicat" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem' }}>
+                                Publica Comunicat
+                            </Link>
+                            <Link href="#lista-comunicate" className="btn btn-outline" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem', color: 'white', borderColor: 'white' }}>
+                                Vezi Comunicate
+                            </Link>
+                        </div>
+                    </div>
                 </div>
 
-                <h2 style={{ marginBottom: '2rem', fontSize: '1.8rem', fontWeight: '700' }}>Ultimele Comunicate Publicate</h2>
+                <h2 id="lista-comunicate" style={{ marginBottom: '2rem', fontSize: '1.8rem', fontWeight: '700' }}>Ultimele Comunicate Publicate</h2>
 
                 {pressReleases.length > 0 ? (
                     <div className="grid md:grid-cols-3 sm:grid-cols-1" style={{ gap: '2rem' }}>
