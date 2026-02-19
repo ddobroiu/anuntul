@@ -32,7 +32,7 @@ export default async function PressReleasesPage() {
                         </p>
                         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             <Link href="/trimite-comunicat" className="btn btn-primary" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem' }}>
-                                Publica Comunicat
+                                Publica Comunicat Acum
                             </Link>
                             <Link href="#lista-comunicate" className="btn btn-outline" style={{ padding: '0.75rem 2rem', fontSize: '1.1rem', color: 'white', borderColor: 'white' }}>
                                 Vezi Comunicate
@@ -54,7 +54,7 @@ export default async function PressReleasesPage() {
                         <p style={{ color: '#64748b', fontSize: '1.1rem' }}>Nu există comunicate de presă publicate în această secțiune momentan.</p>
                     </div>
                 )}
-            </main>
+            </main >
             <Footer />
         </>
     );

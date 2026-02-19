@@ -81,10 +81,10 @@ export default async function RegionPage({ params }: PageProps) {
 
                     <div style={{ display: 'flex', gap: '1rem', marginBottom: '3rem', flexWrap: 'wrap' }}>
                         <Link href="/trimite-comunicat" className="btn btn-primary">
-                            ➡️ Adaugă Anunț
+                            Publica Comunicat Acum
                         </Link>
                         <Link href="/comunicate" className="btn btn-outline">
-                            ➡️ Comunicate de Presă
+                            Vezi Comunicate
                         </Link>
                     </div>
 
