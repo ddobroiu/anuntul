@@ -144,7 +144,7 @@ export default function SeapPage() {
                             <p style={{ fontWeight: 'bold', marginBottom: '1rem' }}>➡️ Pentru servicii de print, colaborăm cu:</p>
                             <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                                 <a href="https://shopprint.ro" target="_blank" className="btn btn-outline" style={{ backgroundColor: 'white' }}>ShopPrint.ro</a>
-                                <a href="https://shopprint.eu" target="_blank" className="btn btn-outline" style={{ backgroundColor: 'white' }}>ShopPrint.eu</a>
+                                <a href="https://EUprint.ro" target="_blank" className="btn btn-outline" style={{ backgroundColor: 'white' }}>EUprint.ro</a>
                             </div>
                         </div>
                     </section>

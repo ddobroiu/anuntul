@@ -145,7 +145,7 @@ export default async function RegionPage({ params }: PageProps) {
                                 <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
                                     <a href="https://shopprint.ro" target="_blank" style={{ color: 'var(--color-primary)', fontWeight: '600' }}>ShopPrint.ro</a>
                                     <span style={{ color: '#ccc' }}>|</span>
-                                    <a href="https://shopprint.eu" target="_blank" style={{ color: 'var(--color-primary)', fontWeight: '600' }}>ShopPrint.eu</a>
+                                    <a href="https://EUprint.ro" target="_blank" style={{ color: 'var(--color-primary)', fontWeight: '600' }}>EUprint.ro</a>
                                 </div>
                             </div>
 
