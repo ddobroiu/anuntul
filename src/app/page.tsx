@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
-import { Newspaper, MapPin, Calendar, BarChart, Eye, Clock, Users, ArrowRight, ShieldCheck, Zap, Star } from 'lucide-react';
+import { Clock, MapPin, Send, AlertCircle, ArrowRight } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import NewsCard from '@/components/NewsCard';
@@ -10,59 +9,37 @@ import { regions } from '@/lib/data';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
-  title: 'Comunicate Presă Proiecte Europene (PNRR, POR) - Anuntul.net',
-  description: 'Publicăm comunicate de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Vizibilitate garantată și conformitate MIV.',
+  title: 'Anuntul.net - Ziarul Știrilor și Comunicate PNRR',
+  description: 'Publicăm comunicate de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Știri de actualitate.',
   alternates: {
     canonical: 'https://anuntul.net',
   },
 };
 
-export const revalidate = 3600; // Update every hour
+export const revalidate = 3600;
 
 export default async function Home() {
   const allArticles = await getAllArticles();
 
-  // Handle case where no articles are returned (e.g. RSS fetch failed and no local data)
   const hasArticles = allArticles && allArticles.length > 0;
 
   if (!hasArticles) {
     return (
-      <div className="min-h-screen bg-slate-50">
+      <div className="min-h-screen bg-white">
         <Header />
-        <main className="container flex flex-col items-center justify-center min-h-[70vh] text-center">
-          <div className="w-24 h-24 bg-indigo-50 text-indigo-600 rounded-[2.5rem] flex items-center justify-center mb-8 animate-pulse shadow-xl shadow-indigo-100/50">
-            <Newspaper size={48} strokeWidth={2.5} />
-          </div>
-          <h1 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter mb-4">Nu există știri momentan.</h1>
-          <p className="text-slate-500 text-xl font-medium max-w-lg leading-relaxed">Platforma noastră se actualizează automat. Reveniți mai târziu pentru noutăți din toată țara.</p>
-          <Link href="/contact" className="mt-10 bg-indigo-600 text-white px-10 py-5 rounded-2xl font-black text-lg hover:bg-slate-900 transition-all shadow-xl">Contactează-ne</Link>
+        <main className="w-full max-w-7xl mx-auto px-4 lg:px-8 flex flex-col items-center justify-center min-h-[70vh] text-center">
+          <h1 className="text-4xl font-serif font-black text-black mb-4 uppercase">Nu există știri momentan.</h1>
         </main>
         <Footer />
       </div>
     );
   }
 
-  const recentArticles = allArticles.slice(0, 6);
+  const featuredArticle = allArticles[0];
+  const secondaryArticles = allArticles.slice(1, 5);
+  const moreArticles = allArticles.slice(5, 11);
 
   const jsonLds = [
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Anuntul.net",
-      "url": "https://anuntul.net",
-      "logo": "https://anuntul.net/favicon.svg",
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "telephone": "+40-750-473-111",
-        "contactType": "customer service",
-        "areaServed": "RO",
-        "availableLanguage": "Romanian"
-      },
-      "description": "Platforma #1 pentru publicarea comunicatelor de presa fonduri europene si materiale de vizibilitate PNRR, POR, POCU.",
-      "sameAs": [
-        "https://www.facebook.com/anuntul.net"
-      ]
-    },
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
@@ -86,251 +63,171 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLds) }}
       />
+      
+      {/* Newspaper Top Bar (Replaces SaaS Header for Home specifically or just sits below it) */}
       <Header />
 
-      <main className="pt-24 overflow-hidden">
-        {/* SEO Header (Hidden visually but semantic) */}
-        <h1 className="visually-hidden">
-          Comunicate de Presa si Stiri Nationale - Anuntul.net
-        </h1>
+      <main className="pt-4 pb-16 overflow-hidden">
+        
+        {/* Top Edge-to-Edge Container for Newspaper Title */}
+        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8">
+           {/* The actual masthead bounds */}
+           <div className="w-full border-t-[6px] border-primary border-b-2 mt-4 mb-8 text-center pb-6 pt-6">
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 mb-2">Ediția Națională Online</p>
+              <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-serif font-black text-primary uppercase tracking-tighter leading-none mb-4">
+                Anunțul<span className="text-black">.NET</span>
+              </h1>
+              <p className="text-sm md:text-base font-medium font-serif border-y border-slate-200 py-2 inline-block px-8 uppercase tracking-widest text-primary">
+                Ziarul Oficial pentru Comunicate de Presă & Știri Naționale
+              </p>
+           </div>
+        </div>
 
-        {/* 1. HERO SECTION - PREMIUM MODERN LAYOUT */}
-        <section className="relative pt-20 pb-20 lg:pt-32 lg:pb-32 overflow-hidden isolate">
-          <div className="absolute top-0 right-0 w-1/3 h-[600px] bg-indigo-50/50 blur-[120px] -z-10 pointer-events-none"></div>
-          <div className="absolute bottom-0 left-0 w-1/4 h-[400px] bg-slate-50/40 blur-[100px] -z-10 pointer-events-none"></div>
+        {/* Traffic & Impact Stats Banner */}
+        <div className="w-full bg-black text-white py-6 mb-12 border-y-4 border-primary">
+            <div className="max-w-7xl mx-auto px-4 lg:px-8 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4">
+                <div className="flex flex-col items-center">
+                    <span className="text-3xl md:text-4xl font-serif font-black text-primary">3.000+</span>
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-400 mt-1">Vizitatori Unici / Lună</span>
+                </div>
+                <div className="flex flex-col items-center md:border-l border-white/20">
+                    <span className="text-3xl md:text-4xl font-serif font-black text-white">100%</span>
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-400 mt-1">Conformitate MIV</span>
+                </div>
+                <div className="flex flex-col items-center border-l border-white/20">
+                    <span className="text-3xl md:text-4xl font-serif font-black text-primary">SEAP</span>
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-400 mt-1">Plată Trezorerie</span>
+                </div>
+                <div className="flex flex-col items-center border-l border-white/20">
+                    <span className="text-3xl md:text-4xl font-serif font-black text-white">24H</span>
+                    <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-400 mt-1">Publicare Rapidă</span>
+                </div>
+            </div>
+        </div>
 
-          <div className="container px-6 relative z-10">
-            <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-24">
+        <div className="w-full max-w-7xl mx-auto px-4 lg:px-8">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 w-full">
+            
+            {/* LEFT COLUMN - MAIN NEWS (8 cols) */}
+            <div className="lg:col-span-8 flex flex-col gap-10 border-r-0 lg:border-r border-slate-300 lg:pr-10">
               
-              <div className="flex-1 text-center lg:text-left animate-fade-in">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-50 rounded-full text-indigo-700 font-black text-[10px] uppercase tracking-[0.2em] mb-10 shadow-sm border border-indigo-100/50">
-                  <ShieldCheck size={14} />
-                  Lider Publicitate Fonduri EU
+              {/* Breaking / Featured News */}
+              <article className="flex flex-col gap-4">
+                <div className="flex items-center gap-2 mb-2">
+                   <span className="bg-primary text-white text-xs font-black uppercase px-2 py-1 tracking-widest">
+                     Subiect Principal
+                   </span>
+                   <span className="text-xs font-bold text-slate-500 uppercase flex items-center gap-1">
+                     <Clock size={12}/> {featuredArticle.date}
+                   </span>
                 </div>
                 
-                <h2 className="text-5xl md:text-6xl lg:text-[5.5rem] font-black text-slate-900 tracking-tighter leading-[0.9] mb-10">
-                  Publicare rapidă <br />
-                  <span className="text-indigo-600 relative inline-block">
-                    Comunicate Presă
-                    <span className="absolute -bottom-2 left-0 w-full h-3 bg-indigo-100 -z-10 rounded-full"></span>
-                  </span> <br />
-                  PNRR / POR / POCU
+                <h2 className="text-4xl md:text-5xl font-serif font-black text-black leading-[1.1] hover:text-primary transition-colors">
+                  <Link href={`/${featuredArticle.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${featuredArticle.id}`}>
+                    {featuredArticle.title}
+                  </Link>
                 </h2>
                 
-                <p className="text-slate-500 text-xl md:text-2xl max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed mb-12">
-                  Specialiști în vizibilitatea proiectelor europene. Asigurăm <strong className="text-slate-900 font-extrabold underline decoration-indigo-500 underline-offset-8">conformitate 100%</strong> cu Manualele de Identitate Vizuală (MIV).
+                <p className="text-lg text-slate-800 font-sans leading-relaxed mt-2 border-l-4 border-primary pl-4">
+                  {featuredArticle.excerpt}
                 </p>
-
-                <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5">
-                  <Link 
-                    href="/trimite-comunicat" 
-                    className="w-full sm:w-auto px-10 py-5 bg-indigo-600 text-white rounded-[1.5rem] font-black text-lg shadow-2xl shadow-indigo-300/40 hover:bg-slate-900 hover:-translate-y-1.5 transition-all text-center flex items-center justify-center gap-3 uppercase tracking-widest"
-                  >
-                    Trimite Comunicat <ArrowRight size={20} />
-                  </Link>
-                  <Link 
-                    href="/comunicate" 
-                    className="w-full sm:w-auto px-10 py-5 bg-white text-slate-800 border border-slate-200 rounded-[1.5rem] font-black text-lg hover:bg-slate-50 hover:border-indigo-400 transition-all shadow-sm text-center uppercase tracking-widest"
-                  >
-                    Vezi Anunțuri
-                  </Link>
+                
+                <div className="mt-4">
+                   <Link href={`/${featuredArticle.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${featuredArticle.id}`} className="text-sm font-black uppercase tracking-widest text-primary hover:underline flex items-center gap-1">
+                     Citește Articolul Complet <ArrowRight size={14}/>
+                   </Link>
                 </div>
+              </article>
 
-                {/* Trust Metrics */}
-                <div className="mt-20 flex flex-wrap justify-center lg:justify-start items-center gap-12">
-                  <div className="flex flex-col items-center lg:items-start group transition-all">
-                    <span className="text-3xl font-black text-slate-900 group-hover:text-indigo-600 tracking-tight transition-colors">3.000+</span>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Unici / Lună</span>
-                  </div>
-                  <div className="w-px h-10 bg-slate-100 hidden sm:block"></div>
-                  <div className="flex flex-col items-center lg:items-start group transition-all">
-                    <span className="text-3xl font-black text-slate-900 group-hover:text-indigo-600 tracking-tight transition-colors">100%</span>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Rată Aprobare</span>
-                  </div>
-                  <div className="w-px h-10 bg-slate-100 hidden sm:block"></div>
-                  <div className="flex flex-col items-center lg:items-start group transition-all">
-                    <span className="text-3xl font-black text-slate-900 group-hover:text-indigo-600 tracking-tight transition-colors">7 Min.</span>
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-400">Timp Mediu Site</span>
-                  </div>
-                </div>
-              </div>
+              <div className="w-full h-px bg-slate-300 my-4"></div>
 
-              <div className="flex-1 w-full relative">
-                <div className="aspect-[4/5] md:aspect-square relative rounded-[3.5rem] overflow-hidden shadow-2xl border-4 border-white rotate-2 group">
-                   <Image
-                    src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=2070&auto=format&fit=crop"
-                    alt="Publicare Comunicate Presă Proiecte Europene"
-                    fill
-                    className="object-cover transition-transform duration-700 group-hover:scale-110"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-indigo-900/60 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity"></div>
-                  
-                  {/* Floating Badge */}
-                  <div className="absolute top-10 right-10 flex flex-col items-center gap-1 bg-white/95 backdrop-blur-md p-5 rounded-[2rem] shadow-2xl border border-white animate-bounce-slow">
-                    <Zap className="text-amber-500 mb-1" size={32} strokeWidth={2.5} />
-                    <span className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-900 leading-none">Viteză Maximă</span>
-                    <span className="text-lg font-black text-indigo-600 tracking-tight leading-none">Publicare 1h</span>
-                  </div>
-
-                  <div className="absolute bottom-12 left-12 right-12 text-white">
-                      <div className="text-[10px] font-black uppercase tracking-widest bg-indigo-600/80 backdrop-blur-md py-1.5 px-3 rounded-full inline-block mb-4">Garantat MIPE / MIV</div>
-                      <h3 className="text-2xl font-black leading-tight tracking-tight uppercase italic">Audiență de peste 3.000 de unici lunar disponibilă pentru audit.</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* 2. SERVICES FEATURE CARDS */}
-        <section className="py-24 bg-slate-50 border-y border-slate-100 relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-full opacity-[0.03] pointer-events-none -z-10 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
-          <div className="container px-6">
-            <div className="text-center mb-20 max-w-3xl mx-auto animate-fade-in">
-              <p className="text-indigo-600 font-black uppercase tracking-[0.2em] text-xs mb-4">Servicii Complete Vizibilitate</p>
-              <h2 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tighter leading-none mb-6 italic uppercase">Securizăm finanțarea proiectului tău prin publicitate legală</h2>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-               {[
-                  { title: "Comunicate Presă", desc: "Redactăm și publicăm comunicate de începere și finalizare proiect conform MIV. Oferim dovadă de publicare imediată.", icon: Newspaper, color: "indigo" },
-                  { title: "Kit Vizibilitate", desc: "Pachete integrate cu Anuntul.net și EuPrint.ro: afișe, autocolante și panouri temporare livrate rapid.", icon: Star, color: "blue" },
-                  { title: "Dovadă Trafic", desc: "Singura platformă care oferă rapoarte de audiență detaliate (GA4) pentru a îndeplini criteriile de vizibilitate MIPE.", icon: BarChart, color: "rose" }
-               ].map((s, i) => (
-                 <div key={i} className="bg-white p-12 rounded-[3rem] border border-slate-100 shadow-xl shadow-slate-200/20 hover:border-indigo-400 hover:-translate-y-3 transition-all duration-500 group flex flex-col">
-                    <div className={`w-16 h-16 bg-${s.color}-50 text-${s.color}-600 rounded-[1.5rem] flex items-center justify-center mb-10 group-hover:bg-indigo-600 group-hover:text-white transition-all shadow-sm shadow-indigo-100`}>
-                      <s.icon size={32} strokeWidth={2.5} />
-                    </div>
-                    <h3 className="text-2xl font-black text-slate-900 mb-4 leading-tight uppercase tracking-tight italic">{s.title}</h3>
-                    <p className="text-slate-500 font-medium leading-relaxed mb-8 flex-1">{s.desc}</p>
-                    <Link href="/trimite-comunicat" className="flex items-center gap-2 text-indigo-600 font-black text-xs uppercase tracking-widest group-hover:gap-4 transition-all">Află Mai Multe <ArrowRight size={16} /></Link>
-                 </div>
-               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 3. LATEST NEWS GRID */}
-        <section className="py-32">
-          <div className="container px-6">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8 animate-fade-in">
-              <div className="max-w-2xl">
-                 <p className="text-indigo-600 font-black uppercase tracking-[0.2em] text-xs mb-4">Actualitate & Transparență</p>
-                 <h2 className="text-4xl md:text-6xl font-black text-slate-900 tracking-tighter leading-none uppercase italic">Ultimele știri sociale & economice</h2>
-              </div>
-              <Link href="/stiri" className="inline-flex items-center gap-3 font-black text-indigo-600 border-b-2 border-indigo-600 pb-2 hover:gap-6 transition-all uppercase tracking-widest text-sm">
-                 Vezi tot arhiva <ArrowRight size={20} />
-              </Link>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-              {recentArticles.map((article) => (
-                <NewsCard key={article.id} article={article} />
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* 4. REGIONS NAVIGATION (GEOGRAPHIC FOCUS) */}
-        <section className="py-32 bg-slate-950 text-white relative overflow-hidden isolate mx-6 rounded-[4rem] mb-12">
-           <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,#4f46e522_0%,transparent_70%)] -z-10"></div>
-           <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-indigo-500 opacity-5 rounded-full blur-[150px] -z-10"></div>
-           
-           <div className="container px-6 relative z-10 text-center">
-              <div className="max-w-3xl mx-auto mb-20">
-                 <p className="text-indigo-400 font-black uppercase tracking-[0.2em] text-xs mb-6">Distribuție Națională</p>
-                 <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-8 leading-[0.9] italic uppercase">Acoperire totală <br /> <span className="text-indigo-400">în toate regiunile</span></h2>
-                 <p className="text-slate-400 text-lg font-medium leading-relaxed">Publicăm anunțuri specifice pentru fiecare regiune administrativă a României, asigurând relevanța locală cerută de autoritățile de management POR și ADR.</p>
-              </div>
-
-              <div className="flex flex-wrap justify-center gap-4 md:gap-6">
-                {regions.map((region) => (
-                  <Link 
-                    key={region} 
-                    href={`/regiune/${region.toLowerCase()}`} 
-                    className="px-8 py-4 bg-white/5 border border-white/10 rounded-2xl font-black text-xs md:text-sm uppercase tracking-widest hover:bg-white/15 hover:border-indigo-500 transition-all hover:scale-110"
-                  >
-                    {region}
-                  </Link>
+              {/* Secondary News Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {secondaryArticles.map((article) => (
+                  <article key={article.id} className="flex flex-col gap-3 group">
+                    <span className="text-[10px] font-black uppercase text-primary tracking-widest border-b border-primary/20 pb-1 self-start">
+                      {article.category}
+                    </span>
+                    <h3 className="text-2xl font-serif font-black text-black leading-tight group-hover:underline decoration-2 decoration-primary underline-offset-4">
+                      <Link href={`/${article.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${article.id}`}>
+                        {article.title}
+                      </Link>
+                    </h3>
+                    <p className="text-sm text-slate-600 line-clamp-3 leading-relaxed">
+                      {article.excerpt}
+                    </p>
+                  </article>
                 ))}
               </div>
-           </div>
-        </section>
 
-        {/* 5. STATS COUNTERS - DATA TRUST */}
-        <section className="py-32">
-          <div className="container px-6">
-            <div className="bg-slate-50 rounded-[4rem] p-12 md:p-20 border border-slate-100 flex flex-col md:flex-row items-center justify-between gap-12 text-center md:text-left">
-              <div className="max-w-md">
-                 <h2 className="text-4xl font-black text-slate-900 tracking-tighter mb-6 italic uppercase leading-tight">Anuntul.net în cifre. Transparență totală.</h2>
-                 <p className="text-slate-500 font-medium leading-relaxed">Suntem onorați să fim platforma favorită a mii de beneficiari de fonduri europene pentru comunicare transparentă.</p>
+            </div>
+
+            {/* RIGHT COLUMN - SIDEBAR (4 cols) */}
+            <div className="lg:col-span-4 flex flex-col gap-10">
+              
+              {/* Classified Ad / Service Promo (Newspaper Ad Style) */}
+              <div className="border-4 border-primary p-6 bg-white text-center relative mt-2 shadow-sm">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-white px-2 text-[10px] font-black uppercase tracking-widest text-primary">
+                  Publicitate Legală
+                </div>
+                <AlertCircle className="mx-auto text-primary mb-3" size={32} />
+                <h3 className="text-xl font-serif font-black text-black uppercase leading-tight mb-3">
+                  Ești beneficiar de fonduri europene?
+                </h3>
+                <p className="text-xs text-slate-700 font-semibold mb-6 leading-relaxed">
+                  Evită sancțiunile! Publicăm comunicate obligatorii PNRR, Regio, POR sau alte fonduri europene. <br/>
+                  <span className="text-primary font-black block mt-2">Dovadă cu +3.000 Vizitatori Unici.</span>
+                </p>
+                <Link href="/trimite-comunicat" className="block w-full bg-primary text-white font-black uppercase text-sm py-4 tracking-widest hover:bg-black transition-colors">
+                  Trimite Comunicat Acum
+                </Link>
               </div>
 
-              <div className="flex-1 grid grid-cols-2 lg:grid-cols-4 gap-8 w-full">
-                 {[
-                   { val: "575", label: "Vizite Zilnice", icon: Calendar },
-                   { val: "3000+", label: "Unici Lunar", icon: BarChart, highlight: true },
-                   { val: "50K+", label: "Articole Citite", icon: Eye },
-                   { val: "24/7", label: "Monitorizare", icon: Clock },
-                 ].map((stat, i) => (
-                   <div key={i} className="flex flex-col items-center">
-                      <div className="text-3xl lg:text-5xl font-black text-indigo-600 mb-3 tracking-tighter">{stat.val}</div>
-                      <div className="text-[10px] font-black uppercase tracking-widest text-slate-400 group-hover:text-indigo-600 transition-colors">{stat.label}</div>
-                      {stat.highlight && <div className="text-[8px] font-black text-rose-500 mt-2 uppercase tracking-tight">Dovadă Disponibilă</div>}
-                   </div>
-                 ))}
+              {/* Region Selector */}
+              <div>
+                <div className="border-b-2 border-primary mb-4 pb-2 flex items-center gap-2 text-primary">
+                  <MapPin size={18} />
+                  <h3 className="font-serif font-black text-lg uppercase tracking-widest">Ediții Locale</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                   {regions.map((region) => (
+                    <Link 
+                      key={region} 
+                      href={`/regiune/${region.toLowerCase()}`} 
+                      className="text-xs font-bold uppercase tracking-wider border border-slate-300 px-3 py-1.5 hover:bg-black hover:text-white transition-colors"
+                    >
+                      {region}
+                    </Link>
+                  ))}
+                </div>
               </div>
+
+              {/* More News Digest */}
+              <div>
+                <div className="border-b-2 border-primary mb-4 pb-2 text-primary">
+                  <h3 className="font-serif font-black text-lg uppercase tracking-widest">Pe Scurt</h3>
+                </div>
+                <ul className="flex flex-col gap-0 divide-y divide-slate-200">
+                  {moreArticles.map((article) => (
+                    <li key={article.id} className="py-4 group">
+                      <Link href={`/${article.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${article.id}`} className="block">
+                         <span className="text-[10px] text-slate-500 font-bold uppercase mb-1 block">{article.date}</span>
+                         <h4 className="font-serif font-bold text-base leading-snug group-hover:text-primary transition-colors">
+                           {article.title}
+                         </h4>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
             </div>
           </div>
-        </section>
-
-        {/* 6. FINAL HIGH IMPACT CTA */}
-        <section className="container px-6 mb-24">
-           <div className="relative rounded-[4rem] overflow-hidden bg-white p-16 md:p-32 text-center shadow-2xl border border-slate-100 isolate">
-              <div className="absolute top-0 left-0 w-full h-full -z-10 bg-gradient-to-br from-indigo-50 via-white to-slate-50"></div>
-              <div className="absolute -top-40 -left-40 w-96 h-96 bg-indigo-500 opacity-5 rounded-full blur-[100px] -z-10 animate-pulse"></div>
-              
-              <div className="relative z-10 max-w-3xl mx-auto">
-                 <div className="inline-flex items-center gap-2 px-4 py-2 bg-amber-50 text-amber-700 rounded-full font-black text-[10px] uppercase tracking-widest mb-10 border border-amber-100 shadow-sm">
-                   <Star size={14} fill="currentColor" />
-                   Cea mai rapidă publicare din România
-                 </div>
-                 <h2 className="text-4xl md:text-7xl font-black tracking-tighter mb-10 text-slate-900 leading-[0.9] uppercase italic">
-                    Publică comunicatul <br /> 
-                    <span className="text-indigo-600 underline decoration-indigo-200 underline-offset-8">chiar azi.</span>
-                 </h2>
-                 <p className="text-slate-500 text-xl font-medium mb-16 leading-relaxed">
-                   Nu risca decontarea proiectului din cauza vizibilității precare. Anuntul.net îți oferă suportul legal de care ai nevoie, instant.
-                 </p>
-                 <div className="flex flex-col sm:flex-row justify-center gap-6">
-                    <Link href="/trimite-comunicat" className="px-12 py-6 bg-slate-900 text-white font-black rounded-2xl transition-all hover:bg-indigo-600 hover:-translate-y-2 uppercase tracking-widest text-sm shadow-2xl">Trimite Comunicat Acum</Link>
-                    <Link href="/contact" className="px-12 py-6 bg-white text-slate-900 border border-slate-200 font-black rounded-2xl transition-all hover:bg-slate-50 uppercase tracking-widest text-sm shadow-sm inline-flex items-center gap-3">Contactează-ne <PhoneCall size={18} /></Link>
-                 </div>
-              </div>
-           </div>
-        </section>
+        </div>
       </main>
 
       <Footer />
     </div>
-  );
-}
-
-function PhoneCall({ size }: { size: number }) {
-  return (
-    <svg 
-      xmlns="http://www.w3.org/2000/svg" 
-      width={size} 
-      height={size} 
-      viewBox="0 0 24 24" 
-      fill="none" 
-      stroke="currentColor" 
-      strokeWidth="2.5" 
-      strokeLinecap="round" 
-      strokeLinejoin="round" 
-    >
-      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-    </svg>
   );
 }

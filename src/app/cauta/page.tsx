@@ -26,7 +26,7 @@ export default async function SearchPage({ searchParams }: PageProps) {
     return (
         <div className="min-h-screen flex flex-col">
             <Header />
-            <main className="flex-grow container" style={{ padding: '4rem 1rem' }}>
+            <main className="flex-grow w-full max-w-7xl mx-auto px-4 lg:px-8" style={{ padding: '4rem 1rem' }}>
                 <div style={{ marginBottom: '3rem', borderBottom: '1px solid var(--color-border)', paddingBottom: '1.5rem' }}>
                     <h1 style={{ fontSize: '2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
                         <Search size={32} className="text-primary" />

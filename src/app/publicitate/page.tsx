@@ -20,29 +20,13 @@ export default function AdvertisingPage() {
 
     const jsonLd = {
         "@context": "https://schema.org",
-        "@type": "Product",
+        "@type": "Service",
         "name": "Servicii Vizibilitate Proiecte Europene",
         "description": "Publicare comunicate de presa si materiale de vizibilitate conform MIV (PNRR, POR, POCU).",
-        "brand": {
-            "@type": "Brand",
+        "provider": {
+            "@type": "Organization",
             "name": "Anuntul.net"
-        },
-        "offers": [
-            {
-                "@type": "Offer",
-                "name": "Publicare Comunicat",
-                "price": "150",
-                "priceCurrency": "RON",
-                "availability": "https://schema.org/InStock"
-            },
-            {
-                "@type": "Offer",
-                "name": "Kit Start-Up PNRR",
-                "price": "350",
-                "priceCurrency": "RON",
-                "availability": "https://schema.org/InStock"
-            }
-        ]
+        }
     };
 
     return (
@@ -53,7 +37,7 @@ export default function AdvertisingPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <Header />
-            <main className="container" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
+            <main className="w-full max-w-7xl mx-auto px-4 lg:px-8" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
 
                 <div style={{ textAlign: 'center', maxWidth: '800px', margin: '0 auto 4rem auto' }}>
                     <h1 style={{
@@ -122,123 +106,27 @@ export default function AdvertisingPage() {
                         </p>
                     </div>
                 </div>
-
-                {/* Advertising Packages */}
-                <section style={{ marginBottom: '5rem' }}>
-                    <h2 style={{ textAlign: 'center', fontSize: '2rem', marginBottom: '3rem' }}> Pachete Servicii</h2>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3" style={{ gap: '2rem' }}>
-
-                        {/* Package 1: Basic */}
-                        <div className="card" style={{ padding: '2rem', borderTop: '4px solid var(--color-border)' }}>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Publicare Comunicat</h3>
-                            <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>Doar anunț începere/finalizare</p>
-                            <div style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', color: 'var(--color-primary)' }}>
-                                150 <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>RON</span>
-                            </div>
-                            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Publicare pe Anuntul.net
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Mentinere pe durata proiectului
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Dovada publicarii (Link + PDF)
-                                </li>
-                            </ul>
-                            <Link href="/contact?subject=Comanda%20Publicare%20Comunicat" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}>
-                                Comandă Publicare
-                            </Link>
-                        </div>
-
-                        {/* Package 2: Premium */}
-                        <div className="card" style={{ padding: '2rem', borderTop: '4px solid var(--color-primary)', transform: 'scale(1.02)', boxShadow: 'var(--shadow-lg)' }}>
-                            <div style={{
-                                backgroundColor: 'var(--color-primary)', color: 'white',
-                                padding: '0.25rem 0.75rem', borderRadius: '1rem',
-                                fontSize: '0.75rem', fontWeight: 'bold', textTransform: 'uppercase',
-                                display: 'inline-block', marginBottom: '1rem'
-                            }}>
-                                Recomandat
-                            </div>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Kit Start-Up PNRR</h3>
-                            <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>Comunicat + Materiale Obligatorii</p>
-                            <div style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', color: 'var(--color-primary)' }}>
-                                350 <span style={{ fontSize: '1rem', color: 'var(--color-text-muted)', fontWeight: 'normal' }}>RON</span>
-                            </div>
-                            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> <b>Publicare Comunicat Presă</b>
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> <b>Set 100 Autocolante</b> (diverse marimi)
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> <b>2 Afișe A3</b> (pentru sediu)
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Design Gratuit conform MIV
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Livrare prin Curier
-                                </li>
-                            </ul>
-                            <Link href="/contact?subject=Comanda%20Kit%20Start-Up%20PNRR" className="btn btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
-                                Comandă Pachetul
-                            </Link>
-                        </div>
-
-                        {/* Package 3: Custom */}
-                        <div className="card" style={{ padding: '2rem', borderTop: '4px solid var(--color-accent)' }}>
-                            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem' }}>Kit Vizibilitate Pro</h3>
-                            <p style={{ color: 'var(--color-text-muted)', marginBottom: '1.5rem' }}>Pentru proiecte mari (POR/POCU)</p>
-                            <div style={{ fontSize: '2rem', fontWeight: 'bold', marginBottom: '1.5rem', color: 'var(--color-primary)' }}>
-                                Personalizat
-                            </div>
-                            <ul style={{ listStyle: 'none', padding: 0, marginBottom: '2rem' }}>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Comunicate Începere & Finalizare
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Panouri Temporare / Permanente
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Plăci Permanente
-                                </li>
-                                <li style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.75rem' }}>
-                                    <CheckCircle size={18} color="green" /> Autocolante echipamente
-                                </li>
-                            </ul>
-                            <Link href="/contact?subject=Oferta%20Kit%20Vizibilitate%20Pro" className="btn btn-outline" style={{ width: '100%', justifyContent: 'center' }}>
-                                Cere Ofertă
-                            </Link>
-                        </div>
-
-                    </div>
-                </section>
-
-                {/* Contact CTA */}
-                <section style={{
-                    backgroundColor: 'var(--color-bg-alt)',
-                    padding: '3rem',
-                    borderRadius: 'var(--radius-lg)',
-                    textAlign: 'center'
+                {/* Clean Newspaper CTA */}
+                <div style={{ 
+                    borderTop: '2px solid var(--color-border)', 
+                    paddingTop: '4rem', 
+                    textAlign: 'center' 
                 }}>
-                    <h2 style={{ fontSize: '1.75rem', marginBottom: '1rem' }}>Ai nevoie de consultanță?</h2>
-                    <p style={{ marginBottom: '2rem', color: 'var(--color-text-muted)', maxWidth: '600px', margin: '0 auto 2rem auto' }}>
-                        Dacă nu știi exact ce materiale de vizibilitate sunt necesare pentru proiectul tău, contactează-ne și te ajutăm gratuit.
+                    <h2 style={{ fontSize: '2rem', fontFamily: 'serif', fontWeight: '900', marginBottom: '1.5rem', textTransform: 'uppercase' }}>
+                        Solicită Publicarea Unui Comunicat
+                    </h2>
+                    <p style={{ maxWidth: '700px', margin: '0 auto 2.5rem auto', color: 'var(--color-text-muted)', fontSize: '1.1rem' }}>
+                        Pentru a asigura transparența proiectului dumneavoastră și conformitatea cu cerințele MIV, vă rugăm să folosiți formularul nostru oficial de trimitere sau să ne contactați direct pentru o ofertă personalizată.
                     </p>
-                    <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-                        <Link href="/contact" className="btn btn-primary">
-                            <Mail size={18} style={{ marginRight: '0.5rem' }} /> Cere Ofertă
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+                        <Link href="/trimite-comunicat" className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                            Trimite Comunicat
                         </Link>
-                        <a href="mailto:contact@anuntul.net" className="btn btn-outline">
-                            Scrie-ne la contact@anuntul.net
-                        </a>
+                        <Link href="/contact" className="btn btn-outline" style={{ padding: '1rem 2.5rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                            Contactează-ne
+                        </Link>
                     </div>
-                </section>
-
+                </div>
             </main>
             <Footer />
         </>

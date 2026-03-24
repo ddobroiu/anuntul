@@ -61,7 +61,7 @@ export default function SeapPage() {
             <main className="min-h-screen bg-white">
                 {/* News-Style Hero */}
                 <section className="bg-slate-50 border-b border-slate-200 py-20 overflow-hidden relative">
-                    <div className="container">
+                    <div className="w-full max-w-7xl mx-auto px-4 lg:px-8">
                         <div className="max-w-4xl mx-auto text-center">
                             <div className="inline-block px-4 py-1.5 bg-red-100 text-[#D32F2F] font-bold text-xs uppercase tracking-widest rounded-full mb-6">
                                 Portal Oficial Achiziții Publice
@@ -90,7 +90,7 @@ export default function SeapPage() {
                 </section>
 
                 {/* Benefits Section */}
-                <section className="py-24 container">
+                <section className="py-24 w-full max-w-7xl mx-auto px-4 lg:px-8">
                     <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                         {SEAPFeatures.map((feature, idx) => (
                             <div key={idx} className="p-8 border border-slate-100 rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow">
@@ -106,7 +106,7 @@ export default function SeapPage() {
 
                 {/* Content Section with Side Focus */}
                 <section className="py-20 bg-slate-50">
-                    <div className="container">
+                    <div className="w-full max-w-7xl mx-auto px-4 lg:px-8">
                         <div className="grid lg:grid-cols-2 gap-16 items-start">
                             <div className="prose prose-slate max-w-none">
                                 <h2 className="text-3xl font-black text-slate-900 mb-8 uppercase tracking-tighter">De ce să publicați pe Anuntul.net?</h2>
@@ -142,7 +142,14 @@ export default function SeapPage() {
                                             <h4 className="font-bold mb-1">Suport SICAP</h4>
                                             <p className="text-sm text-slate-500">Asistență pas-cu-pas pentru finalizarea achiziției în platformă.</p>
                                         </div>
+                                        <div className="flex gap-4">
+                                        <CheckCircle2 className="text-[#D32F2F] shrink-0" />
+                                        <div>
+                                            <h4 className="font-bold mb-1">Dovadă cu +3.000 Vizitatori</h4>
+                                            <p className="text-sm text-slate-500">Oferim rapoarte cu traficul unic necesar (min 3.000 de viziualizări/articol).</p>
+                                        </div>
                                     </div>
+                                </div>
                                 </div>
 
                                 <div className="p-8 bg-white border-l-4 border-[#D32F2F] rounded-r-2xl shadow-sm italic text-slate-600">
@@ -194,7 +201,7 @@ export default function SeapPage() {
                 </section>
 
                 {/* Categories Section */}
-                <section className="py-24 container text-center">
+                <section className="py-24 w-full max-w-7xl mx-auto px-4 lg:px-8 text-center">
                     <h2 className="text-3xl font-black mb-12 uppercase">Exemple de Anunțuri SEAP Acceptate</h2>
                     <div className="flex flex-wrap justify-center gap-4">
                         {[

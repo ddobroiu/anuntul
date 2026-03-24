@@ -28,7 +28,7 @@ export default function ContactPage() {
     return (
         <>
             <Header />
-            <main className="container" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
+            <main className="w-full max-w-7xl mx-auto px-4 lg:px-8" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
 
                 <div style={{ textAlign: 'center', maxWidth: '700px', margin: '0 auto 4rem auto' }}>
                     <h1 style={{

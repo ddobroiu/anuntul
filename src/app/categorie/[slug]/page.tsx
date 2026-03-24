@@ -42,7 +42,7 @@ export default async function CategoryPage({ params }: PageProps) {
     return (
         <>
             <Header />
-            <main className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
+            <main className="w-full max-w-7xl mx-auto px-4 lg:px-8" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
                 <h1 style={{ marginBottom: '2rem', borderBottom: '2px solid var(--color-primary)', paddingBottom: '0.5rem', display: 'inline-block' }}>
                     Stiri: {category}
                 </h1>

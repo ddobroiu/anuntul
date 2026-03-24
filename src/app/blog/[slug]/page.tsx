@@ -58,7 +58,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <Header />
-            <main className="container" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
+            <main className="w-full max-w-7xl mx-auto px-4 lg:px-8" style={{ paddingTop: '3rem', paddingBottom: '5rem' }}>
 
                 <Link href="/blog" style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--color-text-muted)', marginBottom: '2rem', textDecoration: 'none' }}>
                     <ArrowLeft size={16} /> Înapoi la blog

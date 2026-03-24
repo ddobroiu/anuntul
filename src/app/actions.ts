@@ -78,52 +78,30 @@ export async function sendPressReleaseEmail(formData: FormData) {
   const email = (formData.get('email') as string) || '';
   const phone = (formData.get('phone') as string) || '';
   const title = (formData.get('title') as string) || 'Fără titlu';
-  const pressReleaseQty = (formData.get('pressReleaseQty') as string) || '1';
   const content = (formData.get('content') as string) || '';
-  const totalPrice = (formData.get('totalPrice') as string) || '490';
   const attachment = formData.get('attachment') as File | null;
-
-  const selectedAddonsRaw = (formData.get('selectedAddonsList') as string) || '[]';
-  let selectedAddons: string[] = [];
-  try {
-    selectedAddons = JSON.parse(selectedAddonsRaw);
-  } catch (e) {
-    console.error('Error parsing addons:', e);
-  }
 
   try {
     const emailPayload: any = {
       from: 'Anuntul.net Press <onboarding@resend.dev>',
       to: ['contact@anuntul.net'],
       replyTo: email,
-      subject: `Comandă Nouă (${pressReleaseQty} buc): ${title} - ${totalPrice} LEI`,
+      subject: `Solicitare Publicare Comunicat: ${title}`,
       html: `
-        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
-          <h1 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 10px;">Comandă Comunicat de Presă</h1>
+        <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; border: 4px solid #cc0000; border-radius: 0;">
+          <h1 style="color: #cc0000; text-transform: uppercase; font-family: serif; border-bottom: 2px solid #eee; padding-bottom: 15px;">Solicitare Publicare</h1>
           
-          <div style="background-color: #f8fafc; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="font-size: 20px; margin: 0;"><strong>Total de plată: ${totalPrice} LEI</strong></p>
-          </div>
-
           <p><strong>Nume/Instituție:</strong> ${name}</p>
           <p><strong>Email:</strong> ${email}</p>
           <p><strong>Telefon:</strong> ${phone}</p>
-          <p><strong>Titlu:</strong> ${title}</p>
-          ${attachment && attachment.size > 0 ? `<p style="color: #2563eb; font-weight: bold;">📎 Fișier atașat: ${attachment.name}</p>` : ''}
+          <p><strong>Titlu propus:</strong> ${title}</p>
+          ${attachment && attachment.size > 0 ? `<p style="color: #cc0000; font-weight: bold;">📎 Fișier atașat: ${attachment.name}</p>` : ''}
           
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
           
-          <h3 style="color: #475569;">Pachet & Opțiuni:</h3>
-          <ul style="list-style: none; padding: 0;">
-            <li style="margin-bottom: 8px;">✅ Comunicat Standard x ${pressReleaseQty} (${490 * parseInt(pressReleaseQty)} lei)</li>
-            ${selectedAddons.map(addon => `<li style="margin-bottom: 8px;">🔹 ${addon}</li>`).join('')}
-          </ul>
-
-          <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
-          
-          <h3 style="color: #475569;">Conținut Comunicat:</h3>
-          <div style="background-color: #fff; padding: 15px; border: 1px solid #eee; border-radius: 5px; line-height: 1.6;">
-            ${content ? content.replace(/\n/g, '<br>') : '<em>Fișierul text/doc a fost trimis ca atașament.</em>'}
+          <h3 style="color: #1a1a1a; text-transform: uppercase; font-size: 0.9rem;">Conținut / Observații:</h3>
+          <div style="background-color: #fff; padding: 15px; border: 1px solid #eee; line-height: 1.6;">
+            ${content ? content.replace(/\n/g, '<br>') : '<em>Fișierul a fost trimis ca atașament.</em>'}
           </div>
         </div>
       `,
@@ -145,31 +123,23 @@ export async function sendPressReleaseEmail(formData: FormData) {
     await resend.emails.send({
       from: 'Anuntul.net Press <onboarding@resend.dev>',
       to: [email],
-      subject: 'Confirmare Comandă Comunicat - Anuntul.net',
+      subject: 'Confirmare Solicitare Comunicat - Anuntul.net',
       html: `
-        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; border-radius: 10px; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #2563eb;">Am primit comanda ta pentru: ${title}</h2>
-          <p>Bună, ${name},</p>
-          <p>Îți confirmăm primirea solicitării pentru publicarea comunicatului de presă.</p>
-          
-          <div style="background-color: #f8fafc; padding: 15px; border-radius: 8px; margin: 20px 0;">
-            <p style="margin: 0;"><strong>Total de plată: ${totalPrice} LEI</strong></p>
-          </div>
-          
-          <p>Un specialist Anuntul.net va verifica conținutul și te va contacta în scurt timp pentru validare și pașii următori privind plata.</p>
+        <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; max-width: 600px; margin: 0 auto;">
+          <h2 style="color: #cc0000; font-family: serif;">Am primit solicitarea dumneavoastră</h2>
+          <p>Bună ziua, ${name},</p>
+          <p>Vă mulțumim pentru interesul manifestat față de platforma <strong>Anuntul.net</strong>.</p>
+          <p>Am primit solicitarea dumneavoastră pentru publicarea comunicatului și un specialist din departamentul nostru editorial o va analiza în cel mai scurt timp.</p>
+          <p>Vă vom contacta telefonic sau prin email pentru pașii următori privind validarea textului și facturarea.</p>
           <br />
-          <p>Vă mulțumim pentru colaborare,<br />Echipa Anuntul.net</p>
+          <p>Cu stimă,<br />Echipa Anuntul.net</p>
         </div>
       `
     }).catch(e => console.error("Could not send press release confirmation to customer:", e));
 
     if (error) {
       console.error('Detailed Resend Error:', JSON.stringify(error, null, 2));
-      let friendlyError = `Eroare Resend: ${error.message}`;
-      if (error.message.toLowerCase().includes('trial') || error.message.toLowerCase().includes('onboarding')) {
-        friendlyError = "Eroare: Resend e în modul 'Onboarding'. Poți trimite doar la adresa cu care te-ai înscris în Resend. Verifică email-ul sau validează domeniul anuntul.net.";
-      }
-      return { success: false, error: friendlyError };
+      return { success: false, error: `Eroare trimitere: ${error.message}` };
     }
 
     return { success: true, data };

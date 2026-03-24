@@ -67,7 +67,7 @@ export default async function ArticlePage({ params }: PageProps) {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
             <Header />
-            <main className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
+            <main className="w-full max-w-7xl mx-auto px-4 lg:px-8" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
                 <article style={{ maxWidth: '900px', margin: '0 auto' }}>
 
                     {/* Header Section */}

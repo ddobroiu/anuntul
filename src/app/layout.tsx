@@ -72,8 +72,6 @@ export const metadata: Metadata = {
   },
 };
 
-import ContactButton from "@/components/ContactButton";
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -83,7 +81,6 @@ export default function RootLayout({
     <html lang="ro">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         {children}
-        <ContactButton />
       </body>
     </html>
   );

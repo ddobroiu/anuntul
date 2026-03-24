@@ -15,7 +15,7 @@ export default function RegionsIndexPage() {
     return (
         <>
             <Header />
-            <main className="container" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
+            <main className="w-full max-w-7xl mx-auto px-4 lg:px-8" style={{ paddingTop: '2rem', paddingBottom: '4rem' }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
                     <div>
                         <h1 style={{ marginBottom: '1rem', borderBottom: '2px solid var(--color-primary)', paddingBottom: '0.5rem', display: 'inline-block' }}>
