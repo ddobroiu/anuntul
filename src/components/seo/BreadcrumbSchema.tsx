@@ -20,7 +20,7 @@ export default function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
             "@type": "ListItem",
             "position": index + 1,
             "name": item.name,
-            "item": item.item.startsWith("http") ? item.item : `https://anuntul.net${item.item}`
+            "item": item.item.startsWith("http") ? item.item : `https://anuntul.info${item.item}`
         }))
     };
 

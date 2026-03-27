@@ -14,12 +14,12 @@ export default function SeoContentComunicate() {
             answer: "Un comunicat conform MIV trebuie să includă obligatoriu: siglele oficiale (UE, Guvernul României), titlul proiectului, codul MySMIS, obiectivele, valoarea totală și finanțarea nerambursabilă, data începerii, locația de implementare și datele de contact."
         },
         {
-            question: "Cât timp durează publicarea unui comunicat pe Anuntul.net?",
+            question: "Cât timp durează publicarea unui comunicat pe Anuntul.info?",
             answer: "Publicarea este aproape instantanee după confirmarea plății și validarea textului. Oferim dovadă de publicare imediată (link + export PDF) necesară pentru dosarul de decontare."
         },
         {
             question: "Oferiți și dovadă de trafic/impact pentru proiectele mari?",
-            answer: "Da, Anuntul.net oferă rapoarte de vizibilitate care atestă audiența portalului (peste 3000 unici lunar), facilitând îndeplinirea indicatorilor de transparență ceruți de autoritățile de management."
+            answer: "Da, Anuntul.info oferă rapoarte de vizibilitate care atestă audiența portalului (peste 3000 unici lunar), facilitând îndeplinirea indicatorilor de transparență ceruți de autoritățile de management."
         }
     ];
 
@@ -42,7 +42,7 @@ export default function SeoContentComunicate() {
                         </p>
                     </div>
                     <div style={{ backgroundColor: 'rgba(211, 47, 47, 0.03)', padding: '2rem', borderRadius: 'var(--radius-md)', borderLeft: '4px solid var(--color-primary)' }}>
-                        <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>Avantajele Anuntul.net</h3>
+                        <h3 style={{ fontSize: '1.25rem', marginBottom: '1rem', color: 'var(--color-primary)' }}>Avantajele Anuntul.info</h3>
                         <ul style={{ listStyle: 'none', padding: 0 }}>
                             <li style={{ display: 'flex', gap: '0.75rem', marginBottom: '1rem' }}>
                                 <CheckCircle size={20} color="var(--color-primary)" />
@@ -97,7 +97,7 @@ export default function SeoContentComunicate() {
                 <div style={{ marginTop: '4rem', textAlign: 'center', backgroundColor: '#003399', borderRadius: 'var(--radius-md)', padding: '3rem', color: 'white' }}>
                     <h3 style={{ fontSize: '2rem', marginBottom: '1rem', color: 'white' }}>Pregătește comunicatul acum!</h3>
                     <p style={{ marginBottom: '2rem', color: 'rgba(255,255,255,0.8)', fontSize: '1.1rem' }}>
-                        Nu riscați neeligibilitatea cheltuielilor. Colaborați cu echipa Anuntul.net pentru o vizibilitate impecabilă.
+                        Nu riscați neeligibilitatea cheltuielilor. Colaborați cu echipa Anuntul.info pentru o vizibilitate impecabilă.
                     </p>
                     <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                          <a href="/trimite-comunicat" className="btn btn-primary" style={{ backgroundColor: 'white', color: '#003399', padding: '0.75rem 2rem', fontSize: '1.1rem' }}>

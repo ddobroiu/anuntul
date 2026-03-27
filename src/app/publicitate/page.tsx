@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Servicii Comunicate si Vizibilitate Fonduri Europene - Anuntul.net',
+    title: 'Servicii Comunicate si Vizibilitate Fonduri Europene - Anuntul.info',
     description: 'Pachete complete pentru proiecte europene: publicare comunicat de presa si kituri de vizibilitate (autocolante, afise) conform cerintelor MCID/MIPE.',
 };
 
@@ -25,7 +25,7 @@ export default function AdvertisingPage() {
         "description": "Publicare comunicate de presa si materiale de vizibilitate conform MIV (PNRR, POR, POCU).",
         "provider": {
             "@type": "Organization",
-            "name": "Anuntul.net"
+            "name": "Anuntul.info"
         }
     };
 

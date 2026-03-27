@@ -180,7 +180,7 @@ export default function PressReleaseForm() {
                     )}
                 </button>
                 <p className="text-[10px] text-center text-slate-400 font-bold uppercase tracking-widest mt-6">
-                    Prin trimiterea acestui formular sunteți de acord cu termenii de utilizare ai platformei anuntul.net
+                    Prin trimiterea acestui formular sunteți de acord cu termenii de utilizare ai platformei anuntul.info
                 </p>
             </div>
         </form>

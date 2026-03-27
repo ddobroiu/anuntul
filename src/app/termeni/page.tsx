@@ -4,8 +4,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Termeni și Condiții - Anuntul.net',
-    description: 'Termenii și condițiile de utilizare a platformei Anuntul.net, politica de plată, livrare și returnare.',
+    title: 'Termeni și Condiții - Anuntul.info',
+    description: 'Termenii și condițiile de utilizare a platformei Anuntul.info, politica de plată, livrare și returnare.',
 };
 
 export default function TermsPage() {
@@ -26,12 +26,12 @@ export default function TermsPage() {
                         </p>
 
                         <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-                            Anunțurile / informațiile de interes public vor putea fi afișate oficial pe platforma <strong>www.anuntul.net</strong> în maxim 24 de ore de la confirmarea plății aferente facturii proforme emise.
+                            Anunțurile / informațiile de interes public vor putea fi afișate oficial pe platforma <strong>www.anuntul.info</strong> în maxim 24 de ore de la confirmarea plății aferente facturii proforme emise.
                         </p>
 
                         <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-                            Anularea achiziției unui anunț / pachet de anunțuri comandat va putea fi făcută doar dacă acesta nu a fost publicat pe platforma <strong>www.anuntul.net</strong>.
-                            Pentru anulare, beneficiarul va transmite un email la adresa <a href="mailto:contact@anuntul.net" style={{ color: 'var(--color-primary)' }}>contact@anuntul.net</a>, prin care solicită în mod expres renunțarea la cumpărare.
+                            Anularea achiziției unui anunț / pachet de anunțuri comandat va putea fi făcută doar dacă acesta nu a fost publicat pe platforma <strong>www.anuntul.info</strong>.
+                            Pentru anulare, beneficiarul va transmite un email la adresa <a href="mailto:contact@anuntul.info" style={{ color: 'var(--color-primary)' }}>contact@anuntul.info</a>, prin care solicită în mod expres renunțarea la cumpărare.
                         </p>
 
                         <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>

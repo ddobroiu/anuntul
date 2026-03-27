@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-    title: "Publicitate și Comunicate Presă în orice județ - Anuntul.net",
+    title: "Publicitate și Comunicate Presă în orice județ - Anuntul.info",
     description: "Servicii de publicare comunicate de presă și vizibilitate fonduri europene în orice județ din România. Acoperire națională pentru PNRR, PR și ADR.",
     keywords: "comunicate presa judete, vizibilitate pnrr, publicitate locala, anunturi ziar",
     alternates: { canonical: "/judet" },
@@ -29,7 +29,7 @@ export default function JudetePage() {
                 <div className="container mx-auto px-6 text-center" style={{ maxWidth: '1000px' }}>
                     <div className="inline-flex items-center gap-2 px-3 py-1 mb-6 text-xs font-bold text-blue-400 border border-blue-400/20 rounded-full bg-blue-400/10 uppercase tracking-widest">
                         <Flag size={14} />
-                        <span>Acoperire Națională Anuntul.net</span>
+                        <span>Acoperire Națională Anuntul.info</span>
                     </div>
                     <h1 className="text-4xl md:text-6xl font-black mb-6 leading-tight">
                         Vizibilitate PNRR &amp; Media <br />

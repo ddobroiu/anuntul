@@ -8,7 +8,7 @@ import { blogPosts } from '@/lib/blog-data';
 import { Calendar, User, Tag, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Blog si Resurse Fonduri Europene - Anuntul.net',
+    title: 'Blog si Resurse Fonduri Europene - Anuntul.info',
     description: 'Citeste ultimele ghiduri si noutati despre publicarea comunicatelor de presa si materialelor de vizibilitate pentru proiecte PNRR, POR si POCU.',
 };
 
@@ -21,13 +21,13 @@ export default function BlogIndexPage() {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Acasa",
-                "item": "https://anuntul.net"
+                "item": "https://anuntul.info"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Blog",
-                "item": "https://anuntul.net/blog"
+                "item": "https://anuntul.info/blog"
             }
         ]
     };

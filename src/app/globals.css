@@ -156,6 +156,71 @@
   header {
     background: #ffffff;
   }
+
+  /* Floating Widget */
+  .floating-widget-container {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    z-index: 9999;
+  }
+
+  .floating-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 9999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    cursor: pointer;
+    border: 2px solid white;
+  }
+
+  .floating-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 20px 35px -5px rgba(0,0,0,0.4);
+    z-index: 10000;
+  }
+
+  .floating-btn-wa {
+    background-color: #25D366;
+  }
+
+  .floating-btn-quote {
+    background-color: var(--color-primary);
+  }
+
+  .floating-tooltip {
+    position: absolute;
+    right: 4.5rem;
+    background: #111827;
+    color: white;
+    padding: 0.6rem 1rem;
+    border-radius: 0px;
+    font-size: 0.7rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--color-primary);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  .floating-btn:hover .floating-tooltip {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* Base tailwind visual overrides for red editorial theme */

@@ -6,7 +6,7 @@ import Link from "next/link";
 
 export default function ContactButton() {
     const phoneNumber = "40750473111";
-    const message = encodeURIComponent("Bună ziua, vă scriu de pe site-ul Anuntul.net");
+    const message = encodeURIComponent("Bună ziua, vă scriu de pe site-ul Anuntul.info");
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
 
     return (

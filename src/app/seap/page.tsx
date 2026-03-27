@@ -22,7 +22,7 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import FAQSchema from "@/components/seo/FAQSchema";
 
 export const metadata: Metadata = {
-    title: "Publicare Anunțuri SEAP / SICAP & Comunicate de Presă | Anuntul.net",
+    title: "Publicare Anunțuri SEAP / SICAP & Comunicate de Presă | Anuntul.info",
     description: "Platformă acreditată pentru publicarea comunicatelor de presă și anunțurilor de licitație prin SEAP/SICAP. Plata la termen prin Trezorerie și confirmare instant.",
     keywords: ["anunturi seap", "comunicate de presa sicap", "publicitate licitatii", "anunturi fonduri europene", "plata trezorerie", "anuntul net seap"],
 };
@@ -109,9 +109,9 @@ export default function SeapPage() {
                     <div className="w-full max-w-7xl mx-auto px-4 lg:px-8">
                         <div className="grid lg:grid-cols-2 gap-16 items-start">
                             <div className="prose prose-slate max-w-none">
-                                <h2 className="text-3xl font-black text-slate-900 mb-8 uppercase tracking-tighter">De ce să publicați pe Anuntul.net?</h2>
+                                <h2 className="text-3xl font-black text-slate-900 mb-8 uppercase tracking-tighter">De ce să publicați pe Anuntul.info?</h2>
                                 <p className="text-lg text-slate-600 mb-8 leading-relaxed">
-                                    Legislația națională și europeană impune standarde stricte de transparență pentru proiectele finanțate prin <strong>PNRR</strong> sau <strong>Programe Regionale</strong>. Anuntul.net este platforma ideală pentru a îndeplini aceste cerințe, oferind o audiență vastă și recunoaștere în motoarele de căutare.
+                                    Legislația națională și europeană impune standarde stricte de transparență pentru proiectele finanțate prin <strong>PNRR</strong> sau <strong>Programe Regionale</strong>. Anuntul.info este platforma ideală pentru a îndeplini aceste cerințe, oferind o audiență vastă și recunoaștere în motoarele de căutare.
                                 </p>
 
                                 <div className="grid sm:grid-cols-2 gap-6 my-10">
@@ -153,7 +153,7 @@ export default function SeapPage() {
                                 </div>
 
                                 <div className="p-8 bg-white border-l-4 border-[#D32F2F] rounded-r-2xl shadow-sm italic text-slate-600">
-                                    \"Utilizăm Anuntul.net pentru toate proiectele de infrastructură. Plata prin Trezorerie și dovada instantanee a publicării ne scutesc de multă birocrație.\" - Manager Proiect Regional
+                                    \"Utilizăm Anuntul.info pentru toate proiectele de infrastructură. Plata prin Trezorerie și dovada instantanee a publicării ne scutesc de multă birocrație.\" - Manager Proiect Regional
                                 </div>
                             </div>
 
@@ -176,10 +176,10 @@ export default function SeapPage() {
                                 </ul>
 
                                 <div className="space-y-4">
-                                    <a href="mailto:contact@anuntul.net" className="w-full flex items-center justify-between p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
+                                    <a href="mailto:contact@anuntul.info" className="w-full flex items-center justify-between p-4 bg-slate-50 rounded-xl hover:bg-slate-100 transition-colors">
                                         <div className="flex items-center gap-3">
                                             <Mail className="w-5 h-5 text-indigo-600" />
-                                            <span className="font-bold">contact@anuntul.net</span>
+                                            <span className="font-bold">contact@anuntul.info</span>
                                         </div>
                                         <ArrowRight size={16} />
                                     </a>

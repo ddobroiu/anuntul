@@ -23,10 +23,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const city = localitate.name;
     return {
-        title: `${category.title} în ${city}, ${judet.name} | Anuntul.net`,
+        title: `${category.title} în ${city}, ${judet.name} | Anuntul.info`,
         description: `Publicăm ${category.title} în ${city}. Servicii media profesionale pentru fonduri europene, redactare conform MIV și dovadă de publicare pentru decontare.`,
         alternates: {
-            canonical: `https://www.anuntul.net/comunicate/${categorySlug}/${judetSlug}/${localitateSlug}`,
+            canonical: `https://www.anuntul.info/comunicate/${categorySlug}/${judetSlug}/${localitateSlug}`,
         }
     };
 }
@@ -80,12 +80,12 @@ export default async function LocalitateComunicatPage({ params }: Props) {
                         <div className="prose prose-blue prose-lg max-w-none text-slate-700 mb-10">
                             <p className="text-xl text-slate-600 mb-8 leading-relaxed">
                                 Ai un proiect finanțat în <strong>{city}</strong> și ai nevoie de publicarea comunicatului de presă?
-                                Echipa Anuntul.net oferă servicii complete de publicitate media pentru fonduri europene, 100% conforme cu Manualul de Identitate Vizuală (MIV).
+                                Echipa Anuntul.info oferă servicii complete de publicitate media pentru fonduri europene, 100% conforme cu Manualul de Identitate Vizuală (MIV).
                             </p>
 
                             <div dangerouslySetInnerHTML={{ __html: category.contentHtml || '' }} />
 
-                            <h3 className="text-2xl font-bold text-slate-900 mt-12 mb-6">De ce să publici prin Anuntul.net în {city}?</h3>
+                            <h3 className="text-2xl font-bold text-slate-900 mt-12 mb-6">De ce să publici prin Anuntul.info în {city}?</h3>
                             <ul className="space-y-4 list-none p-0">
                                 <li className="flex items-start gap-3">
                                     <CheckCircle className="text-green-500 mt-1 flex-shrink-0" size={20} />

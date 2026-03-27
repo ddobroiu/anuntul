@@ -15,19 +15,19 @@ export const dummyArticles: Article[] = [
     {
         id: 'ghid-publicare-anunturi-seap-sicap-2026',
         title: 'GHID PUBLICARE ANUNȚURI SEAP / SICAP: VIZIBILITATE LEGALĂ ÎN 2026',
-        excerpt: 'Procedura completă pentru publicarea comunicatelor de presă și anunțurilor de licitație prin SEAP/SICAP pe Anuntul.net.',
+        excerpt: 'Procedura completă pentru publicarea comunicatelor de presă și anunțurilor de licitație prin SEAP/SICAP pe Anuntul.info.',
         content: `
             <h2>Publicare rapidă și decontare sigură pentru instituții</h2>
             <p>Conform reglementărilor privind achizițiile publice și transparența fondurilor nerambursabile (PNRR, Programe Regionale), publicarea anunțurilor și comunicatelor de presă în mass-media este un pas obligatoriu pentru orice beneficiar.</p>
             
-            <h3>Beneficiile publicării pe Anuntul.net prin SEAP:</h3>
+            <h3>Beneficiile publicării pe Anuntul.info prin SEAP:</h3>
             <ul>
                 <li><strong>Prezență în Catalogul Electronic:</strong> Ne găsiți pe SICAP pentru achiziție directă sub codul CPV 22462000-6.</li>
                 <li><strong>Plată prin Trezorerie:</strong> Decontare facilă pentru primării și alte autorități contractante.</li>
                 <li><strong>Indexare Prioritară:</strong> Anunțul dumneavoastră va apărea în primele rezultate Google, oferind vizibilitatea cerută de monitorii de proiect.</li>
             </ul>
 
-            <p>Pentru a solicita o ofertă personalizată sau pentru a primi asistență tehnică privind publicarea în catalogul SICAP, vă rugăm să vizitați <a href="/seap">pagina noastră dedicată SEAP</a> sau să ne contactați direct la <b>contact@anuntul.net</b>.</p>
+            <p>Pentru a solicita o ofertă personalizată sau pentru a primi asistență tehnică privind publicarea în catalogul SICAP, vă rugăm să vizitați <a href="/seap">pagina noastră dedicată SEAP</a> sau să ne contactați direct la <b>contact@anuntul.info</b>.</p>
         `,
         category: 'Comunicat',
         region: 'National',

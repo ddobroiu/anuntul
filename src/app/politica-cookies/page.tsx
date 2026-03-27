@@ -3,8 +3,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Politica de Cookies | Anuntul.net',
-    description: 'Află cum Anuntul.net utilizează fișierele de tip cookie pentru a îmbunătăți experiența vizitatorilor pe site.',
+    title: 'Politica de Cookies | Anuntul.info',
+    description: 'Află cum Anuntul.info utilizează fișierele de tip cookie pentru a îmbunătăți experiența vizitatorilor pe site.',
 };
 
 export default function CookiePolicyPage() {
@@ -24,7 +24,7 @@ export default function CookiePolicyPage() {
 
                         <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">1. Ce sunt cookie-urile?</h2>
                         <p>
-                            Cookie-urile sunt fișiere text de mici dimensiuni, stocate pe dispozitivul dumneavoastră (computer, tabletă, smartphone) atunci când vizitați site-ul nostru, <strong>Anuntul.net</strong>. Acestea au rolul de a îmbunătăți funcționalitatea site-ului și de a ne ajuta să înțelegem modul în care vizitatorii interacționează cu conținutul nostru, inclusiv cu formularele de solicitare pentru publicarea anunțurilor PNRR sau SEAP.
+                            Cookie-urile sunt fișiere text de mici dimensiuni, stocate pe dispozitivul dumneavoastră (computer, tabletă, smartphone) atunci când vizitați site-ul nostru, <strong>Anuntul.info</strong>. Acestea au rolul de a îmbunătăți funcționalitatea site-ului și de a ne ajuta să înțelegem modul în care vizitatorii interacționează cu conținutul nostru, inclusiv cu formularele de solicitare pentru publicarea anunțurilor PNRR sau SEAP.
                         </p>
 
                         <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">2. Cum folosim cookie-urile?</h2>
@@ -52,7 +52,7 @@ export default function CookiePolicyPage() {
 
                         <h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">5. Contact</h2>
                         <p>
-                            Dacă aveți întrebări referitoare la această Politică de Cookies, vă rugăm să ne contactați la adresa: <strong>contact@anuntul.net</strong>.
+                            Dacă aveți întrebări referitoare la această Politică de Cookies, vă rugăm să ne contactați la adresa: <strong>contact@anuntul.info</strong>.
                         </p>
                     </div>
                 </div>

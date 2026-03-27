@@ -14,13 +14,13 @@ export function generateSeoForProduct(p: ProductForSeo) {
   const title = String((p.title ?? slug) || "").trim();
   const category = String(p?.metadata?.category ?? "").toLowerCase();
 
-  const seoTitle = `${title} | Anuntul.net`;
+  const seoTitle = `${title} | Anuntul.info`;
 
   const tags = Array.isArray(p.tags) ? p.tags.join(", ") : "";
 
   if (category === "fonduri-europene" || category === "comunicat") {
     const short = `Comunicat de Presă ${title} – Servicii profesionale de publicitate media obligatorie pentru fonduri europene.`;
-    const details = `Publică anunțul pentru ${tags || "proiecte PNRR, Regio sau AFIR"} pe Anuntul.net. Asigurăm vizibilitate, redactare conform MIV și rapoarte de monitorizare acceptate pentru decontare.`;
+    const details = `Publică anunțul pentru ${tags || "proiecte PNRR, Regio sau AFIR"} pe Anuntul.info. Asigurăm vizibilitate, redactare conform MIV și rapoarte de monitorizare acceptate pentru decontare.`;
     return { title: seoTitle, description: `${short} ${details}` };
   }
 
@@ -56,7 +56,7 @@ export function generateSeoForProduct(p: ProductForSeo) {
 
   // default: comunicate / publicitate
   const short = `Comunicat / Anunț ${title} – Servicii de comunicare media și publicitate online.`;
-  const details = `Publică pe Anuntul.net pentru ${tags || "vizibilitate, branding și anunțuri oficiale"}. Oferim redactare profesională și indexare rapidă în Google. Prețuri competitive și livrare instantă.`;
+  const details = `Publică pe Anuntul.info pentru ${tags || "vizibilitate, branding și anunțuri oficiale"}. Oferim redactare profesională și indexare rapidă în Google. Prețuri competitive și livrare instantă.`;
   return { title: seoTitle, description: `${short} ${details}` };
 }
 

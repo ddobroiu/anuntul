@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ judetSlug
     if (!loc || !judet) return { title: "Localitate negăsită" };
 
     return {
-        title: `Publicitate, Comunicat Presă & Vizibilitate PNRR în ${loc.name}, ${judet.name} | Anuntul.net`,
+        title: `Publicitate, Comunicat Presă & Vizibilitate PNRR în ${loc.name}, ${judet.name} | Anuntul.info`,
         description: `Servicii complete de publicitate media și materiale de vizibilitate obligatorii în ${loc.name}. Pachet complet: Comunicat presă, plăci permanente, autocolante.`,
     };
 }
@@ -68,7 +68,7 @@ export default async function LocalityProductsPage({ params }: { params: Promise
 
                     <div className="lg:col-span-1">
                         <div className="bg-gray-900 text-white p-8 rounded-3xl sticky top-24">
-                            <h2 className="text-2xl font-bold mb-6">De ce Anuntul.net în {loc.name}?</h2>
+                            <h2 className="text-2xl font-bold mb-6">De ce Anuntul.info în {loc.name}?</h2>
                             <ul className="space-y-4">
                                 {[
                                     "Acoperire în toată regiunea",

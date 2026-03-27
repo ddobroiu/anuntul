@@ -20,12 +20,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     if (!region) {
         return {
-            title: 'Regiune inexistenta - Anuntul.net',
+            title: 'Regiune inexistenta - Anuntul.info',
         };
     }
 
     return {
-        title: `Stiri din Regiunea ${region} - Anuntul.net`,
+        title: `Stiri din Regiunea ${region} - Anuntul.info`,
         description: `Stiri locale si comunicate de presa din regiunea ${region}. Citeste ultimele noutati.`,
     };
 }
@@ -61,19 +61,19 @@ export default async function RegionPage({ params }: PageProps) {
                 "@type": "ListItem",
                 "position": 1,
                 "name": "Acasa",
-                "item": "https://anuntul.net"
+                "item": "https://anuntul.info"
             },
             {
                 "@type": "ListItem",
                 "position": 2,
                 "name": "Regiuni",
-                "item": "https://anuntul.net/regiuni"
+                "item": "https://anuntul.info/regiuni"
             },
             {
                 "@type": "ListItem",
                 "position": 3,
                 "name": region,
-                "item": `https://anuntul.net/regiune/${slug}`
+                "item": `https://anuntul.info/regiune/${slug}`
             }
         ]
     };

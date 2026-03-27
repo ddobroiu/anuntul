@@ -28,10 +28,10 @@ export async function generateMetadata({ params }: { params: Promise<{ judetSlug
 
     if (!loc || !judet || !product) return {};
 
-    const title = `Comunicat Presă ${product.title} în ${loc.name}, Județul ${judet.name} | Anuntul.net`;
+    const title = `Comunicat Presă ${product.title} în ${loc.name}, Județul ${judet.name} | Anuntul.info`;
     const description = `Publică comunicat de presă pentru ${product.title} în ${loc.name} (${judet.name}). Servicii profesionale de redactare și publicitate media pentru proiecte PNRR și fonduri regionale.`;
 
-    const routeUrl = `https://anuntul.net/judet/${judet.slug}/${loc.slug}/${productSlugStr}`;
+    const routeUrl = `https://anuntul.info/judet/${judet.slug}/${loc.slug}/${productSlugStr}`;
 
     return {
         title,
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: { params: Promise<{ judetSlug
             description,
             url: routeUrl,
             images: [(product as any).image || '/placeholder.png'],
-            siteName: 'Anuntul.net',
+            siteName: 'Anuntul.info',
             locale: 'ro_RO',
             type: 'website',
         },
@@ -152,7 +152,7 @@ export default async function ProductLocalityPage({ params }: { params: Promise<
                                 {(() => {
                                     if (isFonduri) {
                                         const variations = [
-                                            <p key="v1">Aveți un proiect finanțat prin <strong>PNRR sau Programul Regional</strong> la <strong>{loc.name}</strong>? Anuntul.net vă oferă pachetul complet obligatoriu: de la redactarea comunicatului până la publicarea media pentru <strong>{product.title}</strong>. Asigurăm conformitatea 100% cu Manualul de Identitate Vizuală (MIV) cerut de autoritățile de management.</p>,
+                                            <p key="v1">Aveți un proiect finanțat prin <strong>PNRR sau Programul Regional</strong> la <strong>{loc.name}</strong>? Anuntul.info vă oferă pachetul complet obligatoriu: de la redactarea comunicatului până la publicarea media pentru <strong>{product.title}</strong>. Asigurăm conformitatea 100% cu Manualul de Identitate Vizuală (MIV) cerut de autoritățile de management.</p>,
                                             <p key="v2">Vizibilitatea proiectului dvs. din <strong>{loc.name} (Județul {judet.name})</strong> este prioritatea noastră. Publicăm rapid orice tip de anunț obligatoriu, inclusiv <strong>{product.title}</strong>, garantând indexarea în motoarele de căutare pentru conformitatea în fața auditului de proiect.</p>,
                                             <p key="v3">Pentru companiile și instituțiile din <strong>{loc.name}</strong> ce accesează fonduri UE, oferim pachetul 'Audit-Proof'. Indiferent că sunteți din <strong>comunicat de presă</strong> sau alte elemente de vizibilitate, noi ne ocupăm de tot procesul de publicitate media pentru <strong>{product.title}</strong>.</p>
                                         ];
@@ -286,7 +286,7 @@ export default async function ProductLocalityPage({ params }: { params: Promise<
                     <div className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[3rem] p-12 text-white flex flex-col justify-center items-center text-center shadow-xl">
                         <div className="text-5xl mb-6">🏆</div>
                         <h3 className="text-3xl font-black mb-4 leading-tight tracking-tighter">Aprobat de Auditorii de Fonduri</h3>
-                        <p className="text-blue-100 font-medium mb-8">Peste 1000 de beneficiari PNRR și Regio au ales Anuntul.net pentru conformitate media.</p>
+                        <p className="text-blue-100 font-medium mb-8">Peste 1000 de beneficiari PNRR și Regio au ales Anuntul.info pentru conformitate media.</p>
                         <Link href="/trimite-comunicat" className="bg-white text-blue-600 px-8 py-4 rounded-xl font-bold hover:bg-slate-50 transition-colors shadow-lg shadow-blue-900/40 uppercase text-xs tracking-widest">
                             Incepe Acum
                         </Link>
@@ -350,8 +350,8 @@ export default async function ProductLocalityPage({ params }: { params: Promise<
                             "name": `Comunicat Presă ${product.title} - ${loc.name}`,
                             "image": productImage,
                             "description": `Servicii profesionale de vizibilitate PNRR și Program Regional: Comunicat de presă și kit complet de vizibilitate în localitatea ${loc.name}, Județul ${judet.name}. Raport de monitorizare inclus.`,
-                            "brand": { "@type": "Brand", "name": "Anuntul.net" },
-                            "manufacturer": { "@type": "Organization", "name": "Anuntul Media", "url": "https://anuntul.net" },
+                            "brand": { "@type": "Brand", "name": "Anuntul.info" },
+                            "manufacturer": { "@type": "Organization", "name": "Anuntul Media", "url": "https://anuntul.info" },
                             "offers": {
                                 "@type": "Offer",
                                 "priceCurrency": "RON",
@@ -369,10 +369,10 @@ export default async function ProductLocalityPage({ params }: { params: Promise<
                             "@context": "https://schema.org",
                             "@type": "BreadcrumbList",
                             "itemListElement": [
-                                { "@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://anuntul.net/" },
-                                { "@type": "ListItem", "position": 2, "name": "Județe", "item": "https://anuntul.net/judet" },
-                                { "@type": "ListItem", "position": 3, "name": judet.name, "item": `https://anuntul.net/judet/${judet.slug}` },
-                                { "@type": "ListItem", "position": 4, "name": loc.name, "item": `https://anuntul.net/judet/${judet.slug}/${loc.slug}` },
+                                { "@type": "ListItem", "position": 1, "name": "Acasă", "item": "https://anuntul.info/" },
+                                { "@type": "ListItem", "position": 2, "name": "Județe", "item": "https://anuntul.info/judet" },
+                                { "@type": "ListItem", "position": 3, "name": judet.name, "item": `https://anuntul.info/judet/${judet.slug}` },
+                                { "@type": "ListItem", "position": 4, "name": loc.name, "item": `https://anuntul.info/judet/${judet.slug}/${loc.slug}` },
                                 { "@type": "ListItem", "position": 5, "name": product.title }
                             ]
                         }

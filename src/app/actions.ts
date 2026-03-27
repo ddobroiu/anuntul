@@ -15,8 +15,8 @@ export async function sendContactEmail(formData: FormData) {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Anuntul.net <onboarding@resend.dev>',
-      to: ['contact@anuntul.net'],
+      from: 'Anuntul.info <onboarding@resend.dev>',
+      to: ['contact@anuntul.info'],
       replyTo: email,
       subject: `Mesaj nou de la ${name}: ${subject}`,
       html: `
@@ -36,16 +36,16 @@ export async function sendContactEmail(formData: FormData) {
 
     // Send confirmation to customer
     await resend.emails.send({
-      from: 'Anuntul.net <onboarding@resend.dev>',
+      from: 'Anuntul.info <onboarding@resend.dev>',
       to: [email],
-      subject: 'Am primit mesajul tău - Anuntul.net',
+      subject: 'Am primit mesajul tău - Anuntul.info',
       html: `
         <div style="font-family: sans-serif; padding: 20px;">
           <h2>Bună, ${name}</h2>
           <p>Îți confirmăm că am primit mesajul tău cu subiectul: <strong>${subject}</strong>.</p>
           <p>Echipa noastră te va contacta în cel mai scurt timp posibil.</p>
           <br />
-          <p>O zi excelentă,<br />Echipa Anuntul.net</p>
+          <p>O zi excelentă,<br />Echipa Anuntul.info</p>
         </div>
       `
     }).catch(e => console.error("Could not send customer confirmation:", e));
@@ -54,7 +54,7 @@ export async function sendContactEmail(formData: FormData) {
       console.error('Detailed Resend Error:', JSON.stringify(error, null, 2));
       let friendlyError = `Eroare Resend: ${error.message}`;
       if (error.message.toLowerCase().includes('trial') || error.message.toLowerCase().includes('onboarding')) {
-        friendlyError = "Eroare: Resend e în modul 'Onboarding'. Poți trimite doar la adresa cu care te-ai înscris în Resend. Verifică email-ul sau validează domeniul anuntul.net.";
+        friendlyError = "Eroare: Resend e în modul 'Onboarding'. Poți trimite doar la adresa cu care te-ai înscris în Resend. Verifică email-ul sau validează domeniul anuntul.info.";
       }
       return { success: false, error: friendlyError };
     }
@@ -83,8 +83,8 @@ export async function sendPressReleaseEmail(formData: FormData) {
 
   try {
     const emailPayload: any = {
-      from: 'Anuntul.net Press <onboarding@resend.dev>',
-      to: ['contact@anuntul.net'],
+      from: 'Anuntul.info Press <onboarding@resend.dev>',
+      to: ['contact@anuntul.info'],
       replyTo: email,
       subject: `Solicitare Publicare Comunicat: ${title}`,
       html: `
@@ -121,18 +121,18 @@ export async function sendPressReleaseEmail(formData: FormData) {
 
     // Send confirmation to customer
     await resend.emails.send({
-      from: 'Anuntul.net Press <onboarding@resend.dev>',
+      from: 'Anuntul.info Press <onboarding@resend.dev>',
       to: [email],
-      subject: 'Confirmare Solicitare Comunicat - Anuntul.net',
+      subject: 'Confirmare Solicitare Comunicat - Anuntul.info',
       html: `
         <div style="font-family: sans-serif; padding: 20px; border: 1px solid #eee; max-width: 600px; margin: 0 auto;">
           <h2 style="color: #cc0000; font-family: serif;">Am primit solicitarea dumneavoastră</h2>
           <p>Bună ziua, ${name},</p>
-          <p>Vă mulțumim pentru interesul manifestat față de platforma <strong>Anuntul.net</strong>.</p>
+          <p>Vă mulțumim pentru interesul manifestat față de platforma <strong>Anuntul.info</strong>.</p>
           <p>Am primit solicitarea dumneavoastră pentru publicarea comunicatului și un specialist din departamentul nostru editorial o va analiza în cel mai scurt timp.</p>
           <p>Vă vom contacta telefonic sau prin email pentru pașii următori privind validarea textului și facturarea.</p>
           <br />
-          <p>Cu stimă,<br />Echipa Anuntul.net</p>
+          <p>Cu stimă,<br />Echipa Anuntul.info</p>
         </div>
       `
     }).catch(e => console.error("Could not send press release confirmation to customer:", e));

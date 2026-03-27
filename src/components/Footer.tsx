@@ -16,7 +16,7 @@ export default function Footer() {
                               <Newspaper size={20} />
                             </div>
                             <span className="text-2xl font-black tracking-tighter text-white uppercase">
-                                ANUNTUL<span className="text-red-600">.NET</span>
+                                Anuntul<span className="text-red-600">.info</span>
                             </span>
                         </NextLink>
                         <p className="text-sm leading-relaxed max-w-xs font-medium">
@@ -70,7 +70,7 @@ export default function Footer() {
 
                 <div className="mt-24 pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-12 text-[10px] font-black uppercase tracking-[0.2em] text-center md:text-left">
                     <div className="flex flex-col gap-3">
-                        <p>&copy; {currentYear} ANUNTUL.NET. TOATE DREPTURILE REZERVATE.</p>
+                        <p>&copy; {currentYear} ANUNTUL.INFO. TOATE DREPTURILE REZERVATE.</p>
                         <p className="text-slate-600">
                             REALIZAT DE <a href="https://e-web.ro" target="_blank" rel="noopener noreferrer" className="hover:text-red-600 transition-colors underline decoration-red-600/30 underline-offset-4">E-WEB.RO</a>
                         </p>

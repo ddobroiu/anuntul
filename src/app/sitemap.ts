@@ -7,7 +7,7 @@ import { regions } from '@/lib/data';
 import { dummyArticles } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://anuntul.net';
+  const baseUrl = 'https://anuntul.info';
 
   // Core Static Routes
   const staticRoutes: MetadataRoute.Sitemap = [

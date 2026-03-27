@@ -58,7 +58,7 @@ export default function Header() {
                     
                     {/* Mobile Brand (visible only on mobile since desktop has the giant masthead in page.tsx) */}
                     <Link href="/" className="lg:hidden text-lg font-serif font-black tracking-widest uppercase">
-                        Anunțul<span className="text-black">.net</span>
+                        Anunțul<span className="text-black">.INFO</span>
                     </Link>
 
                     <div className="flex items-center gap-3">

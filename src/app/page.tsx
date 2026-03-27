@@ -9,10 +9,10 @@ import { regions } from '@/lib/data';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
-  title: 'Anuntul.net - Ziarul Știrilor și Comunicate PNRR',
+  title: 'Anuntul.info - Ziarul Știrilor și Comunicate PNRR',
   description: 'Publicăm comunicate de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Știri de actualitate.',
   alternates: {
-    canonical: 'https://anuntul.net',
+    canonical: 'https://anuntul.info',
   },
 };
 
@@ -43,10 +43,10 @@ export default async function Home() {
     {
       "@context": "https://schema.org",
       "@type": "WebSite",
-      "url": "https://anuntul.net",
+      "url": "https://anuntul.info",
       "potentialAction": {
         "@type": "SearchAction",
-        "target": "https://anuntul.net/cauta?q={search_term_string}",
+        "target": "https://anuntul.info/cauta?q={search_term_string}",
         "query-input": "required name=search_term_string"
       }
     }
@@ -75,7 +75,7 @@ export default async function Home() {
            <div className="w-full border-t-[6px] border-primary border-b-2 mt-4 mb-8 text-center pb-6 pt-6">
               <p className="text-xs font-bold uppercase tracking-[0.2em] text-slate-500 mb-2">Ediția Națională Online</p>
               <h1 className="text-5xl md:text-7xl lg:text-[6rem] font-serif font-black text-primary uppercase tracking-tighter leading-none mb-4">
-                Anunțul<span className="text-black">.NET</span>
+                Anunțul<span className="text-black">.INFO</span>
               </h1>
               <p className="text-sm md:text-base font-medium font-serif border-y border-slate-200 py-2 inline-block px-8 uppercase tracking-widest text-primary">
                 Ziarul Oficial pentru Comunicate de Presă & Știri Naționale

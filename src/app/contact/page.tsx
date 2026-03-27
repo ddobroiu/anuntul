@@ -78,8 +78,8 @@ export default function ContactPage() {
                                     <div>
                                         <h3 style={{ fontSize: '1.1rem', fontWeight: '600', marginBottom: '0.25rem' }}>Email</h3>
                                         <p style={{ color: 'var(--color-text-muted)', marginBottom: '0.5rem' }}>Pentru orice întrebări generale:</p>
-                                        <a href="mailto:contact@anuntul.net" style={{ color: 'var(--color-primary)', fontWeight: '500', fontSize: '1.1rem' }}>
-                                            contact@anuntul.net
+                                        <a href="mailto:contact@anuntul.info" style={{ color: 'var(--color-primary)', fontWeight: '500', fontSize: '1.1rem' }}>
+                                            contact@anuntul.info
                                         </a>
                                     </div>
                                 </div>

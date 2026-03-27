@@ -16,11 +16,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const post = blogPosts.find(p => p.slug === slug);
 
     if (!post) {
-        return { title: 'Articol negasit - Anuntul.net' };
+        return { title: 'Articol negasit - Anuntul.info' };
     }
 
     return {
-        title: `${post.title} - Blog Anuntul.net`,
+        title: `${post.title} - Blog Anuntul.info`,
         description: post.excerpt,
         openGraph: {
             title: post.title,

@@ -19,12 +19,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     if (!article) {
         return {
-            title: 'Articolul nu a fost gasit - Anuntul.net',
+            title: 'Articolul nu a fost gasit - Anuntul.info',
         };
     }
 
     return {
-        title: `${article.title} - Anuntul.net`,
+        title: `${article.title} - Anuntul.info`,
         description: article.excerpt,
     };
 }
@@ -52,7 +52,7 @@ export default async function ArticlePage({ params }: PageProps) {
         "description": article.excerpt,
         "author": {
             "@type": "Organization",
-            "name": "Anuntul.net"
+            "name": "Anuntul.info"
         }
     };
 

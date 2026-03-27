@@ -20,11 +20,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return {
-        title: `Publicare Comunicate de Presă PNRR și Regio în ${judetInfo.nume} | Anuntul.net`,
+        title: `Publicare Comunicate de Presă PNRR și Regio în ${judetInfo.nume} | Anuntul.info`,
         description: `Servicii sigure de publicare comunicate de presă obligatorii PNRR, POR și fonduri europene în județul ${judetInfo.nume}. Conformitate MIV MIPE, dovadă +3.000 vizitatori, plată la termen.`,
         keywords: [`comunicate de presa ${judetInfo.nume}`, `publicare anunturi pnrr ${judetInfo.nume}`, `comunicate fonduri europene ${judetInfo.slug}`, `anunt incepere proiect ${judetInfo.nume}`],
         alternates: {
-            canonical: `https://anuntul.net/comunicate-de-presa/${judetSlug}`
+            canonical: `https://anuntul.info/comunicate-de-presa/${judetSlug}`
         }
     };
 }
@@ -74,7 +74,7 @@ export default async function ComunicatJudetPage({ params }: PageProps) {
                             </p>
 
                             <p className="text-lg text-slate-600 mt-6">
-                                Platforma noastră, <strong>Anuntul.net</strong>, este instrumentul media național recunoscut de autoritățile de management și organismele intermediare din județul {judetInfo.nume}. Vă oferim cel mai rapid proces de publicare online.
+                                Platforma noastră, <strong>Anuntul.info</strong>, este instrumentul media național recunoscut de autoritățile de management și organismele intermediare din județul {judetInfo.nume}. Vă oferim cel mai rapid proces de publicare online.
                             </p>
 
                             <div className="my-10 p-8 border-4 border-red-600 bg-white">

@@ -17,12 +17,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     if (!category) {
         return {
-            title: 'Categorie inexistenta - Anuntul.net',
+            title: 'Categorie inexistenta - Anuntul.info',
         };
     }
 
     return {
-        title: `Stiri din categoria ${category} - Anuntul.net`,
+        title: `Stiri din categoria ${category} - Anuntul.info`,
         description: `Cele mai noi stiri si articole din categoria ${category}.`,
     };
 }

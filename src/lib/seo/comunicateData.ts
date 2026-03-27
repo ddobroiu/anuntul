@@ -6,7 +6,7 @@ export const COMUNICATE_SEO_DATA: Record<string, LandingInfo> = {
         key: "comunicate-presa-pnrr",
         title: "Comunicate de Presă PNRR — Publicare Oficială",
         shortDescription: "Servicii de redactare și publicare comunicate de presă obligatorii pentru proiecte PNRR.",
-        seoTitle: "Comunicate Presa PNRR | Publicare si Dovada Decont | Anuntul.net",
+        seoTitle: "Comunicate Presa PNRR | Publicare si Dovada Decont | Anuntul.info",
         seoDescription: "Publică comunicatul de presă pentru proiectul tău PNRR. Asigurăm redactare conform MIV, publicare rapidă și dovadă pentru dosarul de decontare.",
         images: ["/products/comunicate/pnrr-comunicat.webp"],
         contentHtml: `<h2>Publicare Comunicat de Presă PNRR</h2><p>Conform Manualului de Identitate Vizuală PNRR, beneficiarii au obligația de a publica două comunicate de presă (la începutul și la finalizarea proiectului). Oferim soluția completă: redactare, publicare pe portal de știri cu autoritate și raport de monitorizare.</p>`
@@ -18,7 +18,7 @@ export const COMUNICATE_SEO_DATA: Record<string, LandingInfo> = {
         seoTitle: "Comunicate Presa REGIO Bucuresti-Ilfov | Publicitate Obligatorie",
         seoDescription: "Servicii media pentru proiecte REGIO în București și Ilfov. Respectăm normele de vizibilitate și oferim confirmarea publicării imediat.",
         images: ["/products/comunicate/regio-comunicat.webp"],
-        contentHtml: `<h2>Vizibilitate REGIO București-Ilfov</h2><p>Proiectele finanțate prin Programul Regional București-Ilfov necesită anunțuri în presă la momentele cheie. Anuntul.net te ajută să îndeplinești această condiție de eligibilitate rapid și sigur.</p>`
+        contentHtml: `<h2>Vizibilitate REGIO București-Ilfov</h2><p>Proiectele finanțate prin Programul Regional București-Ilfov necesită anunțuri în presă la momentele cheie. Anuntul.info te ajută să îndeplinești această condiție de eligibilitate rapid și sigur.</p>`
     },
     "comunicate-presa-regio-vest": {
         key: "comunicate-presa-regio-vest",

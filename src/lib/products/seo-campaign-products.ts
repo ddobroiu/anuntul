@@ -1946,7 +1946,7 @@ export const seoCampaignProducts: any[] = [
         slug: "comunicat-presa-fonduri-europene-anunt-oficial",
         routeSlug: "comunicat",
         title: "Comunicat de Presă Fonduri Europene",
-        description: "Vrei să anunți succesul proiectului tău? Publică un comunicat de presă profesional pe Anuntul.net pentru orice tip de finanțare europeană.",
+        description: "Vrei să anunți succesul proiectului tău? Publică un comunicat de presă profesional pe Anuntul.info pentru orice tip de finanțare europeană.",
         image: "/products/fonduri/pnrr-1.webp",
         price: "150 LEI",
         category: "Campanii SEO",

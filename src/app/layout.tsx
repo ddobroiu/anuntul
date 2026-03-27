@@ -13,10 +13,10 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://anuntul.net'),
+  metadataBase: new URL('https://anuntul.info'),
   title: {
-    template: '%s | Anuntul.net',
-    default: 'Anuntul.net - Comunicate Presa Fonduri Europene & Materiale Vizibilitate',
+    template: '%s | Anuntul.info',
+    default: 'Anuntul.info - Comunicate Presa Fonduri Europene & Materiale Vizibilitate',
   },
   description: "Platforma #1 pentru publicarea comunicatelor de presa (PNRR, POR, POCU) si achizitia de materiale de vizibilitate obligatorii (autocolante, afise, panouri temporare).",
   keywords: [
@@ -26,25 +26,25 @@ export const metadata: Metadata = {
     "panouri temporare POR", "placi permanente", "publicitate proiecte europene",
     "comunicate presa obligatorii", "manual identitate vizuala MIV", "vizibilitate MIPE"
   ],
-  authors: [{ name: "Anuntul.net" }],
-  creator: "Anuntul.net",
-  publisher: "Anuntul.net",
+  authors: [{ name: "Anuntul.info" }],
+  creator: "Anuntul.info",
+  publisher: "Anuntul.info",
   formatDetection: {
     email: false,
     address: false,
     telephone: false,
   },
   openGraph: {
-    title: 'Anuntul.net - Comunicate Fonduri Europene & Publicitate',
+    title: 'Anuntul.info - Comunicate Fonduri Europene & Publicitate',
     description: 'Servicii complete de publicare comunicate si materiale de vizibilitate pentru proiecte cu finantare europeana.',
-    url: 'https://anuntul.net',
-    siteName: 'Anuntul.net',
+    url: 'https://anuntul.info',
+    siteName: 'Anuntul.info',
     locale: 'ro_RO',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Anuntul.net - Comunicate & Vizibilitate PNRR',
+    title: 'Anuntul.info - Comunicate & Vizibilitate PNRR',
     description: 'Publicare rapida comunicate si livrare kituri vizibilitate (afise, autocolante) pentru proiecte europene.',
   },
   robots: {
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   category: 'business',
   classification: 'Publicity Services',
   alternates: {
-    canonical: 'https://anuntul.net',
+    canonical: 'https://anuntul.info',
   },
   verification: {
     google: 'verification_token_here', // Optional: User should replace with real token
@@ -72,6 +72,8 @@ export const metadata: Metadata = {
   },
 };
 
+import ContactButton from "@/components/ContactButton";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -81,6 +83,7 @@ export default function RootLayout({
     <html lang="ro">
       <body className={`${inter.variable} ${playfair.variable} antialiased`}>
         {children}
+        <ContactButton />
       </body>
     </html>
   );

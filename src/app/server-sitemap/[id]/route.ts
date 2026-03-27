@@ -4,7 +4,7 @@ import { blogPosts } from '@/lib/blog-data';
 import { JUDETE_FULL_DATA } from '@/lib/localitati';
 import { getProducts } from '@/lib/products';
 
-const BASE_URL = 'https://anuntul.net';
+const BASE_URL = 'https://anuntul.info';
 
 function generateUrlNode(url: string, priority: string, changefreq: string) {
     return `  <url>\n    <loc>${url}</loc>\n    <lastmod>${new Date().toISOString()}</lastmod>\n    <changefreq>${changefreq}</changefreq>\n    <priority>${priority}</priority>\n  </url>\n`;

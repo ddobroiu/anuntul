@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Politica de Confidențialitate - Anuntul.net',
+    title: 'Politica de Confidențialitate - Anuntul.info',
     description: 'Politica de confidențialitate și prelucrarea datelor cu caracter personal conform GDPR.',
 };
 
@@ -23,7 +23,7 @@ export default function PrivacyPage() {
                             Societatea <strong>Culoarea din Viata SRL</strong>, înregistrată la Registrul Comerțului sub numărul <strong>J2021001108100</strong>, cod unic de înregistrare <strong>44820819</strong>, funcționează în conformitate cu legile din România, respectă confidențialitatea datelor personale furnizate de persoanele vizate și se angajează să o protejeze prin respectarea prezentei Politici de confidențialitate.
                         </p>
                         <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-                            Societatea este operator în ceea ce privește prelucrarea datelor dumneavoastră cu caracter personal, în sensul Regulamentului UE 2016/679 pentru protecția persoanelor cu privire la prelucrarea datelor cu caracter personal și libera circulație a acestor date (Regulamentul General privind Protecția Datelor). Prezenta Politică de confidențialitate descrie informațiile cu caracter personal pe care le colectăm de la dumneavoastră sau pe care le furnizați <strong>www.anuntul.net</strong> („Platforma” noastră) și modul în care aceste informații pot fi utilizate sau divulgate de noi.
+                            Societatea este operator în ceea ce privește prelucrarea datelor dumneavoastră cu caracter personal, în sensul Regulamentului UE 2016/679 pentru protecția persoanelor cu privire la prelucrarea datelor cu caracter personal și libera circulație a acestor date (Regulamentul General privind Protecția Datelor). Prezenta Politică de confidențialitate descrie informațiile cu caracter personal pe care le colectăm de la dumneavoastră sau pe care le furnizați <strong>www.anuntul.info</strong> („Platforma” noastră) și modul în care aceste informații pot fi utilizate sau divulgate de noi.
                         </p>
                         <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
                             Politica noastră de confidențialitate nu se aplică informațiilor colectate de pe orice site terț care poate avea un link către sau este accesibil de pe Platforma noastră.
@@ -86,7 +86,7 @@ export default function PrivacyPage() {
                             <li>adresarea justiției.</li>
                         </ul>
                         <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-                            Pentru exercitarea acestor drepturi, puteți trimite o cerere la <a href="mailto:contact@anuntul.net" style={{ color: 'var(--color-primary)' }}>contact@anuntul.net</a>.
+                            Pentru exercitarea acestor drepturi, puteți trimite o cerere la <a href="mailto:contact@anuntul.info" style={{ color: 'var(--color-primary)' }}>contact@anuntul.info</a>.
                         </p>
                     </section>
 
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
                     <section style={{ marginBottom: '2rem' }}>
                         <h2 style={{ fontSize: '1.25rem', marginBottom: '1rem', fontWeight: '600', color: 'var(--color-text)' }}>Sesizări și Contact</h2>
                         <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
-                            Pentru orice îngrijorare legată de confidențialitate, întrebări sau comentarii, ne puteți contacta prin formularul de pe site sau la <a href="mailto:contact@anuntul.net" style={{ color: 'var(--color-primary)' }}>contact@anuntul.net</a>.
+                            Pentru orice îngrijorare legată de confidențialitate, întrebări sau comentarii, ne puteți contacta prin formularul de pe site sau la <a href="mailto:contact@anuntul.info" style={{ color: 'var(--color-primary)' }}>contact@anuntul.info</a>.
                         </p>
                     </section>
 

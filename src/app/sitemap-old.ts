@@ -4,7 +4,7 @@ import { getAllArticles } from '@/lib/articles';
 import { regions, categories } from '@/lib/data';
 import { blogPosts } from '@/lib/blog-data';
 
-const BASE_URL = 'https://anuntul.net';
+const BASE_URL = 'https://anuntul.info';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const articles = await getAllArticles();

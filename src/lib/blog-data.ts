@@ -38,10 +38,10 @@ export const blogPosts: BlogPost[] = [
             </ul>
 
             <h3>Unde trebuie publicat?</h3>
-            <p>Pentru a fi acceptat la decontare, comunicatul trebuie publicat într-o publicație cu acoperire relevantă (națională sau regională, în funcție de specificul apelului). Anuntul.net oferă platforma ideală pentru publicarea acestor anunțuri, asigurând totodată dovada de trafic necesară dosarului de plată.</p>
+            <p>Pentru a fi acceptat la decontare, comunicatul trebuie publicat într-o publicație cu acoperire relevantă (națională sau regională, în funcție de specificul apelului). Anuntul.info oferă platforma ideală pentru publicarea acestor anunțuri, asigurând totodată dovada de trafic necesară dosarului de plată.</p>
         `,
         publishDate: '2026-02-10',
-        author: 'Echipa Anuntul.net',
+        author: 'Echipa Anuntul.info',
         image: 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?q=80&w=2070&auto=format&fit=crop',
         category: 'Ghiduri'
     },
@@ -70,7 +70,7 @@ export const blogPosts: BlogPost[] = [
                 <li>Dimensiuni neconforme ale caracterelor în raport cu restul textului.</li>
             </ul>
 
-            <p>La Anuntul.net, nu doar că publicăm comunicatele, dar oferim și kituri complete de materiale publicitare realizate direct conform manualului de identitate vizuală aplicabil.</p>
+            <p>La Anuntul.info, nu doar că publicăm comunicatele, dar oferim și kituri complete de materiale publicitare realizate direct conform manualului de identitate vizuală aplicabil.</p>
         `,
         publishDate: '2026-02-15',
         author: 'Expert Fonduri',
@@ -99,7 +99,7 @@ export const blogPosts: BlogPost[] = [
             <p>Titlul trebuie să fie scurt, informativ și să includă obligatoriu numele programului de finanțare pentru conformitate. Evitați limbajul prea tehnic în primele paragrafe; păstrați jargonul pentru secțiunile de detalii administrative.</p>
 
             <h3>Dovada de trafic - Confirmarea succesului</h3>
-            <p>Publicarea unui comunicat nu este suficientă; agențiile de management solicită adesea dovezi ale audienței. Anuntul.net oferă statistici transparente pentru comunicatele publicate, asigurând conformitatea deplină cu indicatorii de comunicare asumați în cererea de finanțare.</p>
+            <p>Publicarea unui comunicat nu este suficientă; agențiile de management solicită adesea dovezi ale audienței. Anuntul.info oferă statistici transparente pentru comunicatele publicate, asigurând conformitatea deplină cu indicatorii de comunicare asumați în cererea de finanțare.</p>
         `,
         publishDate: '2026-02-18',
         author: 'Specialist PR',
@@ -123,7 +123,7 @@ export const blogPosts: BlogPost[] = [
                 <li>URL-ul direct unde a fost publicat materialul.</li>
             </ul>
 
-            <p>Platforma <strong>Anuntul.net</strong> generează automat aceste rapoarte pentru fiecare client, oferind un document oficial ce poate fi anexat direct în MySMIS sau platforma de raportare PNRR. Având un trafic constant de peste 3000 de utilizatori unici lunar, comunicatele noastre îndeplinesc criteriile de audiență relevantă solicitate de evaluatori.</p>
+            <p>Platforma <strong>Anuntul.info</strong> generează automat aceste rapoarte pentru fiecare client, oferind un document oficial ce poate fi anexat direct în MySMIS sau platforma de raportare PNRR. Având un trafic constant de peste 3000 de utilizatori unici lunar, comunicatele noastre îndeplinesc criteriile de audiență relevantă solicitate de evaluatori.</p>
         `,
         publishDate: '2026-02-19',
         author: 'Consultant SEO',
@@ -138,7 +138,7 @@ export const blogPosts: BlogPost[] = [
         content: `
             <p>Pentru primării, școli și alte instituții publice, achiziția serviciilor de publicitate trebuie să treacă prin catalogul electronic SEAP/SICAP. Acest proces poate părea birocratic, dar este esențial pentru legalitatea cheltuielii.</p>
             
-            <h3>Cum găsești produsele Anuntul.net în SEAP?</h3>
+            <h3>Cum găsești produsele Anuntul.info în SEAP?</h3>
             <p>Produsele noastre sunt listate sub coduri CPV specifice publicității și tipăriturilor:</p>
             <ul>
                 <li><strong>79341000-6:</strong> Servicii de publicitate (pentru comunicate).</li>
@@ -169,7 +169,7 @@ export const blogPosts: BlogPost[] = [
             <h3>3. Zona de protecție a logourilor</h3>
             <p>Logourile nu trebuie să fie înghesuite spre margini sau suprapuse peste alte elemente grafice. Fiecare are nevoie de un "spațiu de respirație" clar definit în manual.</p>
 
-            <p>Comandând un kit de vizibilitate de la Anuntul.net, ai garanția că designul este verificat de specialiști care cunosc manualele MIPE și PNRR pe dinafară.</p>
+            <p>Comandând un kit de vizibilitate de la Anuntul.info, ai garanția că designul este verificat de specialiști care cunosc manualele MIPE și PNRR pe dinafară.</p>
         `,
         publishDate: '2026-02-21',
         author: 'Designer MIV',
@@ -195,13 +195,13 @@ export const blogPosts: BlogPost[] = [
             <p>Pentru proiectele care necesită o prezentare de lux sau ambalaje personalizate pentru evenimente de lansare, <strong><a href="https://prynt.ro" target="_blank">Prynt.ro</a></strong> oferă soluții de tipar digital premium care ridică standardul de imagine al oricărei instituții sau companii beneficiare.</p>
 
             <h3>Sincronizarea cu Comunicatul de Presă</h3>
-            <p>Vizibilitatea fizică merge mână în mână cu cea media. În timp ce panourile sunt instalate la sediu, comunicatele de presă trebuie publicate pe platforme cu trafic verificat. La <strong>Anuntul.net</strong>, ne asigurăm că partea de informare publică este acoperită perfect, oferind dovezile de trafic necesare decontării, în timp ce partenerii noștri se ocupă de producția publicitară propriu-zisă.</p>
+            <p>Vizibilitatea fizică merge mână în mână cu cea media. În timp ce panourile sunt instalate la sediu, comunicatele de presă trebuie publicate pe platforme cu trafic verificat. La <strong>Anuntul.info</strong>, ne asigurăm că partea de informare publică este acoperită perfect, oferind dovezile de trafic necesare decontării, în timp ce partenerii noștri se ocupă de producția publicitară propriu-zisă.</p>
 
             <h3>Concluzie</h3>
-            <p>Alegerea unui furnizor "ieftin" poate costa scump în final prin corecții financiare. Optați pentru parteneri care înțeleg legislația și ghidurile de finanțare. Un kit complet de la <a href="https://euprint.ro">EuPrint.ro</a> și o publicare rapidă pe Anuntul.net reprezintă rețeta sigură pentru succesul auditului de vizibilitate.</p>
+            <p>Alegerea unui furnizor "ieftin" poate costa scump în final prin corecții financiare. Optați pentru parteneri care înțeleg legislația și ghidurile de finanțare. Un kit complet de la <a href="https://euprint.ro">EuPrint.ro</a> și o publicare rapidă pe Anuntul.info reprezintă rețeta sigură pentru succesul auditului de vizibilitate.</p>
         `,
         publishDate: '2026-03-12',
-        author: 'Echipa Anuntul.net',
+        author: 'Echipa Anuntul.info',
         image: 'https://images.unsplash.com/photo-1557804506-669a67965ba0?q=80&w=2074&auto=format&fit=crop',
         category: 'Vizibilitate'
     }

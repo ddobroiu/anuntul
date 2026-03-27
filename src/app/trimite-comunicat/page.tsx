@@ -5,8 +5,8 @@ import Footer from '@/components/Footer';
 import PressReleaseForm from '@/components/PressReleaseForm';
 
 export const metadata: Metadata = {
-    title: 'Trimite Comunicat de Presa - Anuntul.net',
-    description: 'Publica gratuit comunicate de presa si stiri din regiunea ta pe Anuntul.net',
+    title: 'Trimite Comunicat de Presa - Anuntul.info',
+    description: 'Publica gratuit comunicate de presa si stiri din regiunea ta pe Anuntul.info',
 };
 
 export default function SubmitPage() {
@@ -18,7 +18,7 @@ export default function SubmitPage() {
                     <h1 style={{ marginBottom: '1rem', fontSize: '2.5rem' }}>Trimite un Comunicat</h1>
                     <p style={{ color: 'var(--color-text-muted)', fontSize: '1.1rem' }}>
                         Ai o stire importanta sau un anunt pentru comunitatea ta?
-                        Completeaza formularul de mai jos pentru a publica articolul pe Anuntul.net.
+                        Completeaza formularul de mai jos pentru a publica articolul pe Anuntul.info.
                     </p>
                 </div>
 

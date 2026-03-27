@@ -1,7 +1,7 @@
 import { JUDETE_FULL_DATA } from "@/lib/localitati";
 import { getProducts } from "@/lib/products";
 
-const BASE_URL = 'https://anuntul.net';
+const BASE_URL = 'https://anuntul.info';
 
 export const dynamic = 'force-dynamic';
 
