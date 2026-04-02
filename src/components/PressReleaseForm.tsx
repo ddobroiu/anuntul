@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useRef, useTransition } from 'react';
 import { Upload, Send, CheckCircle, PlusCircle, Paperclip, Plus, Minus } from 'lucide-react';
+import React, { useState, useRef, useTransition, useEffect } from 'react';
 import { sendPressReleaseEmail } from '@/app/actions';
 
 export default function PressReleaseForm() {
@@ -11,10 +11,9 @@ export default function PressReleaseForm() {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [wantsVisualIdentity, setWantsVisualIdentity] = useState(false);
-    const [selections, setSelections] = useState<Record<string, string>>({});
-
+    const [wantsProof, setWantsProof] = useState(false);
+    
     const FONDURI_EU_GROUPS = {
-        vi_comunicat: { title: "Comunicat de presă", options: [{ id: "none", label: "Fără comunicat", price: 0 }, { id: "start", label: "Începere proiect", price: 690 }, { id: "final", label: "Finalizare", price: 690 }, { id: "start+final", label: "Începere + Finalizare", price: 1380 }] },
         vi_banner: { title: "Banner site", options: [{ id: "none", label: "Fără banner", price: 0 }, { id: "with", label: "Banner site (Digital)", price: 100 }] },
         vi_afis: { title: "Afiș informativ", options: [{ id: "none", label: "Fără afiș", price: 0 }, { id: "A4", label: "Format A4", price: 19 }, { id: "A3", label: "Format A3", price: 49 }, { id: "A2", label: "Format A2", price: 79 }] },
         vi_auto_mici: { title: "Autocolante mici", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "10x10-20", label: "10×10 cm (set 20 buc)", price: 49 }, { id: "15x15-10", label: "15×15 cm (set 10 buc)", price: 49 }, { id: "15x21-5", label: "15×21 cm (set 5 buc)", price: 49 }] },
@@ -23,16 +22,35 @@ export default function PressReleaseForm() {
         vi_placa: { title: "Placă permanentă", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "150x100", label: "150×100 cm", price: 550 }] },
     };
 
-    const handleSelection = (key: string, value: string) => {
-        setSelections(p => ({ ...p, [key]: value }));
+    const [kitItems, setKitItems] = useState<Record<string, { optionId: string, qty: number }>>(() => {
+        const initial: Record<string, { optionId: string, qty: number }> = {};
+        Object.keys(FONDURI_EU_GROUPS).forEach(k => {
+            initial[k] = { optionId: 'none', qty: 1 };
+        });
+        return initial;
+    });
+
+    const handleKitSelect = (key: string, optionId: string) => {
+        setKitItems(p => ({ ...p, [key]: { ...p[key], optionId } }));
     };
 
-    let totalKit = 0;
-    Object.entries(FONDURI_EU_GROUPS).forEach(([key, group]) => {
-        const selectedId = selections[key] || "none";
-        const opt = group.options.find(o => o.id === selectedId);
-        if (opt) totalKit += opt.price;
-    });
+    const handleKitQty = (key: string, delta: number, e: React.MouseEvent) => {
+        e.preventDefault();
+        setKitItems(p => ({ ...p, [key]: { ...p[key], qty: Math.max(1, p[key].qty + delta) } }));
+    };
+
+    const pressReleasePrice = 490 + (wantsProof ? 200 : 0);
+    let kitTotal = 0;
+    if (wantsVisualIdentity) {
+        Object.entries(FONDURI_EU_GROUPS).forEach(([key, group]) => {
+            const item = kitItems[key];
+            if (item && item.optionId !== 'none') {
+                const opt = group.options.find(o => o.id === item.optionId);
+                if (opt) kitTotal += opt.price * item.qty;
+            }
+        });
+    }
+    const grandTotal = pressReleasePrice + kitTotal;
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -191,59 +209,106 @@ export default function PressReleaseForm() {
             </div>
 
             <div className="mt-8 border-t-2 border-slate-100 pt-6">
-                <label className="flex items-center gap-3 cursor-pointer group mb-2">
-                    <input
-                        type="checkbox"
-                        checked={wantsVisualIdentity}
-                        onChange={(e) => setWantsVisualIdentity(e.target.checked)}
-                        className="w-6 h-6 text-red-600 border-2 border-slate-300 rounded-none focus:ring-red-600 focus:ring-2"
-                    />
-                    <span style={{...labelStyle, marginBottom: 0}} className="group-hover:text-red-600 transition-colors">Doresc și kit de identitate vizuală (Gen Print / Fonduri Europene PNRR)</span>
-                </label>
-
-                {wantsVisualIdentity && (
-                    <div className="mt-4 bg-slate-50 p-6 border-l-4 border-red-600 shadow-sm transition-all duration-300">
-                        <h4 className="font-extrabold uppercase tracking-widest text-sm mb-6 text-slate-800">Selectați materialele vizuale necesare:</h4>
-                        
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
-                            {Object.entries(FONDURI_EU_GROUPS).map(([key, group]) => (
-                                <div key={key} className="bg-white p-4 border border-slate-200">
-                                    <label className="block text-sm font-bold text-slate-800 uppercase mb-2">
-                                        {group.title}
-                                    </label>
-                                    <select 
-                                        name={key}
-                                        value={selections[key] || "none"}
-                                        onChange={(e) => handleSelection(key, e.target.value)}
-                                        className="w-full p-2 border-2 border-slate-200 rounded-none text-sm focus:border-red-600 outline-none hover:border-red-400 focus:ring-0 transition-colors"
-                                    >
-                                        {group.options.map(opt => (
-                                            <option key={opt.id} value={opt.id}>
-                                                {opt.label} {opt.price > 0 ? `(+${opt.price} Lei)` : ''}
-                                            </option>
-                                        ))}
-                                    </select>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div className="bg-slate-900 border-l-4 border-red-600 p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                            <div>
-                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Estimat Kit Identitate Vizuală</p>
-                                <p className="text-3xl font-black text-white italic tracking-tighter leading-none">{totalKit} LEI</p>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-xs font-medium text-slate-400 max-w-[200px]">* Costul este orientativ. Veți primi o ofertă finală personalizată care va fi confirmată cu dumneavoastră.</p>
-                            </div>
-                        </div>
-
-                        <input type="hidden" name="wantsVisualIdentity" value="yes" />
-                        <input type="hidden" name="visualKitTotal" value={totalKit} />
+                <div className="bg-slate-50 border-l-4 border-black p-6 mb-8 mt-2">
+                    <h4 className="font-extrabold uppercase tracking-widest text-sm mb-4 text-slate-800">1. Servicii Publicare Comunicat</h4>
+                    <div className="flex items-center justify-between mb-4 border-b border-slate-200 pb-4">
+                        <span className="font-bold text-slate-700">Publicare Standard (Taxă bază)</span>
+                        <span className="font-black text-xl text-black">490 LEI</span>
                     </div>
-                )}
+                    <label className="flex items-center gap-3 cursor-pointer group mt-2 bg-white p-4 border border-slate-200 hover:border-slate-300 transition-colors">
+                        <input
+                            type="checkbox"
+                            checked={wantsProof}
+                            onChange={(e) => setWantsProof(e.target.checked)}
+                            className="w-5 h-5 text-black border-2 border-slate-300 rounded-none focus:ring-black focus:ring-2"
+                        />
+                        <div className="flex-1 flex justify-between items-center">
+                            <span className="font-bold text-sm text-slate-700">Doresc dovadă de performanță (3000 de vizitatori unici)</span>
+                            <span className="font-black text-md text-slate-800">+ 200 LEI</span>
+                        </div>
+                    </label>
+                </div>
+
+                <div className="bg-slate-50 border-l-4 border-red-600 p-6 pt-5 mb-8">
+                    <h4 className="font-extrabold uppercase tracking-widest text-sm mb-4 text-slate-800">2. Identitate Vizuală (Kit PNRR / Fonduri EU)</h4>
+                    <label className="flex items-center gap-3 cursor-pointer group bg-white p-4 border border-slate-200">
+                        <input
+                            type="checkbox"
+                            checked={wantsVisualIdentity}
+                            onChange={(e) => setWantsVisualIdentity(e.target.checked)}
+                            className="w-6 h-6 text-red-600 border-2 border-slate-300 rounded-none focus:ring-red-600 focus:ring-2"
+                        />
+                        <span className="font-bold text-sm text-slate-700 group-hover:text-red-600 transition-colors">Adaugă materiale de vizibilitate fizice la comandă</span>
+                    </label>
+
+                    {wantsVisualIdentity && (
+                        <div className="mt-6 border-t border-slate-200 pt-6 transition-all duration-300">
+                            <p className="font-extrabold uppercase tracking-widest text-[11px] mb-4 text-slate-500">Configurați materialele necesare:</p>
+                            
+                            <div className="grid grid-cols-1 gap-4 mb-6">
+                                {Object.entries(FONDURI_EU_GROUPS).map(([key, group]) => (
+                                    <div key={key} className="bg-white p-4 border border-slate-200 flex flex-col sm:flex-row sm:items-center gap-4">
+                                        <div className="flex-1">
+                                            <label className="block text-sm font-bold text-slate-800 uppercase mb-2">
+                                                {group.title}
+                                            </label>
+                                            <select 
+                                                name={`${key}_option`}
+                                                value={kitItems[key].optionId}
+                                                onChange={(e) => handleKitSelect(key, e.target.value)}
+                                                className="w-full p-2 border-2 border-slate-200 rounded-none text-sm focus:border-red-600 outline-none hover:border-red-400 focus:ring-0 transition-colors"
+                                            >
+                                                {group.options.map(opt => (
+                                                    <option key={opt.id} value={opt.id}>
+                                                        {opt.label} {opt.price > 0 ? `(+${opt.price} Lei)` : ''}
+                                                    </option>
+                                                ))}
+                                            </select>
+                                        </div>
+                                        {kitItems[key].optionId !== 'none' && (
+                                            <div className="flex items-center gap-3 sm:mt-6">
+                                                <span className="text-xs font-bold text-slate-500 uppercase">Cantitate</span>
+                                                <div className="flex items-center border-2 border-slate-200 bg-slate-50">
+                                                    <button onClick={(e) => handleKitQty(key, -1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Minus size={16} /></button>
+                                                    <input 
+                                                        type="text" 
+                                                        readOnly 
+                                                        name={`${key}_qty`}
+                                                        value={kitItems[key].qty}
+                                                        className="w-10 text-center text-sm font-bold bg-transparent outline-none border-x-2 border-slate-200"
+                                                    />
+                                                    <button onClick={(e) => handleKitQty(key, 1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Plus size={16} /></button>
+                                                </div>
+                                            </div>
+                                        )}
+                                        {/* Submit default values if none to avoid missing fields */}
+                                        {kitItems[key].optionId === 'none' && <input type="hidden" name={`${key}_qty`} value="1" />}
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+                </div>
             </div>
 
-            <div className="mt-10 border-t-2 border-slate-100 pt-8">
+            <div className="bg-slate-900 text-white p-8 flex flex-col sm:flex-row justify-between items-center gap-4 mb-8">
+                <div>
+                    <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total De Plată Estimat</p>
+                    <p className="text-4xl font-black italic tracking-tighter leading-none">{grandTotal} LEI</p>
+                </div>
+                <div className="text-right flex flex-col items-end">
+                    <p className="text-sm font-medium text-slate-300">Publicare: {pressReleasePrice} Lei</p>
+                    {wantsVisualIdentity && <p className="text-sm font-medium text-red-400">Kit Materiale: {kitTotal} Lei</p>}
+                </div>
+            </div>
+
+            <input type="hidden" name="wantsProof" value={wantsProof ? 'yes' : 'no'} />
+            <input type="hidden" name="wantsVisualIdentity" value={wantsVisualIdentity ? 'yes' : 'no'} />
+            <input type="hidden" name="grandTotal" value={grandTotal} />
+            <input type="hidden" name="pressReleasePrice" value={pressReleasePrice} />
+            <input type="hidden" name="kitTotal" value={kitTotal} />
+
+            <div className="mt-4 border-t-2 border-slate-100 pt-8">
                 <button
                     type="submit"
                     disabled={isPending}

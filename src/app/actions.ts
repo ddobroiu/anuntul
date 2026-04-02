@@ -82,26 +82,29 @@ export async function sendPressReleaseEmail(formData: FormData) {
   const attachment = formData.get('attachment') as File | null;
 
   const wantsVisualIdentity = formData.get('wantsVisualIdentity') === 'yes';
-  const visualKitTotal = formData.get('visualKitTotal') as string;
+  const wantsProof = formData.get('wantsProof') === 'yes';
+  const grandTotal = formData.get('grandTotal') as string;
+  const pressReleasePrice = formData.get('pressReleasePrice') as string;
+  const kitTotal = formData.get('kitTotal') as string;
   
   const FONDURI_EU_GROUPS = {
-    vi_comunicat: { title: "Comunicat de presă", options: [{ id: "start", label: "Începere proiect (dovadă 3000 vizitatori)" }, { id: "final", label: "Finalizare (dovadă 3000 vizitatori)" }, { id: "start+final", label: "Începere + Finalizare" }] },
-    vi_banner: { title: "Banner site", options: [{ id: "with", label: "Banner site (Digital)" }] },
-    vi_afis: { title: "Afiș informativ", options: [{ id: "A4", label: "Format A4" }, { id: "A3", label: "Format A3" }, { id: "A2", label: "Format A2" }] },
-    vi_auto_mici: { title: "Autocolante mici", options: [{ id: "10x10-20", label: "10×10 cm (set 20 buc)" }, { id: "15x15-10", label: "15×15 cm (set 10 buc)" }, { id: "15x21-5", label: "15×21 cm (set 5 buc)" }] },
-    vi_auto_mari: { title: "Autocolante mari", options: [{ id: "30x30-3", label: "30×30 cm (set 3 buc)" }, { id: "40x40-1", label: "40×40 cm (1 buc)" }] },
-    vi_panou: { title: "Panou temporar", options: [{ id: "A2", label: "Format A2" }, { id: "80x50", label: "80×50 cm" }, { id: "200x150", label: "200×150 cm" }, { id: "300x200", label: "300×200 cm" }] },
-    vi_placa: { title: "Placă permanentă", options: [{ id: "A2", label: "Format A2" }, { id: "80x50", label: "80×50 cm" }, { id: "150x100", label: "150×100 cm" }] },
+    vi_banner: { title: "Banner site", options: [{ id: "none", label: "Fără banner", price: 0 }, { id: "with", label: "Banner site (Digital)", price: 100 }] },
+    vi_afis: { title: "Afiș informativ", options: [{ id: "none", label: "Fără afiș", price: 0 }, { id: "A4", label: "Format A4", price: 19 }, { id: "A3", label: "Format A3", price: 49 }, { id: "A2", label: "Format A2", price: 79 }] },
+    vi_auto_mici: { title: "Autocolante mici", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "10x10-20", label: "10×10 cm (set 20 buc)", price: 49 }, { id: "15x15-10", label: "15×15 cm (set 10 buc)", price: 49 }, { id: "15x21-5", label: "15×21 cm (set 5 buc)", price: 49 }] },
+    vi_auto_mari: { title: "Autocolante mari", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "30x30-3", label: "30×30 cm (set 3 buc)", price: 49 }, { id: "40x40-1", label: "40×40 cm (1 buc)", price: 49 }] },
+    vi_panou: { title: "Panou temporar", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "200x150", label: "200×150 cm", price: 700 }, { id: "300x200", label: "300×200 cm", price: 1190 }] },
+    vi_placa: { title: "Placă permanentă", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "150x100", label: "150×100 cm", price: 550 }] },
   };
 
   const visualIdentitySelected = Object.keys(FONDURI_EU_GROUPS)
     .map(key => {
-      const selectedId = formData.get(key) as string;
+      const selectedId = formData.get(`${key}_option`) as string;
+      const qty = parseInt(formData.get(`${key}_qty`) as string || '1', 10);
       if (!selectedId || selectedId === 'none') return null;
       
       const groupInfo = (FONDURI_EU_GROUPS as any)[key];
       const option = groupInfo.options.find((o: any) => o.id === selectedId);
-      return option ? `${groupInfo.title}: <strong>${option.label}</strong>` : null;
+      return option ? `&bull; ${groupInfo.title}: <strong>${option.label}</strong> (x${qty} buc)` : null;
     })
     .filter(Boolean)
     .join('<br />');
@@ -122,14 +125,28 @@ export async function sendPressReleaseEmail(formData: FormData) {
           <p><strong>Titlu propus:</strong> ${title}</p>
           ${attachment && attachment.size > 0 ? `<p style="color: #cc0000; font-weight: bold;">📎 Fișier atașat: ${attachment.name}</p>` : ''}
           
+          <h3 style="color: #1a1a1a; text-transform: uppercase; font-size: 0.9rem;">Detalii Financiare / Servicii Solicitate</h3>
+          <div style="background-color: #fafafa; padding: 15px; border: 1px solid #eee; margin-bottom: 20px;">
+            <p style="margin: 0 0 10px 0;"><strong>Servicii Publicare:</strong></p>
+            <ul style="margin: 0; padding-left: 20px;">
+              <li>Publicare Standard: 490 LEI</li>
+              ${wantsProof ? '<li>Dovadă performanță (3000 vizitatori unici): +200 LEI</li>' : ''}
+            </ul>
+            <p style="margin: 10px 0 0 0;">Total Publicare: <strong>${pressReleasePrice} LEI</strong></p>
+          </div>
+
           ${wantsVisualIdentity ? `
           <div style="background-color: #fafafa; padding: 15px; border-left: 4px solid #cc0000; margin: 15px 0;">
-            <strong style="color: #cc0000; text-transform: uppercase;">A solicitat Kit Identitate Vizuală (Print/PNRR)</strong><br /><br />
+            <strong style="color: #cc0000; text-transform: uppercase;">A solicitat și Kit Identitate Vizuală (Print/PNRR)</strong><br /><br />
             <div style="font-size: 14px; line-height: 1.6;">
-              ${visualIdentitySelected || '<em>A bifat interesul, dar nu a selectat cantități specifice.</em>'}
+              ${visualIdentitySelected || '<em>A bifat opțiunea, dar nu a configurat materiale.'}
             </div>
-            ${visualIdentitySelected ? `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; font-weight: bold;">Valoare estimată: ${visualKitTotal} LEI</div>` : ''}
+            ${visualIdentitySelected ? `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; font-weight: bold;">Valoare estimată Kit PNRR: ${kitTotal} LEI</div>` : ''}
           </div>` : ''}
+
+          <div style="background-color: #000; color: #fff; padding: 15px; text-transform: uppercase; font-weight: bold; font-size: 1.1rem; margin: 20px 0;">
+            TOTAL ESTIMAT DE FACTURAT: ${grandTotal} LEI
+          </div>
 
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
           
