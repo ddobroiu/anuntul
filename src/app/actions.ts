@@ -82,15 +82,25 @@ export async function sendPressReleaseEmail(formData: FormData) {
   const attachment = formData.get('attachment') as File | null;
 
   const wantsVisualIdentity = formData.get('wantsVisualIdentity') === 'yes';
-  const vi_panou = formData.get('vi_panou') as string;
-  const vi_placa = formData.get('vi_placa') as string;
-  const vi_auto_mici = formData.get('vi_auto_mici') as string;
-  const vi_auto_mari = formData.get('vi_auto_mari') as string;
-  const vi_afis = formData.get('vi_afis') as string;
-  const vi_banner = formData.get('vi_banner') as string;
-  const vi_comunicat = formData.get('vi_comunicat') as string;
+  const visualKitTotal = formData.get('visualKitTotal') as string;
+  
+  const visualItems = [
+    { key: 'vi_comunicat', label: 'Publicare Comunicat Media' },
+    { key: 'vi_banner', label: 'Banner Digital Site' },
+    { key: 'vi_afis', label: 'Afiș Informativ A3' },
+    { key: 'vi_auto_mici', label: 'Autocolante Mici (Set 20 buc)' },
+    { key: 'vi_auto_mari', label: 'Autocolant Mare Utilitaje/Auto' },
+    { key: 'vi_panou', label: 'Panou Temporar' },
+    { key: 'vi_placa', label: 'Placă Permanentă' },
+  ];
 
-  const visualIdentitySelected = [vi_comunicat, vi_banner, vi_afis, vi_auto_mici, vi_auto_mari, vi_panou, vi_placa].filter(Boolean).join(', ');
+  const visualIdentitySelected = visualItems
+    .map(item => {
+      const qty = parseInt((formData.get(item.key) as string) || '0', 10);
+      return qty > 0 ? `${item.label}: ${qty} buc` : null;
+    })
+    .filter(Boolean)
+    .join('<br />');
 
   try {
     const emailPayload: any = {
@@ -110,8 +120,11 @@ export async function sendPressReleaseEmail(formData: FormData) {
           
           ${wantsVisualIdentity ? `
           <div style="background-color: #fafafa; padding: 15px; border-left: 4px solid #cc0000; margin: 15px 0;">
-            <strong style="color: #cc0000; text-transform: uppercase;">A solicitat Kit Identitate Vizuală (Print/PNRR)</strong><br />
-            Opțiuni materiale necesare: <strong>${visualIdentitySelected || 'A bifat interesul (fără materiale specifice selectate)'}</strong>
+            <strong style="color: #cc0000; text-transform: uppercase;">A solicitat Kit Identitate Vizuală (Print/PNRR)</strong><br /><br />
+            <div style="font-size: 14px; line-height: 1.6;">
+              ${visualIdentitySelected || '<em>A bifat interesul, dar nu a selectat cantități specifice.</em>'}
+            </div>
+            ${visualIdentitySelected ? `<div style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ccc; font-weight: bold;">Valoare estimată: ${visualKitTotal} LEI</div>` : ''}
           </div>` : ''}
 
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />

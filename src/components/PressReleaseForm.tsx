@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useTransition } from 'react';
-import { Upload, Send, CheckCircle, PlusCircle, Paperclip } from 'lucide-react';
+import { Upload, Send, CheckCircle, PlusCircle, Paperclip, Plus, Minus } from 'lucide-react';
 import { sendPressReleaseEmail } from '@/app/actions';
 
 export default function PressReleaseForm() {
@@ -11,6 +11,24 @@ export default function PressReleaseForm() {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [wantsVisualIdentity, setWantsVisualIdentity] = useState(false);
+    const [quantities, setQuantities] = useState<Record<string, number>>({});
+
+    const visualKitOptions = [
+        { id: 'vi_comunicat', label: 'Publicare Comunicat Media (Ziare Nationale/Locale)', price: 450 },
+        { id: 'vi_banner', label: 'Banner Digital Site', price: 200 },
+        { id: 'vi_afis', label: 'Afiș Informativ A3 (Print Rigid)', price: 45 },
+        { id: 'vi_auto_mici', label: 'Autocolante Mici (Set 20 buc)', price: 90 },
+        { id: 'vi_auto_mari', label: 'Autocolant Mare Utilitaje/Auto', price: 150 },
+        { id: 'vi_panou', label: 'Panou Temporar PVC/Poliplan', price: 450 },
+        { id: 'vi_placa', label: 'Placă Permanentă Alucobond', price: 350 },
+    ];
+
+    const handleQty = (id: string, delta: number, e: React.MouseEvent) => {
+        e.preventDefault();
+        setQuantities(p => ({ ...p, [id]: Math.max(0, (p[id] || 0) + delta) }));
+    };
+
+    const totalKit = visualKitOptions.reduce((acc, opt) => acc + (quantities[opt.id] || 0) * opt.price, 0);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -180,41 +198,45 @@ export default function PressReleaseForm() {
                 </label>
 
                 {wantsVisualIdentity && (
-                    <div className="mt-4 bg-slate-50 p-6 border-l-4 border-red-600 space-y-4 shadow-sm">
-                        <h4 className="font-extrabold uppercase tracking-widest text-sm mb-4 text-slate-800">Selectați materialele necesare:</h4>
+                    <div className="mt-4 bg-slate-50 p-6 border-l-4 border-red-600 shadow-sm transition-all duration-300">
+                        <h4 className="font-extrabold uppercase tracking-widest text-sm mb-6 text-slate-800">Adăugați materialele necesare în pachet:</h4>
                         
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
-                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
-                                <input type="checkbox" name="vi_comunicat" value="Comunicat de Presă (Digital/Ziar)" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
-                                <span className="text-sm font-bold text-slate-700">Comunicat de Presă</span>
-                            </label>
-                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
-                                <input type="checkbox" name="vi_banner" value="Banner Site" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
-                                <span className="text-sm font-bold text-slate-700">Banner Site</span>
-                            </label>
-                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
-                                <input type="checkbox" name="vi_afis" value="Afiș Informativ (A4/A3/A2)" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
-                                <span className="text-sm font-bold text-slate-700">Afiș Informativ (A4/A3/A2)</span>
-                            </label>
-                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
-                                <input type="checkbox" name="vi_auto_mici" value="Autocolante Mici" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
-                                <span className="text-sm font-bold text-slate-700">Autocolante Mici (Set)</span>
-                            </label>
-                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
-                                <input type="checkbox" name="vi_auto_mari" value="Autocolante Mari" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
-                                <span className="text-sm font-bold text-slate-700">Autocolante Mari (Set)</span>
-                            </label>
-                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
-                                <input type="checkbox" name="vi_panou" value="Panou Temporar" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
-                                <span className="text-sm font-bold text-slate-700">Panou Temporar</span>
-                            </label>
-                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
-                                <input type="checkbox" name="vi_placa" value="Placă Permanentă" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
-                                <span className="text-sm font-bold text-slate-700">Placă Permanentă</span>
-                            </label>
+                        <div className="space-y-3 mb-8">
+                            {visualKitOptions.map((opt) => (
+                                <div key={opt.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-white border border-slate-200 hover:border-slate-300 transition-colors">
+                                    <div>
+                                        <p className="text-sm font-bold text-slate-800 uppercase tracking-wide">{opt.label}</p>
+                                        <p className="text-[11px] font-black uppercase text-red-600 tracking-widest mt-1">{opt.price} Lei / buc</p>
+                                    </div>
+                                    <div className="flex items-center gap-4">
+                                        <div className="flex items-center border-2 border-slate-200 bg-slate-50">
+                                            <button onClick={(e) => handleQty(opt.id, -1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Minus size={16} /></button>
+                                            <input 
+                                                type="text" 
+                                                readOnly 
+                                                name={opt.id}
+                                                value={quantities[opt.id] || 0}
+                                                className="w-12 text-center text-sm font-bold bg-transparent outline-none border-x-2 border-slate-200"
+                                            />
+                                            <button onClick={(e) => handleQty(opt.id, 1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Plus size={16} /></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            ))}
                         </div>
+
+                        <div className="bg-slate-900 border-l-4 border-red-600 p-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                            <div>
+                                <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Total Estimat Kit Identitate Vizuală</p>
+                                <p className="text-3xl font-black text-white italic tracking-tighter leading-none">{totalKit} LEI</p>
+                            </div>
+                            <div className="text-right">
+                                <p className="text-xs font-medium text-slate-400 max-w-[200px]">* Costul este orientativ. Veți primi o ofertă finală personalizată care va fi confirmată cu dumneavoastră.</p>
+                            </div>
+                        </div>
+
                         <input type="hidden" name="wantsVisualIdentity" value="yes" />
-                        <p className="text-xs text-slate-500 mt-4 italic">* Veți fi contactat pentru o ofertă personalizată conform manualului de identitate vizuală al proiectului dumneavoastră.</p>
+                        <input type="hidden" name="visualKitTotal" value={totalKit} />
                     </div>
                 )}
             </div>
