@@ -83,6 +83,7 @@ export async function sendPressReleaseEmail(formData: FormData) {
 
   const wantsVisualIdentity = formData.get('wantsVisualIdentity') === 'yes';
   const wantsProof = formData.get('wantsProof') === 'yes';
+  const pressReleaseQty = parseInt(formData.get('pressReleaseQty') as string || '1', 10);
   const grandTotal = formData.get('grandTotal') as string;
   const pressReleasePrice = formData.get('pressReleasePrice') as string;
   const kitTotal = formData.get('kitTotal') as string;
@@ -134,8 +135,8 @@ export async function sendPressReleaseEmail(formData: FormData) {
           <div style="background-color: #fafafa; padding: 15px; border: 1px solid #eee; margin-bottom: 20px;">
             <p style="margin: 0 0 10px 0;"><strong>Servicii Publicare:</strong></p>
             <ul style="margin: 0; padding-left: 20px;">
-              <li>Publicare Standard: 490 LEI</li>
-              ${wantsProof ? '<li>Dovadă performanță (3000 vizitatori unici): +200 LEI</li>' : ''}
+              <li>Publicare Standard: 490 LEI (x${pressReleaseQty} buc)</li>
+              ${wantsProof ? `<li>Dovadă performanță: +200 LEI (x${pressReleaseQty} buc)</li>` : ''}
             </ul>
             <p style="margin: 10px 0 0 0;">Total Publicare: <strong>${pressReleasePrice} LEI</strong></p>
           </div>

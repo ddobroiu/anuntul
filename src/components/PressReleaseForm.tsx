@@ -12,29 +12,16 @@ export default function PressReleaseForm() {
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [wantsVisualIdentity, setWantsVisualIdentity] = useState(false);
     const [wantsProof, setWantsProof] = useState(false);
+    const [pressReleaseQty, setPressReleaseQty] = useState(1);
+    const [openGroups, setOpenGroups] = useState<string[]>(['Banner site', 'Panou temporar']);
     
-    const FONDURI_EU_OPTIONS = [
-        { id: 'vi_banner_digital', label: 'Banner site (Digital)', price: 100, group: 'Banner site' },
-        
-        { id: 'vi_afis_a4', label: 'Format A4', price: 19, group: 'Afiș informativ' },
-        { id: 'vi_afis_a3', label: 'Format A3', price: 49, group: 'Afiș informativ' },
-        { id: 'vi_afis_a2', label: 'Format A2', price: 79, group: 'Afiș informativ' },
-        
-        { id: 'vi_auto_mic_10', label: '10×10 cm (set 20 buc)', price: 49, group: 'Autocolante mici' },
-        { id: 'vi_auto_mic_15', label: '15×15 cm (set 10 buc)', price: 49, group: 'Autocolante mici' },
-        { id: 'vi_auto_mic_21', label: '15×21 cm (set 5 buc)', price: 49, group: 'Autocolante mici' },
-        
-        { id: 'vi_auto_mare_30', label: '30×30 cm (set 3 buc)', price: 49, group: 'Autocolante mari' },
-        { id: 'vi_auto_mare_40', label: '40×40 cm (1 buc)', price: 49, group: 'Autocolante mari' },
-        
-        { id: 'vi_panou_a2', label: 'Format A2', price: 200, group: 'Panou temporar' },
-        { id: 'vi_panou_80', label: '80×50 cm', price: 290, group: 'Panou temporar' },
-        { id: 'vi_panou_200', label: '200×150 cm', price: 700, group: 'Panou temporar' },
-        { id: 'vi_panou_300', label: '300×200 cm', price: 1190, group: 'Panou temporar' },
-        
-        { id: 'vi_placa_a2', label: 'Format A2', price: 200, group: 'Placă permanentă' },
-        { id: 'vi_placa_80', label: '80×50 cm', price: 290, group: 'Placă permanentă' },
-        { id: 'vi_placa_150', label: '150×100 cm', price: 550, group: 'Placă permanentă' },
+    const FONDURI_EU_GROUPS = [
+        { title: "Banner site", items: [{ id: 'vi_banner_digital', label: 'Banner site (Digital)', price: 100 }] },
+        { title: "Afiș informativ", items: [{ id: 'vi_afis_a4', label: 'Format A4', price: 19 }, { id: 'vi_afis_a3', label: 'Format A3', price: 49 }, { id: 'vi_afis_a2', label: 'Format A2', price: 79 }] },
+        { title: "Autocolante mici", items: [{ id: 'vi_auto_mic_10', label: '10×10 cm (set 20 buc)', price: 49 }, { id: 'vi_auto_mic_15', label: '15×15 cm (set 10 buc)', price: 49 }, { id: 'vi_auto_mic_21', label: '15×21 cm (set 5 buc)', price: 49 }] },
+        { title: "Autocolante mari", items: [{ id: 'vi_auto_mare_30', label: '30×30 cm (set 3 buc)', price: 49 }, { id: 'vi_auto_mare_40', label: '40×40 cm (1 buc)', price: 49 }] },
+        { title: "Panou temporar", items: [{ id: 'vi_panou_a2', label: 'Format A2', price: 200 }, { id: 'vi_panou_80', label: '80×50 cm', price: 290 }, { id: 'vi_panou_200', label: '200×150 cm', price: 700 }, { id: 'vi_panou_300', label: '300×200 cm', price: 1190 }] },
+        { title: "Placă permanentă", items: [{ id: 'vi_placa_a2', label: 'Format A2', price: 200 }, { id: 'vi_placa_80', label: '80×50 cm', price: 290 }, { id: 'vi_placa_150', label: '150×100 cm', price: 550 }] }
     ];
 
     const [quantities, setQuantities] = useState<Record<string, number>>({});
@@ -44,8 +31,13 @@ export default function PressReleaseForm() {
         setQuantities(p => ({ ...p, [id]: Math.max(0, (p[id] || 0) + delta) }));
     };
 
-    const pressReleasePrice = 490 + (wantsProof ? 200 : 0);
-    const kitTotal = FONDURI_EU_OPTIONS.reduce((acc, opt) => acc + (quantities[opt.id] || 0) * opt.price, 0);
+    const toggleGroup = (title: string, e: React.MouseEvent) => {
+        e.preventDefault();
+        setOpenGroups(p => p.includes(title) ? p.filter(t => t !== title) : [...p, title]);
+    };
+
+    const pressReleasePrice = pressReleaseQty * (490 + (wantsProof ? 200 : 0));
+    const kitTotal = FONDURI_EU_GROUPS.reduce((acc, g) => acc + g.items.reduce((iAcc, opt) => iAcc + (quantities[opt.id] || 0) * opt.price, 0), 0);
     const grandTotal = pressReleasePrice + (wantsVisualIdentity ? kitTotal : 0);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -205,65 +197,103 @@ export default function PressReleaseForm() {
             </div>
 
             <div className="mt-8 border-t-2 border-slate-100 pt-6">
-                <div className="bg-slate-50 border-l-4 border-black p-6 mb-8 mt-2">
+                <div className="bg-slate-50 border-l-4 border-black p-4 sm:p-6 mb-8 mt-2">
                     <h4 className="font-extrabold uppercase tracking-widest text-sm mb-4 text-slate-800">1. Servicii Publicare Comunicat</h4>
-                    <div className="flex items-center justify-between mb-4 border-b border-slate-200 pb-4">
-                        <span className="font-bold text-slate-700">Publicare Standard (Taxă bază)</span>
-                        <span className="font-black text-xl text-black">490 LEI</span>
+                    <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 border-b border-slate-200 pb-4 gap-4">
+                        <div className="flex-1">
+                            <span className="font-bold text-slate-700 block">Publicare Standard (Taxă bază)</span>
+                            <span className="text-xs text-slate-500 uppercase tracking-widest mt-1 block">Ziare / Portaluri de Știri Locale și Naționale</span>
+                        </div>
+                        <div className="flex items-center justify-between w-full sm:w-auto gap-4">
+                            <span className="font-black text-xl text-black shrink-0">490 LEI / buc</span>
+                            <div className="flex items-center border-2 border-slate-200 bg-white shrink-0">
+                                <button onClick={(e) => { e.preventDefault(); setPressReleaseQty(q => Math.max(1, q - 1)) }} className="p-3 sm:p-2 hover:bg-slate-100 transition-colors focus:outline-none"><Minus size={16} /></button>
+                                <input type="text" readOnly name="pressReleaseQty" value={pressReleaseQty} className="w-12 text-center font-bold bg-transparent border-x-2 border-slate-200 p-0 h-10 sm:h-8" />
+                                <button onClick={(e) => { e.preventDefault(); setPressReleaseQty(q => q + 1) }} className="p-3 sm:p-2 hover:bg-slate-100 transition-colors focus:outline-none"><Plus size={16} /></button>
+                            </div>
+                        </div>
                     </div>
-                    <label className="flex items-center gap-3 cursor-pointer group mt-2 bg-white p-4 border border-slate-200 hover:border-slate-300 transition-colors">
-                        <input
-                            type="checkbox"
-                            checked={wantsProof}
-                            onChange={(e) => setWantsProof(e.target.checked)}
-                            className="w-5 h-5 text-black border-2 border-slate-300 rounded-none focus:ring-black focus:ring-2"
-                        />
-                        <div className="flex-1 flex justify-between items-center">
-                            <span className="font-bold text-sm text-slate-700">Doresc dovadă de performanță (3000 de vizitatori unici)</span>
-                            <span className="font-black text-md text-slate-800">+ 200 LEI</span>
+                    <label className="flex flex-col sm:flex-row sm:items-start gap-3 cursor-pointer group mt-2 bg-white p-4 items-start sm:items-center border border-slate-200 hover:border-slate-300 transition-colors">
+                        <div className="flex items-start sm:items-center gap-3 w-full">
+                            <input
+                                type="checkbox"
+                                checked={wantsProof}
+                                onChange={(e) => setWantsProof(e.target.checked)}
+                                className="w-6 h-6 sm:w-5 sm:h-5 text-black border-2 border-slate-300 rounded-none focus:ring-black focus:ring-2 mt-0.5 sm:mt-0 shrink-0"
+                            />
+                            <div className="flex-1">
+                                <span className="font-bold text-sm text-slate-700 leading-tight block">Doresc dovadă de performanță (3000 de vizitatori unici)</span>
+                                <span className="text-xs text-slate-500 uppercase tracking-widest mt-1 block">Rapoarte de trafic certificate</span>
+                            </div>
+                        </div>
+                        <div className="w-full sm:w-auto sm:ml-auto mt-2 sm:mt-0 flex justify-end shrink-0">
+                            <span className="font-black text-[13px] text-slate-800 bg-slate-100 px-3 py-1 border border-slate-200">+ 200 LEI / buc</span>
                         </div>
                     </label>
                 </div>
 
-                <div className="bg-slate-50 border-l-4 border-red-600 p-6 pt-5 mb-8">
+                <div className="bg-slate-50 border-l-4 border-red-600 p-4 sm:p-6 pt-5 mb-8">
                     <h4 className="font-extrabold uppercase tracking-widest text-sm mb-4 text-slate-800">2. Identitate Vizuală (Kit PNRR / Fonduri EU)</h4>
                     <label className="flex items-center gap-3 cursor-pointer group bg-white p-4 border border-slate-200">
                         <input
                             type="checkbox"
                             checked={wantsVisualIdentity}
                             onChange={(e) => setWantsVisualIdentity(e.target.checked)}
-                            className="w-6 h-6 text-red-600 border-2 border-slate-300 rounded-none focus:ring-red-600 focus:ring-2"
+                            className="w-6 h-6 text-red-600 border-2 border-slate-300 rounded-none focus:ring-red-600 focus:ring-2 shrink-0"
                         />
-                        <span className="font-bold text-sm text-slate-700 group-hover:text-red-600 transition-colors">Adaugă materiale de vizibilitate fizice la comandă</span>
+                        <span className="font-bold text-sm text-slate-700 group-hover:text-red-600 transition-colors block">Adaugă materiale de vizibilitate fizice la comandă</span>
                     </label>
 
                     {wantsVisualIdentity && (
                         <div className="mt-6 border-t border-slate-200 pt-6 transition-all duration-300">
-                            <p className="font-extrabold uppercase tracking-widest text-[11px] mb-4 text-slate-500">Configurați materialele necesare:</p>
+                            <p className="font-extrabold uppercase tracking-widest text-[11px] mb-4 text-slate-500">Categorii materiale:</p>
                             
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
-                                {FONDURI_EU_OPTIONS.map((opt) => (
-                                    <div key={opt.id} className={`bg-white p-3 border flex flex-col justify-between transition-colors ${quantities[opt.id] ? 'border-red-500 shadow-sm' : 'border-slate-200 hover:border-slate-300'}`}>
-                                        <div className="flex flex-row justify-between items-start gap-2 h-full">
-                                            <div className="flex-1 pr-2">
-                                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-1">{opt.group}</span>
-                                                <p className="text-sm font-bold text-slate-800 leading-tight">{opt.label}</p>
-                                                <p className="text-xs font-black text-red-600 mt-1">{opt.price} Lei</p>
-                                            </div>
-                                            <div className="flex items-center border-2 border-slate-200 bg-slate-50 shrink-0 self-center">
-                                                <button onClick={(e) => handleKitQty(opt.id, -1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors focus:outline-none"><Minus size={14} /></button>
-                                                <input 
-                                                    type="text" 
-                                                    readOnly 
-                                                    name={opt.id}
-                                                    value={quantities[opt.id] || 0}
-                                                    className="w-8 text-center text-sm font-bold bg-transparent outline-none border-x-2 border-slate-200 h-8 p-0"
-                                                />
-                                                <button onClick={(e) => handleKitQty(opt.id, 1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors focus:outline-none"><Plus size={14} /></button>
-                                            </div>
+                            <div className="space-y-4 mb-6">
+                                {FONDURI_EU_GROUPS.map((group) => {
+                                    const isOpen = openGroups.includes(group.title);
+                                    const groupItemsSelected = group.items.reduce((acc, it) => acc + (quantities[it.id] || 0), 0);
+
+                                    return (
+                                        <div key={group.title} className={`border ${isOpen || groupItemsSelected > 0 ? 'border-red-500 shadow-sm' : 'border-slate-200'} bg-white transition-all`}>
+                                            <button 
+                                                onClick={(e) => toggleGroup(group.title, e)} 
+                                                className={`w-full text-left font-bold text-sm sm:text-[15px] p-4 flex justify-between items-center transition-colors ${isOpen ? 'bg-slate-800 text-white hover:bg-slate-900' : 'bg-slate-50 text-slate-800 hover:bg-slate-100'}`}
+                                            >
+                                                <span className="flex items-center">
+                                                    {group.title} 
+                                                    {groupItemsSelected > 0 && <span className={`ml-3 ${isOpen ? 'bg-white text-slate-900' : 'bg-red-600 text-white'} text-[10px] px-2 py-0.5 rounded-full`}>{groupItemsSelected} Produse</span>}
+                                                </span>
+                                                <span className={`text-xl ${isOpen ? 'text-slate-300' : 'text-slate-400'}`}>{isOpen ? '−' : '+'}</span>
+                                            </button>
+                                            
+                                            {isOpen && (
+                                                <div className="p-2 sm:p-4 bg-white space-y-2">
+                                                    {group.items.map((opt) => (
+                                                        <div key={opt.id} className={`flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 p-3 sm:p-4 border transition-colors ${quantities[opt.id] > 0 ? 'border-red-300 bg-red-50/30' : 'border-slate-100 bg-white hover:border-slate-200'}`}>
+                                                            <div className="flex-1 w-full">
+                                                                <p className="text-sm font-bold text-slate-800 leading-snug">{opt.label}</p>
+                                                            </div>
+                                                            <div className="flex items-center justify-between w-full sm:w-auto mt-1 sm:mt-0 gap-3">
+                                                                <p className="text-[13px] font-black text-red-600 whitespace-nowrap">{opt.price} Lei</p>
+                                                                <div className="flex items-center border-2 border-slate-200 bg-white min-w-[100px] shrink-0">
+                                                                    <button onClick={(e) => handleKitQty(opt.id, -1, e)} className="flex-1 p-2 sm:p-1 text-slate-600 hover:text-black hover:bg-slate-100 transition-colors focus:outline-none flex justify-center"><Minus size={16} /></button>
+                                                                    <input 
+                                                                        type="text" 
+                                                                        readOnly 
+                                                                        name={opt.id}
+                                                                        value={quantities[opt.id] || 0}
+                                                                        className="w-8 text-center text-[13px] sm:text-[14px] font-bold bg-transparent outline-none border-x-2 border-slate-200 h-9 sm:h-7 p-0"
+                                                                    />
+                                                                    <button onClick={(e) => handleKitQty(opt.id, 1, e)} className="flex-1 p-2 sm:p-1 text-slate-600 hover:text-black hover:bg-slate-100 transition-colors focus:outline-none flex justify-center"><Plus size={16} /></button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
                                         </div>
-                                    </div>
-                                ))}
+                                    );
+                                })}
                             </div>
                         </div>
                     )}
