@@ -81,6 +81,17 @@ export async function sendPressReleaseEmail(formData: FormData) {
   const content = (formData.get('content') as string) || '';
   const attachment = formData.get('attachment') as File | null;
 
+  const wantsVisualIdentity = formData.get('wantsVisualIdentity') === 'yes';
+  const vi_panou = formData.get('vi_panou') as string;
+  const vi_placa = formData.get('vi_placa') as string;
+  const vi_auto_mici = formData.get('vi_auto_mici') as string;
+  const vi_auto_mari = formData.get('vi_auto_mari') as string;
+  const vi_afis = formData.get('vi_afis') as string;
+  const vi_banner = formData.get('vi_banner') as string;
+  const vi_comunicat = formData.get('vi_comunicat') as string;
+
+  const visualIdentitySelected = [vi_comunicat, vi_banner, vi_afis, vi_auto_mici, vi_auto_mari, vi_panou, vi_placa].filter(Boolean).join(', ');
+
   try {
     const emailPayload: any = {
       from: 'Anuntul.info Press <onboarding@resend.dev>',
@@ -97,6 +108,12 @@ export async function sendPressReleaseEmail(formData: FormData) {
           <p><strong>Titlu propus:</strong> ${title}</p>
           ${attachment && attachment.size > 0 ? `<p style="color: #cc0000; font-weight: bold;">📎 Fișier atașat: ${attachment.name}</p>` : ''}
           
+          ${wantsVisualIdentity ? `
+          <div style="background-color: #fafafa; padding: 15px; border-left: 4px solid #cc0000; margin: 15px 0;">
+            <strong style="color: #cc0000; text-transform: uppercase;">A solicitat Kit Identitate Vizuală (Print/PNRR)</strong><br />
+            Opțiuni materiale necesare: <strong>${visualIdentitySelected || 'A bifat interesul (fără materiale specifice selectate)'}</strong>
+          </div>` : ''}
+
           <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;" />
           
           <h3 style="color: #1a1a1a; text-transform: uppercase; font-size: 0.9rem;">Conținut / Observații:</h3>

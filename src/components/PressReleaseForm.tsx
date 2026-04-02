@@ -10,6 +10,7 @@ export default function PressReleaseForm() {
     const [isPending, startTransition] = useTransition();
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [wantsVisualIdentity, setWantsVisualIdentity] = useState(false);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -165,6 +166,57 @@ export default function PressReleaseForm() {
                     style={{ ...inputStyle, resize: 'vertical' }}
                     placeholder="Introduceți conținutul comunicatului sau observații suplimentare pentru departamentul tehnic..."
                 ></textarea>
+            </div>
+
+            <div className="mt-8 border-t-2 border-slate-100 pt-6">
+                <label className="flex items-center gap-3 cursor-pointer group mb-2">
+                    <input
+                        type="checkbox"
+                        checked={wantsVisualIdentity}
+                        onChange={(e) => setWantsVisualIdentity(e.target.checked)}
+                        className="w-6 h-6 text-red-600 border-2 border-slate-300 rounded-none focus:ring-red-600 focus:ring-2"
+                    />
+                    <span style={{...labelStyle, marginBottom: 0}} className="group-hover:text-red-600 transition-colors">Doresc și kit de identitate vizuală (Gen Print / Fonduri Europene PNRR)</span>
+                </label>
+
+                {wantsVisualIdentity && (
+                    <div className="mt-4 bg-slate-50 p-6 border-l-4 border-red-600 space-y-4 shadow-sm">
+                        <h4 className="font-extrabold uppercase tracking-widest text-sm mb-4 text-slate-800">Selectați materialele necesare:</h4>
+                        
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-3 gap-x-6">
+                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
+                                <input type="checkbox" name="vi_comunicat" value="Comunicat de Presă (Digital/Ziar)" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
+                                <span className="text-sm font-bold text-slate-700">Comunicat de Presă</span>
+                            </label>
+                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
+                                <input type="checkbox" name="vi_banner" value="Banner Site" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
+                                <span className="text-sm font-bold text-slate-700">Banner Site</span>
+                            </label>
+                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
+                                <input type="checkbox" name="vi_afis" value="Afiș Informativ (A4/A3/A2)" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
+                                <span className="text-sm font-bold text-slate-700">Afiș Informativ (A4/A3/A2)</span>
+                            </label>
+                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
+                                <input type="checkbox" name="vi_auto_mici" value="Autocolante Mici" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
+                                <span className="text-sm font-bold text-slate-700">Autocolante Mici (Set)</span>
+                            </label>
+                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
+                                <input type="checkbox" name="vi_auto_mari" value="Autocolante Mari" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
+                                <span className="text-sm font-bold text-slate-700">Autocolante Mari (Set)</span>
+                            </label>
+                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
+                                <input type="checkbox" name="vi_panou" value="Panou Temporar" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
+                                <span className="text-sm font-bold text-slate-700">Panou Temporar</span>
+                            </label>
+                            <label className="flex items-center gap-3 cursor-pointer hover:bg-slate-100 p-2 rounded transition-colors -ml-2">
+                                <input type="checkbox" name="vi_placa" value="Placă Permanentă" className="w-5 h-5 text-red-600 rounded border-slate-300 focus:ring-red-500" />
+                                <span className="text-sm font-bold text-slate-700">Placă Permanentă</span>
+                            </label>
+                        </div>
+                        <input type="hidden" name="wantsVisualIdentity" value="yes" />
+                        <p className="text-xs text-slate-500 mt-4 italic">* Veți fi contactat pentru o ofertă personalizată conform manualului de identitate vizuală al proiectului dumneavoastră.</p>
+                    </div>
+                )}
             </div>
 
             <div className="mt-10 border-t-2 border-slate-100 pt-8">
