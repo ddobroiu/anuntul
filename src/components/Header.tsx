@@ -23,9 +23,10 @@ export default function Header() {
 
     const navLinks = [
         { href: "/", label: "Acasă" },
+        { href: "/pnrr-fonduri-europene", label: "PNRR & Fonduri EU", special: true },
         { href: "/regiuni", label: "Regiuni" },
         { href: "/comunicate", label: "Comunicate" },
-        { href: "/seap", label: "Achiziții SEAP", special: true },
+        { href: "/seap", label: "Achiziții SEAP" },
         { href: "/contact", label: "Contact" },
     ];
 
