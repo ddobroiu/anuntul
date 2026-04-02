@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck, Newspaper, Calculator, FileText, Layout, Printer, Package, ChevronRight } from 'lucide-react';
+import { seoProjects } from '@/lib/seoProjects';
 import PressReleaseForm from '@/components/PressReleaseForm';
+// ... (in the Quick Navigation area, or a new section near the footer)
 
 export default function PNRRPage() {
     return (
@@ -203,29 +205,27 @@ export default function PNRRPage() {
                     <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                         <div className="max-w-2xl">
                             <h2 className="text-4xl font-black text-slate-950 italic tracking-tighter uppercase mb-4 leading-none">
-                                Produse <span className="text-red-600">Kit Identitate Vizuală</span>
+                                Găsește Pagina Ta: <span className="text-red-600">Axe de Finanțare</span>
                             </h2>
                             <p className="text-slate-600 font-medium">Toate materialele sunt produse conform Standardului MIPE 2024 în vigoare.</p>
                         </div>
-                        <a href="#form-section" className="text-sm font-black text-red-600 uppercase tracking-widest flex items-center gap-2 group border-b-2 border-red-600/10 hover:border-red-600 transition-all pb-1">
-                            Vezi toate prețurile <ChevronRight size={18} className="group-hover:translate-x-1 transition-transform" />
-                        </a>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-1px bg-slate-200 border border-slate-200 shadow-2xl">
-                        {[
-                            { icon: <FileText size={32}/>, t: "Panouri Temporare PNRR", d: "Suport PVC 3mm sau Banner Cast, dimensiuni standard 80x50 cm, 200x150 cm." },
-                            { icon: <Layout size={32}/>, t: "Plăci Permanente", d: "Alucobond/Dibond rigid, rezistent la soare și variații de temperatură, print UV direct." },
-                            { icon: <ShieldCheck size={32}/>, t: "Autocolante Utilaje", d: "Material vinyl premium, laminat mat/lucios pentru protecție suplimentară împotriva abraziunii." },
-                            { icon: <Printer size={32}/>, t: "Afișe Deschidere Proiect", d: "Format A3 sau A2, printat pe hârtie premium sau material rigid, conform obligațiilor MIV." },
-                            { icon: <Newspaper size={32}/>, t: "Comunicate de Presă", d: "Distribuție națională în media online acreditată, raport trafic în timp real." },
-                            { icon: <Package size={32}/>, t: "Kit-uri Personalizate", d: "Configurăm pachetele exact după specificațiile din contractul de finanțare." }
-                        ].map((item, i) => (
-                            <div key={i} className="bg-white p-10 hover:bg-slate-950 hover:text-white transition-all group cursor-default">
-                                <div className="text-red-600 mb-6 group-hover:scale-110 transition-transform origin-left">{item.icon}</div>
-                                <h3 className="text-xl font-black uppercase italic tracking-tighter mb-4">{item.t}</h3>
-                                <p className="text-sm opacity-60 leading-relaxed font-medium">{item.d}</p>
-                            </div>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        {seoProjects.map((proj) => (
+                            <a 
+                                key={proj.slug}
+                                href={`/comunicate-presa/${proj.slug}`} 
+                                className="bg-white p-6 md:p-8 hover:bg-slate-950 hover:text-white transition-all group cursor-pointer border border-slate-200 shadow-sm"
+                            >
+                                <div className="text-red-600 mb-6 group-hover:scale-110 transition-transform origin-left">
+                                    <Newspaper size={32} />
+                                </div>
+                                <h3 className="text-xl font-black uppercase italic tracking-tighter mb-2">{proj.name}</h3>
+                                <p className="text-xs font-bold text-slate-400 uppercase tracking-widest mt-4 flex items-center gap-2">
+                                    Vezi Județele & Localitățile <ChevronRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                                </p>
+                            </a>
                         ))}
                     </div>
                 </div>
