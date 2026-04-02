@@ -4,11 +4,16 @@ import React from 'react';
 import { ArrowRight, CheckCircle2, ShieldCheck, Newspaper, Calculator, FileText, Layout, Printer, Package, ChevronRight } from 'lucide-react';
 import { seoProjects } from '@/lib/seoProjects';
 import PressReleaseForm from '@/components/PressReleaseForm';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+
 // ... (in the Quick Navigation area, or a new section near the footer)
 
 export default function PNRRPage() {
     return (
-        <main className="min-h-screen bg-white font-sans antialiased">
+        <div className="min-h-screen bg-white">
+            <Header />
+            <main className="font-sans antialiased">
             {/* Premium SEO Header Area */}
             <section className="bg-slate-950 text-white relative py-20 lg:py-32 overflow-hidden">
                 <div className="absolute top-0 right-0 w-1/2 h-full bg-red-600/5 skew-x-12 translate-x-20"></div>
@@ -254,6 +259,8 @@ export default function PNRRPage() {
                     </p>
                 </div>
             </section>
-        </main>
+            </main>
+            <Footer />
+        </div>
     );
 }
