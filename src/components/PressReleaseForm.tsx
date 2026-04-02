@@ -11,24 +11,28 @@ export default function PressReleaseForm() {
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedFile, setSelectedFile] = useState<File | null>(null);
     const [wantsVisualIdentity, setWantsVisualIdentity] = useState(false);
-    const [quantities, setQuantities] = useState<Record<string, number>>({});
+    const [selections, setSelections] = useState<Record<string, string>>({});
 
-    const visualKitOptions = [
-        { id: 'vi_comunicat', label: 'Publicare Comunicat Media (Ziare Nationale/Locale)', price: 450 },
-        { id: 'vi_banner', label: 'Banner Digital Site', price: 200 },
-        { id: 'vi_afis', label: 'Afiș Informativ A3 (Print Rigid)', price: 45 },
-        { id: 'vi_auto_mici', label: 'Autocolante Mici (Set 20 buc)', price: 90 },
-        { id: 'vi_auto_mari', label: 'Autocolant Mare Utilitaje/Auto', price: 150 },
-        { id: 'vi_panou', label: 'Panou Temporar PVC/Poliplan', price: 450 },
-        { id: 'vi_placa', label: 'Placă Permanentă Alucobond', price: 350 },
-    ];
-
-    const handleQty = (id: string, delta: number, e: React.MouseEvent) => {
-        e.preventDefault();
-        setQuantities(p => ({ ...p, [id]: Math.max(0, (p[id] || 0) + delta) }));
+    const FONDURI_EU_GROUPS = {
+        vi_comunicat: { title: "Comunicat de presă", options: [{ id: "none", label: "Fără comunicat", price: 0 }, { id: "start", label: "Începere proiect", price: 690 }, { id: "final", label: "Finalizare", price: 690 }, { id: "start+final", label: "Începere + Finalizare", price: 1380 }] },
+        vi_banner: { title: "Banner site", options: [{ id: "none", label: "Fără banner", price: 0 }, { id: "with", label: "Banner site (Digital)", price: 100 }] },
+        vi_afis: { title: "Afiș informativ", options: [{ id: "none", label: "Fără afiș", price: 0 }, { id: "A4", label: "Format A4", price: 19 }, { id: "A3", label: "Format A3", price: 49 }, { id: "A2", label: "Format A2", price: 79 }] },
+        vi_auto_mici: { title: "Autocolante mici", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "10x10-20", label: "10×10 cm (set 20 buc)", price: 49 }, { id: "15x15-10", label: "15×15 cm (set 10 buc)", price: 49 }, { id: "15x21-5", label: "15×21 cm (set 5 buc)", price: 49 }] },
+        vi_auto_mari: { title: "Autocolante mari", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "30x30-3", label: "30×30 cm (set 3 buc)", price: 49 }, { id: "40x40-1", label: "40×40 cm (1 buc)", price: 49 }] },
+        vi_panou: { title: "Panou temporar", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "200x150", label: "200×150 cm", price: 700 }, { id: "300x200", label: "300×200 cm", price: 1190 }] },
+        vi_placa: { title: "Placă permanentă", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "150x100", label: "150×100 cm", price: 550 }] },
     };
 
-    const totalKit = visualKitOptions.reduce((acc, opt) => acc + (quantities[opt.id] || 0) * opt.price, 0);
+    const handleSelection = (key: string, value: string) => {
+        setSelections(p => ({ ...p, [key]: value }));
+    };
+
+    let totalKit = 0;
+    Object.entries(FONDURI_EU_GROUPS).forEach(([key, group]) => {
+        const selectedId = selections[key] || "none";
+        const opt = group.options.find(o => o.id === selectedId);
+        if (opt) totalKit += opt.price;
+    });
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -199,28 +203,26 @@ export default function PressReleaseForm() {
 
                 {wantsVisualIdentity && (
                     <div className="mt-4 bg-slate-50 p-6 border-l-4 border-red-600 shadow-sm transition-all duration-300">
-                        <h4 className="font-extrabold uppercase tracking-widest text-sm mb-6 text-slate-800">Adăugați materialele necesare în pachet:</h4>
+                        <h4 className="font-extrabold uppercase tracking-widest text-sm mb-6 text-slate-800">Selectați materialele vizuale necesare:</h4>
                         
-                        <div className="space-y-3 mb-8">
-                            {visualKitOptions.map((opt) => (
-                                <div key={opt.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 bg-white border border-slate-200 hover:border-slate-300 transition-colors">
-                                    <div>
-                                        <p className="text-sm font-bold text-slate-800 uppercase tracking-wide">{opt.label}</p>
-                                        <p className="text-[11px] font-black uppercase text-red-600 tracking-widest mt-1">{opt.price} Lei / buc</p>
-                                    </div>
-                                    <div className="flex items-center gap-4">
-                                        <div className="flex items-center border-2 border-slate-200 bg-slate-50">
-                                            <button onClick={(e) => handleQty(opt.id, -1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Minus size={16} /></button>
-                                            <input 
-                                                type="text" 
-                                                readOnly 
-                                                name={opt.id}
-                                                value={quantities[opt.id] || 0}
-                                                className="w-12 text-center text-sm font-bold bg-transparent outline-none border-x-2 border-slate-200"
-                                            />
-                                            <button onClick={(e) => handleQty(opt.id, 1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Plus size={16} /></button>
-                                        </div>
-                                    </div>
+                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-8">
+                            {Object.entries(FONDURI_EU_GROUPS).map(([key, group]) => (
+                                <div key={key} className="bg-white p-4 border border-slate-200">
+                                    <label className="block text-sm font-bold text-slate-800 uppercase mb-2">
+                                        {group.title}
+                                    </label>
+                                    <select 
+                                        name={key}
+                                        value={selections[key] || "none"}
+                                        onChange={(e) => handleSelection(key, e.target.value)}
+                                        className="w-full p-2 border-2 border-slate-200 rounded-none text-sm focus:border-red-600 outline-none hover:border-red-400 focus:ring-0 transition-colors"
+                                    >
+                                        {group.options.map(opt => (
+                                            <option key={opt.id} value={opt.id}>
+                                                {opt.label} {opt.price > 0 ? `(+${opt.price} Lei)` : ''}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                             ))}
                         </div>

@@ -84,20 +84,24 @@ export async function sendPressReleaseEmail(formData: FormData) {
   const wantsVisualIdentity = formData.get('wantsVisualIdentity') === 'yes';
   const visualKitTotal = formData.get('visualKitTotal') as string;
   
-  const visualItems = [
-    { key: 'vi_comunicat', label: 'Publicare Comunicat Media' },
-    { key: 'vi_banner', label: 'Banner Digital Site' },
-    { key: 'vi_afis', label: 'Afiș Informativ A3' },
-    { key: 'vi_auto_mici', label: 'Autocolante Mici (Set 20 buc)' },
-    { key: 'vi_auto_mari', label: 'Autocolant Mare Utilitaje/Auto' },
-    { key: 'vi_panou', label: 'Panou Temporar' },
-    { key: 'vi_placa', label: 'Placă Permanentă' },
-  ];
+  const FONDURI_EU_GROUPS = {
+    vi_comunicat: { title: "Comunicat de presă", options: [{ id: "start", label: "Începere proiect (dovadă 3000 vizitatori)" }, { id: "final", label: "Finalizare (dovadă 3000 vizitatori)" }, { id: "start+final", label: "Începere + Finalizare" }] },
+    vi_banner: { title: "Banner site", options: [{ id: "with", label: "Banner site (Digital)" }] },
+    vi_afis: { title: "Afiș informativ", options: [{ id: "A4", label: "Format A4" }, { id: "A3", label: "Format A3" }, { id: "A2", label: "Format A2" }] },
+    vi_auto_mici: { title: "Autocolante mici", options: [{ id: "10x10-20", label: "10×10 cm (set 20 buc)" }, { id: "15x15-10", label: "15×15 cm (set 10 buc)" }, { id: "15x21-5", label: "15×21 cm (set 5 buc)" }] },
+    vi_auto_mari: { title: "Autocolante mari", options: [{ id: "30x30-3", label: "30×30 cm (set 3 buc)" }, { id: "40x40-1", label: "40×40 cm (1 buc)" }] },
+    vi_panou: { title: "Panou temporar", options: [{ id: "A2", label: "Format A2" }, { id: "80x50", label: "80×50 cm" }, { id: "200x150", label: "200×150 cm" }, { id: "300x200", label: "300×200 cm" }] },
+    vi_placa: { title: "Placă permanentă", options: [{ id: "A2", label: "Format A2" }, { id: "80x50", label: "80×50 cm" }, { id: "150x100", label: "150×100 cm" }] },
+  };
 
-  const visualIdentitySelected = visualItems
-    .map(item => {
-      const qty = parseInt((formData.get(item.key) as string) || '0', 10);
-      return qty > 0 ? `${item.label}: ${qty} buc` : null;
+  const visualIdentitySelected = Object.keys(FONDURI_EU_GROUPS)
+    .map(key => {
+      const selectedId = formData.get(key) as string;
+      if (!selectedId || selectedId === 'none') return null;
+      
+      const groupInfo = (FONDURI_EU_GROUPS as any)[key];
+      const option = groupInfo.options.find((o: any) => o.id === selectedId);
+      return option ? `${groupInfo.title}: <strong>${option.label}</strong>` : null;
     })
     .filter(Boolean)
     .join('<br />');
