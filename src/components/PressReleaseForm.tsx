@@ -13,44 +13,40 @@ export default function PressReleaseForm() {
     const [wantsVisualIdentity, setWantsVisualIdentity] = useState(false);
     const [wantsProof, setWantsProof] = useState(false);
     
-    const FONDURI_EU_GROUPS = {
-        vi_banner: { title: "Banner site", options: [{ id: "none", label: "Fără banner", price: 0 }, { id: "with", label: "Banner site (Digital)", price: 100 }] },
-        vi_afis: { title: "Afiș informativ", options: [{ id: "none", label: "Fără afiș", price: 0 }, { id: "A4", label: "Format A4", price: 19 }, { id: "A3", label: "Format A3", price: 49 }, { id: "A2", label: "Format A2", price: 79 }] },
-        vi_auto_mici: { title: "Autocolante mici", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "10x10-20", label: "10×10 cm (set 20 buc)", price: 49 }, { id: "15x15-10", label: "15×15 cm (set 10 buc)", price: 49 }, { id: "15x21-5", label: "15×21 cm (set 5 buc)", price: 49 }] },
-        vi_auto_mari: { title: "Autocolante mari", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "30x30-3", label: "30×30 cm (set 3 buc)", price: 49 }, { id: "40x40-1", label: "40×40 cm (1 buc)", price: 49 }] },
-        vi_panou: { title: "Panou temporar", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "200x150", label: "200×150 cm", price: 700 }, { id: "300x200", label: "300×200 cm", price: 1190 }] },
-        vi_placa: { title: "Placă permanentă", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "150x100", label: "150×100 cm", price: 550 }] },
-    };
+    const FONDURI_EU_OPTIONS = [
+        { id: 'vi_banner_digital', label: 'Banner site (Digital)', price: 100, group: 'Banner site' },
+        
+        { id: 'vi_afis_a4', label: 'Format A4', price: 19, group: 'Afiș informativ' },
+        { id: 'vi_afis_a3', label: 'Format A3', price: 49, group: 'Afiș informativ' },
+        { id: 'vi_afis_a2', label: 'Format A2', price: 79, group: 'Afiș informativ' },
+        
+        { id: 'vi_auto_mic_10', label: '10×10 cm (set 20 buc)', price: 49, group: 'Autocolante mici' },
+        { id: 'vi_auto_mic_15', label: '15×15 cm (set 10 buc)', price: 49, group: 'Autocolante mici' },
+        { id: 'vi_auto_mic_21', label: '15×21 cm (set 5 buc)', price: 49, group: 'Autocolante mici' },
+        
+        { id: 'vi_auto_mare_30', label: '30×30 cm (set 3 buc)', price: 49, group: 'Autocolante mari' },
+        { id: 'vi_auto_mare_40', label: '40×40 cm (1 buc)', price: 49, group: 'Autocolante mari' },
+        
+        { id: 'vi_panou_a2', label: 'Format A2', price: 200, group: 'Panou temporar' },
+        { id: 'vi_panou_80', label: '80×50 cm', price: 290, group: 'Panou temporar' },
+        { id: 'vi_panou_200', label: '200×150 cm', price: 700, group: 'Panou temporar' },
+        { id: 'vi_panou_300', label: '300×200 cm', price: 1190, group: 'Panou temporar' },
+        
+        { id: 'vi_placa_a2', label: 'Format A2', price: 200, group: 'Placă permanentă' },
+        { id: 'vi_placa_80', label: '80×50 cm', price: 290, group: 'Placă permanentă' },
+        { id: 'vi_placa_150', label: '150×100 cm', price: 550, group: 'Placă permanentă' },
+    ];
 
-    const [kitItems, setKitItems] = useState<Record<string, { optionId: string, qty: number }>>(() => {
-        const initial: Record<string, { optionId: string, qty: number }> = {};
-        Object.keys(FONDURI_EU_GROUPS).forEach(k => {
-            initial[k] = { optionId: 'none', qty: 1 };
-        });
-        return initial;
-    });
+    const [quantities, setQuantities] = useState<Record<string, number>>({});
 
-    const handleKitSelect = (key: string, optionId: string) => {
-        setKitItems(p => ({ ...p, [key]: { ...p[key], optionId } }));
-    };
-
-    const handleKitQty = (key: string, delta: number, e: React.MouseEvent) => {
+    const handleKitQty = (id: string, delta: number, e: React.MouseEvent) => {
         e.preventDefault();
-        setKitItems(p => ({ ...p, [key]: { ...p[key], qty: Math.max(1, p[key].qty + delta) } }));
+        setQuantities(p => ({ ...p, [id]: Math.max(0, (p[id] || 0) + delta) }));
     };
 
     const pressReleasePrice = 490 + (wantsProof ? 200 : 0);
-    let kitTotal = 0;
-    if (wantsVisualIdentity) {
-        Object.entries(FONDURI_EU_GROUPS).forEach(([key, group]) => {
-            const item = kitItems[key];
-            if (item && item.optionId !== 'none') {
-                const opt = group.options.find(o => o.id === item.optionId);
-                if (opt) kitTotal += opt.price * item.qty;
-            }
-        });
-    }
-    const grandTotal = pressReleasePrice + kitTotal;
+    const kitTotal = FONDURI_EU_OPTIONS.reduce((acc, opt) => acc + (quantities[opt.id] || 0) * opt.price, 0);
+    const grandTotal = pressReleasePrice + (wantsVisualIdentity ? kitTotal : 0);
 
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0] || null;
@@ -245,44 +241,27 @@ export default function PressReleaseForm() {
                         <div className="mt-6 border-t border-slate-200 pt-6 transition-all duration-300">
                             <p className="font-extrabold uppercase tracking-widest text-[11px] mb-4 text-slate-500">Configurați materialele necesare:</p>
                             
-                            <div className="grid grid-cols-1 gap-4 mb-6">
-                                {Object.entries(FONDURI_EU_GROUPS).map(([key, group]) => (
-                                    <div key={key} className="bg-white p-4 border border-slate-200 flex flex-col sm:flex-row sm:items-center gap-4">
-                                        <div className="flex-1">
-                                            <label className="block text-sm font-bold text-slate-800 uppercase mb-2">
-                                                {group.title}
-                                            </label>
-                                            <select 
-                                                name={`${key}_option`}
-                                                value={kitItems[key].optionId}
-                                                onChange={(e) => handleKitSelect(key, e.target.value)}
-                                                className="w-full p-2 border-2 border-slate-200 rounded-none text-sm focus:border-red-600 outline-none hover:border-red-400 focus:ring-0 transition-colors"
-                                            >
-                                                {group.options.map(opt => (
-                                                    <option key={opt.id} value={opt.id}>
-                                                        {opt.label} {opt.price > 0 ? `(+${opt.price} Lei)` : ''}
-                                                    </option>
-                                                ))}
-                                            </select>
-                                        </div>
-                                        {kitItems[key].optionId !== 'none' && (
-                                            <div className="flex items-center gap-3 sm:mt-6">
-                                                <span className="text-xs font-bold text-slate-500 uppercase">Cantitate</span>
-                                                <div className="flex items-center border-2 border-slate-200 bg-slate-50">
-                                                    <button onClick={(e) => handleKitQty(key, -1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Minus size={16} /></button>
-                                                    <input 
-                                                        type="text" 
-                                                        readOnly 
-                                                        name={`${key}_qty`}
-                                                        value={kitItems[key].qty}
-                                                        className="w-10 text-center text-sm font-bold bg-transparent outline-none border-x-2 border-slate-200"
-                                                    />
-                                                    <button onClick={(e) => handleKitQty(key, 1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors"><Plus size={16} /></button>
-                                                </div>
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+                                {FONDURI_EU_OPTIONS.map((opt) => (
+                                    <div key={opt.id} className={`bg-white p-3 border flex flex-col justify-between transition-colors ${quantities[opt.id] ? 'border-red-500 shadow-sm' : 'border-slate-200 hover:border-slate-300'}`}>
+                                        <div className="flex flex-row justify-between items-start gap-2 h-full">
+                                            <div className="flex-1 pr-2">
+                                                <span className="text-[9px] font-black uppercase tracking-widest text-slate-400 block mb-1">{opt.group}</span>
+                                                <p className="text-sm font-bold text-slate-800 leading-tight">{opt.label}</p>
+                                                <p className="text-xs font-black text-red-600 mt-1">{opt.price} Lei</p>
                                             </div>
-                                        )}
-                                        {/* Submit default values if none to avoid missing fields */}
-                                        {kitItems[key].optionId === 'none' && <input type="hidden" name={`${key}_qty`} value="1" />}
+                                            <div className="flex items-center border-2 border-slate-200 bg-slate-50 shrink-0 self-center">
+                                                <button onClick={(e) => handleKitQty(opt.id, -1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors focus:outline-none"><Minus size={14} /></button>
+                                                <input 
+                                                    type="text" 
+                                                    readOnly 
+                                                    name={opt.id}
+                                                    value={quantities[opt.id] || 0}
+                                                    className="w-8 text-center text-sm font-bold bg-transparent outline-none border-x-2 border-slate-200 h-8 p-0"
+                                                />
+                                                <button onClick={(e) => handleKitQty(opt.id, 1, e)} className="p-2 text-slate-600 hover:text-black hover:bg-slate-200 transition-colors focus:outline-none"><Plus size={14} /></button>
+                                            </div>
+                                        </div>
                                     </div>
                                 ))}
                             </div>

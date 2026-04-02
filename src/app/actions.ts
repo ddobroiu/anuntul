@@ -87,24 +87,29 @@ export async function sendPressReleaseEmail(formData: FormData) {
   const pressReleasePrice = formData.get('pressReleasePrice') as string;
   const kitTotal = formData.get('kitTotal') as string;
   
-  const FONDURI_EU_GROUPS = {
-    vi_banner: { title: "Banner site", options: [{ id: "none", label: "Fără banner", price: 0 }, { id: "with", label: "Banner site (Digital)", price: 100 }] },
-    vi_afis: { title: "Afiș informativ", options: [{ id: "none", label: "Fără afiș", price: 0 }, { id: "A4", label: "Format A4", price: 19 }, { id: "A3", label: "Format A3", price: 49 }, { id: "A2", label: "Format A2", price: 79 }] },
-    vi_auto_mici: { title: "Autocolante mici", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "10x10-20", label: "10×10 cm (set 20 buc)", price: 49 }, { id: "15x15-10", label: "15×15 cm (set 10 buc)", price: 49 }, { id: "15x21-5", label: "15×21 cm (set 5 buc)", price: 49 }] },
-    vi_auto_mari: { title: "Autocolante mari", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "30x30-3", label: "30×30 cm (set 3 buc)", price: 49 }, { id: "40x40-1", label: "40×40 cm (1 buc)", price: 49 }] },
-    vi_panou: { title: "Panou temporar", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "200x150", label: "200×150 cm", price: 700 }, { id: "300x200", label: "300×200 cm", price: 1190 }] },
-    vi_placa: { title: "Placă permanentă", options: [{ id: "none", label: "Nu doresc", price: 0 }, { id: "A2", label: "Format A2", price: 200 }, { id: "80x50", label: "80×50 cm", price: 290 }, { id: "150x100", label: "150×100 cm", price: 550 }] },
-  };
+  const FONDURI_EU_OPTIONS = [
+    { id: 'vi_banner_digital', label: 'Banner site (Digital)', group: 'Banner site' },
+    { id: 'vi_afis_a4', label: 'Format A4', group: 'Afiș informativ' },
+    { id: 'vi_afis_a3', label: 'Format A3', group: 'Afiș informativ' },
+    { id: 'vi_afis_a2', label: 'Format A2', group: 'Afiș informativ' },
+    { id: 'vi_auto_mic_10', label: '10×10 cm (set 20 buc)', group: 'Autocolante mici' },
+    { id: 'vi_auto_mic_15', label: '15×15 cm (set 10 buc)', group: 'Autocolante mici' },
+    { id: 'vi_auto_mic_21', label: '15×21 cm (set 5 buc)', group: 'Autocolante mici' },
+    { id: 'vi_auto_mare_30', label: '30×30 cm (set 3 buc)', group: 'Autocolante mari' },
+    { id: 'vi_auto_mare_40', label: '40×40 cm (1 buc)', group: 'Autocolante mari' },
+    { id: 'vi_panou_a2', label: 'Format A2', group: 'Panou temporar' },
+    { id: 'vi_panou_80', label: '80×50 cm', group: 'Panou temporar' },
+    { id: 'vi_panou_200', label: '200×150 cm', group: 'Panou temporar' },
+    { id: 'vi_panou_300', label: '300×200 cm', group: 'Panou temporar' },
+    { id: 'vi_placa_a2', label: 'Format A2', group: 'Placă permanentă' },
+    { id: 'vi_placa_80', label: '80×50 cm', group: 'Placă permanentă' },
+    { id: 'vi_placa_150', label: '150×100 cm', group: 'Placă permanentă' },
+  ];
 
-  const visualIdentitySelected = Object.keys(FONDURI_EU_GROUPS)
-    .map(key => {
-      const selectedId = formData.get(`${key}_option`) as string;
-      const qty = parseInt(formData.get(`${key}_qty`) as string || '1', 10);
-      if (!selectedId || selectedId === 'none') return null;
-      
-      const groupInfo = (FONDURI_EU_GROUPS as any)[key];
-      const option = groupInfo.options.find((o: any) => o.id === selectedId);
-      return option ? `&bull; ${groupInfo.title}: <strong>${option.label}</strong> (x${qty} buc)` : null;
+  const visualIdentitySelected = FONDURI_EU_OPTIONS
+    .map(opt => {
+      const qty = parseInt(formData.get(opt.id) as string || '0', 10);
+      return qty > 0 ? `&bull; ${opt.group}: <strong>${opt.label}</strong> (x${qty} buc)` : null;
     })
     .filter(Boolean)
     .join('<br />');
