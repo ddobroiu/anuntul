@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return {
-        title: `Publicare Comunicate de Presă PNRR și Regio în ${judetInfo.nume} | Anuntul.info`,
+        title: `Publicare Comunicate de Presă PNRR și Regio î`,
         description: `Servicii sigure de publicare comunicate de presă obligatorii PNRR, POR și fonduri europene în județul ${judetInfo.nume}. Conformitate MIV MIPE, dovadă +3.000 vizitatori, plată la termen.`,
         keywords: [`comunicate de presa ${judetInfo.nume}`, `publicare anunturi pnrr ${judetInfo.nume}`, `comunicate fonduri europene ${judetInfo.slug}`, `anunt incepere proiect ${judetInfo.nume}`],
         alternates: {

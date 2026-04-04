@@ -6,7 +6,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 export const metadata = {
-    title: "Publicitate și Comunicate Presă în orice județ - Anuntul.info",
+    title: "Publicitate și Comunicate Presă în orice jude",
     description: "Servicii de publicare comunicate de presă și vizibilitate fonduri europene în orice județ din România. Acoperire națională pentru PNRR, PR și ADR.",
     keywords: "comunicate presa judete, vizibilitate pnrr, publicitate locala, anunturi ziar",
     alternates: { canonical: "/judet" },

@@ -13,7 +13,7 @@ export async function generateMetadata({ params }: { params: Promise<{ judetSlug
     if (!judet) return { title: "Județ negăsit" };
 
     return {
-        title: `Comunicat Presă & Vizibilitate Fonduri în Județul ${judet.name} | Anuntul.info`,
+        title: `Comunicat Presă & Vizibilitate Fonduri în Jud`,
         description: `Servicii de publicitate, comunicate de presă și materiale vizibilitate (plăci/autocolante) în toate localitățile din ${judet.name}.`,
     };
 }

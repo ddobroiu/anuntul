@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
     const city = localitate.name;
     return {
-        title: `${category.title} în ${city}, ${judet.name} | Anuntul.info`,
+        title: `${category.title} în ${city}, ${judet.name}`,
         description: `Publicăm ${category.title} în ${city}. Servicii media profesionale pentru fonduri europene, redactare conform MIV și dovadă de publicare pentru decontare.`,
         alternates: {
             canonical: `https://www.anuntul.info/comunicate/${categorySlug}/${judetSlug}/${localitateSlug}`,

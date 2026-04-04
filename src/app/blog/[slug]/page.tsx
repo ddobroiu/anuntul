@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     const post = blogPosts.find(p => p.slug === slug);
 
     if (!post) {
-        return { title: 'Articol negasit - Anuntul.info' };
+        return { title: 'Articol negasit' };
     }
 
     return {

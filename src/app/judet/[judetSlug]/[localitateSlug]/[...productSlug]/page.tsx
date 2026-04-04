@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ judetSlug
 
     if (!loc || !judet || !product) return {};
 
-    const title = `Comunicat Presă ${product.title} în ${loc.name}, Județul ${judet.name} | Anuntul.info`;
+    const title = `Comunicat Presă ${product.title} în ${loc.name}`;
     const description = `Publică comunicat de presă pentru ${product.title} în ${loc.name} (${judet.name}). Servicii profesionale de redactare și publicitate media pentru proiecte PNRR și fonduri regionale.`;
 
     const routeUrl = `https://anuntul.info/judet/${judet.slug}/${loc.slug}/${productSlugStr}`;

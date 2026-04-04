@@ -6,7 +6,7 @@ import NewsCard from '@/components/NewsCard';
 import { getAllArticles } from '@/lib/articles';
 
 export const metadata: Metadata = {
-    title: 'Stiri de Ultima Ora - Anuntul.info',
+    title: 'Stiri de Ultima Ora',
     description: 'Toate stirile si noutatile din Romania la un loc.',
 };
 

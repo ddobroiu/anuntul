@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return {
-        title: `Publicare Comunicate de Presă ${projInfo.name} în Județul ${judetInfo.name} | Anuntul.info`,
+        title: `Publicare Comunicate de Presă ${projInfo.name}`,
         description: `Agenție omologată pentru publicarea comunicatelor ${projInfo.name} în județul ${judetInfo.name}. Oferim rapoarte vizitatori (SATI) și Kit complet de vizibilitate MIPE.`,
         keywords: [`comunicate presa ${projInfo.slug} ${judetInfo.name}`, `publicare anunturi fonduri europene ${judetInfo.slug}`, `kit identitate vizuala ${projInfo.slug} ${judetInfo.name}`],
         alternates: {

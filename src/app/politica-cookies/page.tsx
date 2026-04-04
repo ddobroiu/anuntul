@@ -3,7 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Politica de Cookies | Anuntul.info',
+    title: 'Politica de Cookies',
     description: 'Află cum Anuntul.info utilizează fișierele de tip cookie pentru a îmbunătăți experiența vizitatorilor pe site.',
 };
 

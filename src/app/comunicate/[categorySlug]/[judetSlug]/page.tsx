@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!category || !judet) return { title: 'Pagina negasita' };
 
     return {
-        title: `${category.title} în Județul ${judet.name} | Anuntul.info`,
+        title: `${category.title} în Județul ${judet.name}`,
         description: `Servicii de publicare ${category.title} în toate localitățile din județul ${judet.name}. Asigurăm conformitate MIV și dovadă de publicare pentru decontare fonduri europene.`,
     };
 }

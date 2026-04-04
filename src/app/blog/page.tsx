@@ -8,7 +8,7 @@ import { blogPosts } from '@/lib/blog-data';
 import { Calendar, User, Tag, ChevronRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-    title: 'Blog si Resurse Fonduri Europene - Anuntul.info',
+    title: 'Blog si Resurse Fonduri Europene',
     description: 'Citeste ultimele ghiduri si noutati despre publicarea comunicatelor de presa si materialelor de vizibilitate pentru proiecte PNRR, POR si POCU.',
 };
 

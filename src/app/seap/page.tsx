@@ -22,7 +22,7 @@ import BreadcrumbSchema from "@/components/seo/BreadcrumbSchema";
 import FAQSchema from "@/components/seo/FAQSchema";
 
 export const metadata: Metadata = {
-    title: "Publicare Anunțuri SEAP / SICAP & Comunicate de Presă | Anuntul.info",
+    title: "Publicare Anunțuri SEAP / SICAP & Comunicate",
     description: "Platformă acreditată pentru publicarea comunicatelor de presă și anunțurilor de licitație prin SEAP/SICAP. Plata la termen prin Trezorerie și confirmare instant.",
     keywords: ["anunturi seap", "comunicate de presa sicap", "publicitate licitatii", "anunturi fonduri europene", "plata trezorerie", "anuntul net seap"],
 };

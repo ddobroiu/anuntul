@@ -5,7 +5,7 @@ import Footer from '@/components/Footer';
 import PressReleaseForm from '@/components/PressReleaseForm';
 
 export const metadata: Metadata = {
-    title: 'Trimite Comunicat de Presa - Anuntul.info',
+    title: 'Trimite Comunicat de Presa',
     description: 'Publica gratuit comunicate de presa si stiri din regiunea ta pe Anuntul.info',
 };
 

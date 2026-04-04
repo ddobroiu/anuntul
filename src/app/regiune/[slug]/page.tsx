@@ -20,12 +20,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     if (!region) {
         return {
-            title: 'Regiune inexistenta - Anuntul.info',
+            title: 'Regiune inexistenta',
         };
     }
 
     return {
-        title: `Stiri din Regiunea ${region} - Anuntul.info`,
+        title: `Stiri din Regiunea ${region}`,
         description: `Stiri locale si comunicate de presa din regiunea ${region}. Citeste ultimele noutati.`,
     };
 }

@@ -73,6 +73,9 @@ export const metadata: Metadata = {
 };
 
 import ContactButton from "@/components/ContactButton";
+import MobileBottomNav from "@/components/MobileBottomNav";
+
+import CookieConsent from "@/components/CookieConsent";
 
 export default function RootLayout({
   children,
@@ -81,9 +84,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body className={`${inter.variable} ${playfair.variable} antialiased`}>
+      <body className={`${inter.variable} ${playfair.variable} antialiased pb-20 md:pb-0`}>
+        <CookieConsent />
         {children}
         <ContactButton />
+        <MobileBottomNav />
       </body>
     </html>
   );

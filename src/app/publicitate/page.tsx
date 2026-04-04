@@ -6,7 +6,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Servicii Comunicate si Vizibilitate Fonduri Europene - Anuntul.info',
+    title: 'Servicii Comunicate si Vizibilitate Fonduri E',
     description: 'Pachete complete pentru proiecte europene: publicare comunicat de presa si kituri de vizibilitate (autocolante, afise) conform cerintelor MCID/MIPE.',
 };
 

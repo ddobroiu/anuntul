@@ -13,7 +13,7 @@ interface PageProps {
 export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
     const { q } = await searchParams;
     return {
-        title: `Rezultate cautare: ${q || ''} - Anuntul.info`,
+        title: `Rezultate cautare: ${q ||''} - Anuntul.info`,
         description: `Rezultate pentru cautarea: ${q || ''} pe platforma Anuntul.info.`
     };
 }

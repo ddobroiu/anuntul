@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Termeni și Condiții - Anuntul.info',
+    title: 'Termeni și Condiții',
     description: 'Termenii și condițiile de utilizare a platformei Anuntul.info, politica de plată, livrare și returnare.',
 };
 

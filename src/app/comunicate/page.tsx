@@ -9,7 +9,7 @@ import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 import SeoContentComunicate from '@/components/seo/SeoContentComunicate';
 
 export const metadata: Metadata = {
-    title: 'Comunicate de Presa PNRR, POR, Fonduri Europene - Anuntul.info',
+    title: 'Comunicate de Presa PNRR, POR, Fonduri Europe',
     description: 'Publicare comunicate de presa oficiale (PNRR, POR, POCU) conform MIV. Dovada de publicare rapida pentru decontarea fondurilor europene.',
 };
 

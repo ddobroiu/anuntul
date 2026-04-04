@@ -4,7 +4,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-    title: 'Politica de Confidențialitate - Anuntul.info',
+    title: 'Politica de Confidențialitate',
     description: 'Politica de confidențialitate și prelucrarea datelor cu caracter personal conform GDPR.',
 };
 

@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     if (!category) return { title: 'Pagina negasita' };
 
     return {
-        title: `${category.title} la Nivel Național | Anuntul.info`,
+        title: `${category.title} la Nivel Național`,
         description: `${category.shortDescription} Publicăm anunțuri în presă în orice localitate din România. Respectăm normele de vizibilitate PNRR și REGIO.`,
     };
 }

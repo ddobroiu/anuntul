@@ -9,7 +9,7 @@ import { regions } from '@/lib/data';
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
 export const metadata: Metadata = {
-  title: 'Anuntul.info - Ziarul Știrilor și Comunicate PNRR',
+  title: 'Anuntul.info - Ziarul Știrilor și Comunicate',
   description: 'Publicăm comunicate de presă obligatorii pentru proiecte finanțate prin fonduri europene (PNRR, POR, POCU). Știri de actualitate.',
   alternates: {
     canonical: 'https://anuntul.info',

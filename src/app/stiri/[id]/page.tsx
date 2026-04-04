@@ -19,12 +19,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     if (!article) {
         return {
-            title: 'Articolul nu a fost gasit - Anuntul.info',
+            title: 'Articolul nu a fost gasit',
         };
     }
 
     return {
-        title: `${article.title} - Anuntul.info`,
+        title: `${article.title}`,
         description: article.excerpt,
     };
 }

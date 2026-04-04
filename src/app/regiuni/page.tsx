@@ -7,7 +7,7 @@ import Footer from '@/components/Footer';
 import { regions } from '@/lib/data';
 
 export const metadata: Metadata = {
-    title: 'Regiuni - Anuntul.info',
+    title: 'Regiuni',
     description: 'Stiri din toate regiunile Romaniei.',
 };
 

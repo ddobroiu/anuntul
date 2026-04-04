@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return {
-        title: `Comunicate de Presă și Publicitate ${projInfo.name} | Anuntul.info`,
+        title: `Comunicate de Presă și Publicitate ${projInfo.name}`,
         description: `Servicii complete de vizibilitate pentru proiecte ${projInfo.name}. Publicare comunicat presă MIV, panouri, plăci și autocolante. Distribuție la nivel național în toate județele.`,
         keywords: [`comunicate presa ${projInfo.slug}`, `kit publicitate ${projInfo.slug}`, `panouri vizibilitate ${projInfo.name}`],
         alternates: {
