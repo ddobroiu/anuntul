@@ -36,6 +36,18 @@ export const dummyArticles: Article[] = [
         isFeatured: true
     },
     {
+        id: 'pdf-comunicat-presa-ciokix-srl',
+        title: 'Comunicat presa CIOKIX SRL',
+        excerpt: 'Comunicat de presă în format PDF. Click pentru a vizualiza documentul complet.',
+        content: '',
+        category: 'Comunicat',
+        region: 'National',
+        date: new Date().toLocaleDateString('ro-RO'),
+        imageUrl: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=2070&auto=format&fit=crop',
+        pdfUrl: '/comunicate/Comunicat presa CIOKIX SRL.pdf',
+        isFeatured: false
+    },
+    {
         id: 'strizo-sintetic-digitalizare',
         title: 'DIGITALIZAREA ACTIVITĂȚII COMPANIEI STRIZO SINTETIC S.R.L.',
         excerpt: 'Comunicat de presă privind finalizarea derulării proiectului de digitalizare finanțat prin Fonduri Europene.',
