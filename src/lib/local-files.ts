@@ -20,6 +20,7 @@ export async function getLocalPdfArticles(): Promise<Article[]> {
                 // Clean up title: replace separators with spaces, remove extension
                 const title = file
                     .replace(/\.pdf$/i, '')
+                    .replace(/[+]/g, ' ')
                     .replace(/[-_]/g, ' ')
                     .replace(/\s+/g, ' ')
                     .trim();
@@ -36,6 +37,7 @@ export async function getLocalPdfArticles(): Promise<Article[]> {
                     region: 'National', // Default region
                     date: new Date().toLocaleDateString('ro-RO'), // Could use fs.statSync to get real date
                     imageUrl: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=2070&auto=format&fit=crop', // Generic document image
+                    // Keep unencoded; encode once at render-time to avoid double-encoding
                     pdfUrl: `/comunicate/${file}`,
                     isFeatured: false
                 };

@@ -37,6 +37,8 @@ export default async function ArticlePage({ params }: PageProps) {
         notFound();
     }
 
+    const pdfHref = article.pdfUrl ? encodeURI(article.pdfUrl).replaceAll('&', '%26') : undefined;
+
     const breadcrumbItems = [
         { name: 'Home', item: '/' },
         { name: article.category, item: article.category === 'Comunicat' ? '/comunicate' : '/stiri' },
@@ -153,7 +155,7 @@ export default async function ArticlePage({ params }: PageProps) {
                                         </div>
                                         <div style={{ display: 'flex', gap: '0.75rem' }}>
                                             <a
-                                                href={article.pdfUrl}
+                                                href={pdfHref}
                                                 target="_blank"
                                                 className="btn btn-outline"
                                                 style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: '600', backgroundColor: 'white' }}
@@ -162,7 +164,7 @@ export default async function ArticlePage({ params }: PageProps) {
                                                 <Maximize2 size={16} /> <span className="hidden sm:inline">Extinde</span>
                                             </a>
                                             <a
-                                                href={article.pdfUrl}
+                                                href={pdfHref}
                                                 download
                                                 className="btn btn-primary"
                                                 style={{ padding: '0.5rem 1rem', borderRadius: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem', fontSize: '0.85rem', fontWeight: '600', boxShadow: '0 4px 6px -1px rgba(211, 47, 47, 0.2)' }}
@@ -175,7 +177,7 @@ export default async function ArticlePage({ params }: PageProps) {
                                     {/* Viewing Area */}
                                     <div style={{ position: 'relative', height: '900px', width: '100%', backgroundColor: '#525659' }}>
                                         <iframe
-                                            src={`${article.pdfUrl}#toolbar=0&navpanes=0&scrollbar=0`}
+                                            src={`${pdfHref}#toolbar=0&navpanes=0&scrollbar=0`}
                                             style={{ width: '100%', height: '100%', border: 'none' }}
                                             title="Vizualizare PDF"
                                         />
@@ -190,7 +192,7 @@ export default async function ArticlePage({ params }: PageProps) {
                                         fontSize: '0.875rem',
                                         color: '#64748b'
                                     }}>
-                                        Întâmpini probleme la vizualizare? <a href={article.pdfUrl} download style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'underline' }}>Descarcă fișierul aici</a>.
+                                        Întâmpini probleme la vizualizare? <a href={pdfHref} download style={{ color: 'var(--color-primary)', fontWeight: '600', textDecoration: 'underline' }}>Descarcă fișierul aici</a>.
                                     </div>
                                 </div>
                             </div>
