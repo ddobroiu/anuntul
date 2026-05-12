@@ -55,9 +55,6 @@ jobs:
             # Login to GHCR
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             
-            # Pull latest image
-            docker pull ghcr.io/${{ github.repository }}:latest
-            
             # Create/Update .env from Secret
             echo "${{ secrets.ENV_CONTENTS }}" > .env
             
@@ -73,4 +70,6 @@ jobs:
                 env_file: .env
             EOF
             
-            docker compose up -d
+            docker compose pull
+            docker compose up -d --force-recreate
+            docker image prune -af
