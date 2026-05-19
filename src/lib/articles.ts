@@ -2,6 +2,13 @@ import { Article, dummyArticles } from '@/lib/data';
 import { getHotNewsArticles } from '@/lib/rss';
 import { getLocalPdfArticles } from '@/lib/local-files';
 
+/** Slug-uri vechi → id canonic (TO-TI CONSTRUCT) */
+const ARTICLE_ID_ALIASES: Record<string, string> = {
+    'pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect': 'digitalizare-to-ti-construct-srl',
+    'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf': 'digitalizare-to-ti-construct-srl',
+    'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL': 'digitalizare-to-ti-construct-srl',
+};
+
 // Cache mechanism could be added here for efficiency
 let cachedArticles: Article[] | null = null;
 let lastFetchTime = 0;
@@ -55,8 +62,9 @@ export async function getAllArticles(): Promise<Article[]> {
 }
 
 export async function getArticleById(id: string): Promise<Article | undefined> {
+    const resolvedId = ARTICLE_ID_ALIASES[id] ?? id;
     const articles = await getAllArticles();
-    return articles.find((a) => a.id === id);
+    return articles.find((a) => a.id === resolvedId);
 }
 
 export async function getArticlesByCategory(category: string): Promise<Article[]> {

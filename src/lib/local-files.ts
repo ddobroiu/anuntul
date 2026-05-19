@@ -25,8 +25,10 @@ export async function getLocalPdfArticles(): Promise<Article[]> {
                     .replace(/\s+/g, ' ')
                     .trim();
 
-                // Generate a stable ID
-                const id = 'pdf-' + file.replace(/[^a-zA-Z0-9.-]/g, '_');
+                // Generate a stable ID (fără extensia .pdf în slug)
+                const id = 'pdf-' + file
+                    .replace(/\.pdf$/i, '')
+                    .replace(/[^a-zA-Z0-9.-]/g, '_');
 
                 return {
                     id: id,

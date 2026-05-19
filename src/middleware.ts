@@ -9,8 +9,22 @@ const JUDETE_SLUGS = [
     "vaslui", "valcea", "vrancea"
 ];
 
+const STIRI_REDIRECTS: Record<string, string> = {
+    '/stiri/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect':
+        '/stiri/digitalizare-to-ti-construct-srl',
+    '/comunicate/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect':
+        '/stiri/digitalizare-to-ti-construct-srl',
+    '/stiri/pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf':
+        '/stiri/digitalizare-to-ti-construct-srl',
+};
+
 export function middleware(request: NextRequest) {
     const { pathname } = request.nextUrl;
+
+    const stiriRedirect = STIRI_REDIRECTS[pathname];
+    if (stiriRedirect) {
+        return NextResponse.redirect(new URL(stiriRedirect, request.url), { status: 301 });
+    }
 
     // Detect old WordPress date-based URLs: /YYYY/MM/DD/slug
     const wpRegex = /^\/(\d{4})\/(\d{2})\/(\d{2})\/(.+)$/;

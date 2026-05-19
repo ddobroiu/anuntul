@@ -37,6 +37,16 @@ const nextConfig: NextConfig = {
         destination: '/stiri/digitalizare-to-ti-construct-srl',
         permanent: true,
       },
+      {
+        source: '/stiri/pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf',
+        destination: '/stiri/digitalizare-to-ti-construct-srl',
+        permanent: true,
+      },
+      {
+        source: '/stiri/pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL',
+        destination: '/stiri/digitalizare-to-ti-construct-srl',
+        permanent: true,
+      },
     ];
   },
   async headers() {
