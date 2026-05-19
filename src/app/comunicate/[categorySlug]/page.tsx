@@ -1,9 +1,10 @@
 import { Metadata } from 'next';
-import { notFound } from 'next/navigation';
+import { notFound, redirect } from 'next/navigation';
 import Link from 'next/link';
 import { COMUNICATE_SEO_DATA } from '@/lib/seo/comunicateData';
 import { getJudeteFullData } from '@/lib/localitati';
 import { ChevronRight, Home, Map } from 'lucide-react';
+import { getArticleById } from '@/lib/articles';
 
 interface Props {
     params: Promise<{
@@ -29,7 +30,13 @@ export default async function CategoryComunicatPage({ params }: Props) {
     const { categorySlug } = await params;
     const category = COMUNICATE_SEO_DATA[categorySlug];
 
-    if (!category) notFound();
+    if (!category) {
+        const article = await getArticleById(categorySlug);
+        if (article) {
+            redirect(`/stiri/${categorySlug}`);
+        }
+        notFound();
+    }
 
     const judete = getJudeteFullData();
 

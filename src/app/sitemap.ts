@@ -85,9 +85,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   // Articles & News
   const articleRoutes: MetadataRoute.Sitemap = dummyArticles.map((article) => {
-    const routeType = article.category.toLowerCase() === 'comunicat' ? 'comunicate' : 'stiri';
     return {
-      url: `${baseUrl}/${routeType}/${article.id}`,
+      url: `${baseUrl}/stiri/${article.id}`,
       lastModified: new Date(),
       changeFrequency: 'yearly',
       priority: 0.6,

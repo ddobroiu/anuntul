@@ -124,7 +124,7 @@ export default async function Home() {
                 </div>
                 
                 <h2 className="text-4xl md:text-5xl font-serif font-black text-black leading-[1.1] hover:text-primary transition-colors">
-                  <Link href={`/${featuredArticle.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${featuredArticle.id}`}>
+                  <Link href={`/stiri/${featuredArticle.id}`}>
                     {featuredArticle.title}
                   </Link>
                 </h2>
@@ -134,7 +134,7 @@ export default async function Home() {
                 </p>
                 
                 <div className="mt-4">
-                   <Link href={`/${featuredArticle.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${featuredArticle.id}`} className="text-sm font-black uppercase tracking-widest text-primary hover:underline flex items-center gap-1">
+                   <Link href={`/stiri/${featuredArticle.id}`} className="text-sm font-black uppercase tracking-widest text-primary hover:underline flex items-center gap-1">
                      Citește Articolul Complet <ArrowRight size={14}/>
                    </Link>
                 </div>
@@ -150,7 +150,7 @@ export default async function Home() {
                       {article.category}
                     </span>
                     <h3 className="text-2xl font-serif font-black text-black leading-tight group-hover:underline decoration-2 decoration-primary underline-offset-4">
-                      <Link href={`/${article.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${article.id}`}>
+                      <Link href={`/stiri/${article.id}`}>
                         {article.title}
                       </Link>
                     </h3>
@@ -211,7 +211,7 @@ export default async function Home() {
                 <ul className="flex flex-col gap-0 divide-y divide-slate-200">
                   {moreArticles.map((article) => (
                     <li key={article.id} className="py-4 group">
-                      <Link href={`/${article.category === 'Comunicat' ? 'comunicate' : 'stiri'}/${article.id}`} className="block">
+                      <Link href={`/stiri/${article.id}`} className="block">
                          <span className="text-[10px] text-slate-500 font-bold uppercase mb-1 block">{article.date}</span>
                          <h4 className="font-serif font-bold text-base leading-snug group-hover:text-primary transition-colors">
                            {article.title}
