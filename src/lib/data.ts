@@ -36,6 +36,18 @@ export const dummyArticles: Article[] = [
         isFeatured: true
     },
     {
+        id: 'digitalizare-to-ti-construct-srl',
+        title: 'DIGITALIZAREA SOCIETĂȚII TO-TI CONSTRUCT SRL',
+        excerpt: 'Comunicat de presă în format PDF. Click pentru a vizualiza documentul complet.',
+        content: '',
+        category: 'Comunicat',
+        region: 'National',
+        date: '19.05.2026',
+        imageUrl: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=2070&auto=format&fit=crop',
+        pdfUrl: '/comunicate/DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf',
+        isFeatured: false
+    },
+    {
         id: 'pdf-comunicat-presa-ciokix-srl',
         title: 'Comunicat presa CIOKIX SRL',
         excerpt: 'Comunicat de presă în format PDF. Click pentru a vizualiza documentul complet.',

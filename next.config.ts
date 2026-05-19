@@ -25,6 +25,20 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/stiri/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect',
+        destination: '/stiri/digitalizare-to-ti-construct-srl',
+        permanent: true,
+      },
+      {
+        source: '/comunicate/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect',
+        destination: '/stiri/digitalizare-to-ti-construct-srl',
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
