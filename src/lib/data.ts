@@ -38,14 +38,14 @@ export const dummyArticles: Article[] = [
     {
         id: 'digitalizare-to-ti-construct-srl',
         title: 'DIGITALIZAREA SOCIETĂȚII TO-TI CONSTRUCT SRL',
-        excerpt: 'Comunicat de presă în format PDF. Click pentru a vizualiza documentul complet.',
-        content: '',
-        category: 'Comunicat',
+        excerpt: 'Comunicat de presă privind derularea proiectului de digitalizare finanțat prin PNRR.',
+        content: 'Comunicat de presă privind derularea proiectului cu titlul „DIGITALIZAREA SOCIETĂȚII TO-TI CONSTRUCT SRL", finanțat prin Planul Național de Redresare și Reziliență (PNRR).',
+        category: 'Fonduri Europene',
         region: 'National',
         date: '19.05.2026',
         imageUrl: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=2070&auto=format&fit=crop',
         pdfUrl: '/comunicate/DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf',
-        isFeatured: false
+        isFeatured: true
     },
     {
         id: 'pdf-comunicat-presa-ciokix-srl',
