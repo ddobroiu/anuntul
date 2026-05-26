@@ -1,16 +1,5 @@
-import type { Metadata } from "next";
-import { Inter, Playfair_Display } from "next/font/google";
+﻿import type { Metadata } from "next";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-const playfair = Playfair_Display({
-  variable: "--font-playfair",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://anuntul.info'),
@@ -84,7 +73,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ro">
-      <body className={`${inter.variable} ${playfair.variable} antialiased pb-20 md:pb-0`}>
+      <body className="antialiased pb-20 md:pb-0">
         <CookieConsent />
         {children}
         <ContactButton />

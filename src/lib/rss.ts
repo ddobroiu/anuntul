@@ -1,4 +1,4 @@
-import Parser from 'rss-parser';
+﻿import Parser from 'rss-parser';
 import { Article } from '@/lib/data';
 
 const parser = new Parser({
@@ -11,6 +11,10 @@ const parser = new Parser({
 });
 
 export async function getHotNewsArticles(): Promise<Article[]> {
+    if (process.env.NODE_ENV === 'development') {
+        return [];
+    }
+
     try {
         const feed = await parser.parseURL('https://www.hotnews.ro/rss');
 
@@ -82,7 +86,7 @@ export async function getHotNewsArticles(): Promise<Article[]> {
                 id = idMatch[1];
             } else {
                 const simpleSlug = (item.title || 'untitled').toLowerCase()
-                    .replace(/ă/g, 'a').replace(/â/g, 'a').replace(/î/g, 'i').replace(/ș/g, 's').replace(/ț/g, 't')
+                    .replace(/─â/g, 'a').replace(/├ó/g, 'a').replace(/├«/g, 'i').replace(/╚Ö/g, 's').replace(/╚¢/g, 't')
                     .replace(/[^a-z0-9]/g, '-')
                     .replace(/-+/g, '-')
                     .replace(/^-|-$/g, '');
