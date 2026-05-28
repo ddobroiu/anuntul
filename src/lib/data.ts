@@ -105,7 +105,23 @@ export const dummyArticles: Article[] = [
         date: '18.05.2026',
         imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
         pdfUrl: '/comunicate/Comunicat_presa_finalizare_proiect_PNRR_IQT.pdf',
-        isFeatured: true    }
+        isFeatured: true
+    },
+    {
+        id: 'anyatravel-srl-finalizare-proiect',
+        title: 'FINALIZARE PROIECT — ANYATRAVEL SRL',
+        excerpt:
+            'Comunicat de presă privind finalizarea proiectului implementat de ANYATRAVEL SRL, finanțat din fonduri europene (PNRR).',
+        content:
+            'Comunicat de presă privind finalizarea derulării proiectului implementat de ANYATRAVEL SRL. Documentul oficial în format PDF este disponibil mai jos.',
+        category: 'Comunicat',
+        region: 'National',
+        date: '28.05.2026',
+        imageUrl:
+            'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?q=80&w=2074&auto=format&fit=crop',
+        pdfUrl: '/comunicate/ANYATRAVEL SRL finalizare proiect.pdf',
+        isFeatured: true,
+    },
 ];
 
 export const regions = [

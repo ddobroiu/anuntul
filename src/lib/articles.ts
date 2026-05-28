@@ -7,6 +7,7 @@ const ARTICLE_ID_ALIASES: Record<string, string> = {
     'pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect': 'digitalizare-to-ti-construct-srl',
     'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf': 'digitalizare-to-ti-construct-srl',
     'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL': 'digitalizare-to-ti-construct-srl',
+    'pdf-ANYATRAVEL_SRL_finalizare_proiect': 'anyatravel-srl-finalizare-proiect',
 };
 
 // Cache mechanism could be added here for efficiency
