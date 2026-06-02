@@ -5,6 +5,7 @@ import { getLocalPdfArticles } from '@/lib/local-files';
 /** Slug-uri vechi → id canonic (TO-TI CONSTRUCT) */
 const ARTICLE_ID_ALIASES: Record<string, string> = {
     'pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect': 'digitalizare-to-ti-construct-srl',
+    'pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect.pdf': 'digitalizare-to-ti-construct-srl',
     'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf': 'digitalizare-to-ti-construct-srl',
     'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL': 'digitalizare-to-ti-construct-srl',
     'pdf-ANYATRAVEL_SRL_finalizare_proiect': 'anyatravel-srl-finalizare-proiect',

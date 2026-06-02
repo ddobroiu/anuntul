@@ -33,6 +33,11 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: '/stiri/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect.pdf',
+        destination: '/stiri/digitalizare-to-ti-construct-srl',
+        permanent: true,
+      },
+      {
         source: '/comunicate/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect',
         destination: '/stiri/digitalizare-to-ti-construct-srl',
         permanent: true,

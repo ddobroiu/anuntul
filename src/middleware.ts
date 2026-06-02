@@ -12,6 +12,8 @@ const JUDETE_SLUGS = [
 const STIRI_REDIRECTS: Record<string, string> = {
     '/stiri/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect':
         '/stiri/digitalizare-to-ti-construct-srl',
+    '/stiri/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect.pdf':
+        '/stiri/digitalizare-to-ti-construct-srl',
     '/comunicate/pdf-Model-Comunicat-de-Presa-PNRR-Incepere-Proiect':
         '/stiri/digitalizare-to-ti-construct-srl',
     '/stiri/pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf':
