@@ -52,6 +52,16 @@ const nextConfig: NextConfig = {
         destination: '/stiri/digitalizare-to-ti-construct-srl',
         permanent: true,
       },
+      {
+        source: '/stiri/pdf-Comunicat_de_presa_finalizare_ROYAL_COLORS_PAINTING_S.R.L._',
+        destination: '/stiri/royal-colors-painting-finalizare',
+        permanent: true,
+      },
+      {
+        source: '/stiri/pdf-Comunicat_de_presa_finalizare_ROYAL_COLORS_PAINTING_S.R.L.,',
+        destination: '/stiri/royal-colors-painting-finalizare',
+        permanent: true,
+      },
     ];
   },
   async headers() {

@@ -9,6 +9,8 @@ const ARTICLE_ID_ALIASES: Record<string, string> = {
     'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf': 'digitalizare-to-ti-construct-srl',
     'pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL': 'digitalizare-to-ti-construct-srl',
     'pdf-ANYATRAVEL_SRL_finalizare_proiect': 'anyatravel-srl-finalizare-proiect',
+    'pdf-Comunicat_de_presa_finalizare_ROYAL_COLORS_PAINTING_S.R.L._': 'royal-colors-painting-finalizare',
+    'pdf-Comunicat_de_presa_finalizare_ROYAL_COLORS_PAINTING_S.R.L.,': 'royal-colors-painting-finalizare',
 };
 
 // Cache mechanism could be added here for efficiency

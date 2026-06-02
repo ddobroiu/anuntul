@@ -6,6 +6,7 @@ import { Calendar, MapPin, Share2, FileText, Download, Maximize2 } from 'lucide-
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { getArticleById } from '@/lib/articles';
+import { encodePdfUrl } from '@/lib/encodePdfUrl';
 
 import BreadcrumbSchema from '@/components/seo/BreadcrumbSchema';
 
@@ -39,7 +40,7 @@ export default async function ArticlePage({ params }: PageProps) {
         notFound();
     }
 
-    const pdfHref = article.pdfUrl ? encodeURI(article.pdfUrl).replaceAll('&', '%26') : undefined;
+    const pdfHref = article.pdfUrl ? encodePdfUrl(article.pdfUrl) : undefined;
 
     const breadcrumbItems = [
         { name: 'Home', item: '/' },

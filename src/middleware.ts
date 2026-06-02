@@ -18,6 +18,10 @@ const STIRI_REDIRECTS: Record<string, string> = {
         '/stiri/digitalizare-to-ti-construct-srl',
     '/stiri/pdf-DIGITALIZAREA-SOCIETATII-TO-TI-CONSTRUCT-SRL.pdf':
         '/stiri/digitalizare-to-ti-construct-srl',
+    '/stiri/pdf-Comunicat_de_presa_finalizare_ROYAL_COLORS_PAINTING_S.R.L._':
+        '/stiri/royal-colors-painting-finalizare',
+    '/stiri/pdf-Comunicat_de_presa_finalizare_ROYAL_COLORS_PAINTING_S.R.L.,':
+        '/stiri/royal-colors-painting-finalizare',
 };
 
 export function middleware(request: NextRequest) {
