@@ -132,6 +132,18 @@ export const dummyArticles: Article[] = [
         isFeatured: false,
     },
     {
+        id: 'aviatia-utilitara-incheiere-implementare',
+        title: 'Anunț AVIATIA UTILITARA încheiere implementare',
+        excerpt: 'Comunicat de presă în format PDF. Click pentru a vizualiza documentul complet.',
+        content: '',
+        category: 'Comunicat',
+        region: 'National',
+        date: '02.06.2026',
+        imageUrl: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=2070&auto=format&fit=crop',
+        pdfUrl: '/comunicate/anunt-aviatia-utilitara-incheiere-implementare.pdf',
+        isFeatured: false,
+    },
+    {
         id: 'anyatravel-srl-finalizare-proiect',
         title: 'FINALIZARE PROIECT — ANYATRAVEL SRL',
         excerpt:
