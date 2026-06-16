@@ -144,6 +144,18 @@ export const dummyArticles: Article[] = [
         isFeatured: false,
     },
     {
+        id: 'to-ti-construct-finalizare-digitalizare-pnrr',
+        title: 'DIGITALIZAREA COMPANIEI TO-TI CONSTRUCT SRL — Finalizare proiect PNRR',
+        excerpt: 'Comunicat de presă privind finalizarea proiectului de digitalizare finanțat prin PNRR.',
+        content: 'Comunicat de presă privind finalizarea implementării proiectului „DIGITALIZAREA COMPANIEI TO-TI CONSTRUCT SRL”, finanțat prin Planul Național de Redresare și Reziliență (PNRR).',
+        category: 'Comunicat',
+        region: 'National',
+        date: '11.06.2026',
+        imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+        pdfUrl: '/comunicate/comunicat-finalizare-digitalizare-to-ti-construct-srl.pdf',
+        isFeatured: false,
+    },
+    {
         id: 'anyatravel-srl-finalizare-proiect',
         title: 'FINALIZARE PROIECT — ANYATRAVEL SRL',
         excerpt:
