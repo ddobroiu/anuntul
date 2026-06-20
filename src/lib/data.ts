@@ -156,6 +156,18 @@ export const dummyArticles: Article[] = [
         isFeatured: false,
     },
     {
+        id: 'smart-dynamic-design-finalizare-proiect',
+        title: 'Anunț privind finalizarea proiectului Smart Dynamic Design SRL',
+        excerpt: 'Comunicat de presă privind finalizarea proiectului de digitalizare finanțat prin PNRR.',
+        content: 'Comunicat de presă privind finalizarea proiectului „Digitalizarea companiei Smart Dynamic Design SRL”, finanțat prin Planul Național de Redresare și Reziliență (PNRR).',
+        category: 'Comunicat',
+        region: 'National',
+        date: '11.06.2026',
+        imageUrl: 'https://images.unsplash.com/photo-1510511459019-5dda7724fd87?q=80&w=2070&auto=format&fit=crop',
+        pdfUrl: '/comunicate/anunt-finalizare-smart-dynamic-design-srl.pdf',
+        isFeatured: false,
+    },
+    {
         id: 'anyatravel-srl-finalizare-proiect',
         title: 'FINALIZARE PROIECT — ANYATRAVEL SRL',
         excerpt:
