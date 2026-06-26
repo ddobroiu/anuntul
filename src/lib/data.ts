@@ -168,6 +168,18 @@ export const dummyArticles: Article[] = [
         isFeatured: false,
     },
     {
+        id: 'hidrotehnic-srl-finalizare-digitalizare',
+        title: 'Digitalizarea firmei HIDROTEHNIC SRL — Comunicat de presă finalizare',
+        excerpt: 'Comunicat de presă privind finalizarea proiectului de digitalizare finanțat prin PNRR.',
+        content: 'Comunicat de presă privind finalizarea proiectului de digitalizare al firmei HIDROTEHNIC SRL, finanțat prin Planul Național de Redresare și Reziliență (PNRR).',
+        category: 'Comunicat',
+        region: 'National',
+        date: '16.06.2026',
+        imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
+        pdfUrl: '/comunicate/comunicat-finalizare-hidrotehnic-srl.pdf',
+        isFeatured: false,
+    },
+    {
         id: 'anyatravel-srl-finalizare-proiect',
         title: 'FINALIZARE PROIECT — ANYATRAVEL SRL',
         excerpt:
