@@ -15,20 +15,23 @@ export async function getLocalPdfArticles(): Promise<Article[]> {
         const files = fs.readdirSync(communicateDir);
 
         return files
+            .map(file => file.trim())
             .filter(file => file.toLowerCase().endsWith('.pdf'))
             .map(file => {
+                const fileBase = file.replace(/\.pdf$/i, '');
+
                 // Clean up title: replace separators with spaces, remove extension
-                const title = file
-                    .replace(/\.pdf$/i, '')
+                const title = fileBase
                     .replace(/[+]/g, ' ')
                     .replace(/[-_]/g, ' ')
                     .replace(/\s+/g, ' ')
                     .trim();
 
                 // Generate a stable ID (fără extensia .pdf în slug)
-                const id = 'pdf-' + file
-                    .replace(/\.pdf$/i, '')
-                    .replace(/[^a-zA-Z0-9.-]/g, '_');
+                const id = 'pdf-' + fileBase
+                    .replace(/[^a-zA-Z0-9.-]/g, '_')
+                    .replace(/_+/g, '_')
+                    .replace(/^_+|_+$/g, '');
 
                 return {
                     id: id,

@@ -181,14 +181,14 @@ export const dummyArticles: Article[] = [
     },
     {
         id: 'rcagsm-srl-digitalizare-pnrr',
-        title: 'Comunicat de presă proiect digitalizare PNRR — RCAGSM SRL',
-        excerpt: 'Comunicat de presă privind proiectul de digitalizare finanțat prin PNRR.',
-        content: 'Comunicat de presă privind proiectul de digitalizare RCAGSM SRL, finanțat prin Planul Național de Redresare și Reziliență (PNRR).',
+        title: 'Comunicat de presă începere proiect — RCAGSM SRL',
+        excerpt: 'Comunicat de presă privind începerea proiectului de digitalizare finanțat prin PNRR.',
+        content: 'Comunicat de presă privind începerea proiectului de digitalizare RCAGSM SRL, finanțat prin Planul Național de Redresare și Reziliență (PNRR).',
         category: 'Comunicat',
         region: 'National',
         date: '16.06.2026',
         imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=2015&auto=format&fit=crop',
-        pdfUrl: '/comunicate/comunicat-presa-digitalizare-rcagsm-srl.pdf',
+        pdfUrl: '/comunicate/incepere proiecr_comunicat_de_presa_proiect_RCAGSM SRL.pdf',
         isFeatured: false,
     },
     {
