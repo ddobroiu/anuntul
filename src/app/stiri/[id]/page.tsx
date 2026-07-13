@@ -97,11 +97,15 @@ export default async function ArticlePage({ params }: PageProps) {
                                 <MapPin size={18} color="var(--color-primary)" />
                                 <span style={{ fontWeight: '500' }}>{article.region}</span>
                             </div>
-                            <div style={{ width: '1px', height: '1.5rem', backgroundColor: 'var(--color-border)' }}></div>
-                            <div className="flex items-center" style={{ gap: '0.5rem' }}>
-                                <Calendar size={18} color="var(--color-primary)" />
-                                <span style={{ fontWeight: '500' }}>{article.date}</span>
-                            </div>
+                            {article.category !== 'Comunicat' && (
+                                <>
+                                    <div style={{ width: '1px', height: '1.5rem', backgroundColor: 'var(--color-border)' }}></div>
+                                    <div className="flex items-center" style={{ gap: '0.5rem' }}>
+                                        <Calendar size={18} color="var(--color-primary)" />
+                                        <span style={{ fontWeight: '500' }}>{article.date}</span>
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </header>
 

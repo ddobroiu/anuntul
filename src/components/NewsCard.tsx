@@ -39,10 +39,12 @@ export default function NewsCard({ article }: NewsCardProps) {
                         <MapPin size={14} />
                         <span>{article.region}</span>
                     </div>
-                    <div className="flex items-center" style={{ gap: '0.25rem' }}>
-                        <Calendar size={14} />
-                        <span>{article.date}</span>
-                    </div>
+                    {article.category !== 'Comunicat' && (
+                        <div className="flex items-center" style={{ gap: '0.25rem' }}>
+                            <Calendar size={14} />
+                            <span>{article.date}</span>
+                        </div>
+                    )}
                 </div>
             </div>
         </article>
