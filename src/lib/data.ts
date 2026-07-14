@@ -218,6 +218,18 @@ export const dummyArticles: Article[] = [
         pdfUrl: '/comunicate/ANYATRAVEL SRL finalizare proiect.pdf',
         isFeatured: true,
     },
+    {
+        id: 'comunicat-de-presa-finalizare-iulie-2026',
+        title: 'Comunicat de presă finalizare — Iulie 2026',
+        excerpt: 'Comunicat de presă în format PDF pentru finalizarea proiectului în luna iulie 2026.',
+        content: 'Documentul oficial în format PDF este disponibil mai jos pentru vizualizare și descărcare.',
+        category: 'Comunicat',
+        region: 'National',
+        date: '14.07.2026',
+        imageUrl: 'https://images.unsplash.com/photo-1562240020-ce31ccb0fa7d?q=80&w=2070&auto=format&fit=crop',
+        pdfUrl: '/comunicate/Comunicat de presa finalizare _Iulie 2026.pdf',
+        isFeatured: false,
+    },
 ];
 
 export const regions = [
